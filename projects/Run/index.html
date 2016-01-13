@@ -5,29 +5,31 @@
 </head>
 <body ng-app="runrun">
 
-    <div ng-controller="RunRunCtrl">
+<div ng-controller="RunRunCtrl">
 
 
+    <div ng-repeat="section in model.sections" style="width:300px; float:left; position:relative;">
+        <div style="border: solid 2px black; background-color:cornsilk">
+            <div>
 
-        <div ng-repeat="section in model.sections" style="width:300px; float:left; position:relative;">
-            <div style="border: solid 2px black; background-color:cornsilk">
-                <div>
-
-                    <label>Speed (MPH)</label> <br/><input type="number" min="0" max="15" step="0.1" ng-model="section.speed" />
-                </div>
-                <div>
-                    <label>Duration (Seconds)</label><br /> <input type="number" min="0" max="600" step="1" ng-model="section.durationInSeconds" />
-                </div>
-                <button style="position:absolute; right:0px;top:0px;" ng-click="model.removeSection(section)">X</button>
+                <label>Speed (MPH)</label> <br/><input type="number" min="0" max="15" step="0.1" ng-model="section.speed"/>
             </div>
+            <div>
+                <label>Duration (Seconds)</label><br/> <input type="number" min="0" max="12000" step="1" ng-model="section.durationInSeconds" ng-change="callback.changeDuration(section)"/>
+            </div>
+            <div>
+                <label>Distance (Miles)</label><br/> <input type="number" min="0" max="100" step=".01" ng-model="section.distanceInMiles" ng-change="callback.changeDistance(section)"/>
+            </div>
+            <button style="position:absolute; right:0px;top:0px;" ng-click="model.removeSection(section)">X</button>
         </div>
-        <div style="clear:both;"></div>
-        <button ng-click="model.addSection()"> Add Section </button>
-        <br />
-        <span>Half Marathon Completion Time: {{model.calculated.completedTime | date :'hh:mm:ss'}}, {{model.calculated.iterations}} Cycles</span><br />
-        <span>Average Mile Time: {{model.calculated.averageMileTimeMinutes|number:2}} Minutes</span><br />
-        <span>Average Mile Pace: {{model.calculated.averageMilePaceMPH |number:2}} MPH</span><br />
-
     </div>
+    <div style="clear:both;"></div>
+    <button ng-click="model.addSection()"> Add Section</button>
+    <br/>
+    <span>Half Marathon Completion Time: {{model.calculated.completedTime | date :'hh:mm:ss'}}, {{model.calculated.iterations}} Cycles</span><br/>
+    <span>Average Mile Time: {{model.calculated.averageMileTimeMinutes|number:2}} Minutes</span><br/>
+    <span>Average Mile Pace: {{model.calculated.averageMilePaceMPH |number:2}} MPH</span><br/>
+
+</div>
 </body>
 </html>
