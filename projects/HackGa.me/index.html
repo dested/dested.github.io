@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HackGa.me</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body style="background-color: #9292be;">
+<canvas id="game"></canvas>
+<script src="vendor/libs.js"></script>
+<script src="vendor/keyboard.js"></script>
+<script src="vendor/system.js"></script>
+<script src="vendor/typescript.js"></script>
+<script src="vendor/Stats.js"></script>
+
+<script>
+
+    var stats = new Stats();
+    window.stats=stats;
+    stats.setMode( 0 ); // 0: fps, 1: ms, 2: mb
+    // align top-left
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.left = '0px';
+    stats.domElement.style.top = '0px';
+    document.body.appendChild( stats.domElement );
+
+    System.config({
+        transpiler: 'typescript',
+        typescriptOptions: { emitDecoratorMetadata: true },
+        packages: {'app': {defaultExtension: 'ts'}}
+    });
+    System.import('app/boot')
+            .then(null, console.error.bind(console));
+
+</script>
+</body>
+</html>
