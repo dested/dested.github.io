@@ -23,22 +23,29 @@ export class Hero {
     private height:number = 24;
     private mayJump:boolean = true;
     private wasOnGround:boolean = false;
+    private xPic:number;
 
 
     constructor(level:Level) {
         this.level = level;
-        console.log('hilevel');
     }
 
     tick():void {
-
         //console.log(this.x, this.y, this.xa, this.ya);
         var xSpeed = KeyManager.keys[Keys.Run] ? 1.2 : .6;
 
         this.wasOnGround = this.onGround;
 
+        var wasDucking = this.ducking;
         if (this.onGround) {
             this.ducking = KeyManager.keys[Keys.Down];
+        }
+
+
+        if (wasDucking && !this.ducking) {
+            if (this.isBlocking(this.x, this.y - 16, 0, 0)) {
+                this.ducking = true;
+            }
         }
 
 
@@ -83,20 +90,19 @@ export class Hero {
             this.jumpTime = 0;
         }
 
-        if (KeyManager.keys[Keys.Left] && !this.ducking) {
+        if (KeyManager.keys[Keys.Left] && (!this.ducking || (this.ducking && !this.onGround))) {
             if (this.facing == 1) this.sliding = false;
             this.xa -= xSpeed;
             if (this.jumpTime >= 0) this.facing = -1;
         }
 
-        if (KeyManager.keys[Keys.Right] && !this.ducking) {
+        if (KeyManager.keys[Keys.Right] && (!this.ducking || (this.ducking && !this.onGround))) {
             if (this.facing == -1) this.sliding = false;
             this.xa += xSpeed;
             if (this.jumpTime >= 0) this.facing = 1;
         }
 
-        if ((!KeyManager.keys[Keys.Left] && !KeyManager.keys[Keys.Right]) || this.ducking || this.ya < 0 || this.onGround)
-        {
+        if ((!KeyManager.keys[Keys.Left] && !KeyManager.keys[Keys.Right]) || this.ducking || this.ya < 0 || this.onGround) {
             this.sliding = false;
         }
 
@@ -108,7 +114,7 @@ export class Hero {
             this.xa = 0;
         }
 
-        //calcPic();
+        this.calcPic();
 
         if (this.sliding) {
             this.ya *= .5;
@@ -134,6 +140,20 @@ export class Hero {
             this.ya = 0;
         }
 
+    }
+
+    private calcPic():void {
+        var runFrame = ((this.runTime / 20) | 0) % 4;
+        if (runFrame == 3) runFrame = 1;
+        if (!this.onGround) {
+            if (Math.abs(this.xa) > 10) runFrame = 7;
+            else runFrame = 6;
+        }
+
+        if (this.ducking) runFrame = 14;
+        this.height = this.ducking ? 12 : 24;
+
+        this.xPic = runFrame;
     }
 
     private move(xa:number, ya:number):boolean {
@@ -251,12 +271,12 @@ export class Hero {
         yPicO = 31;
         wPic = hPic = 32;
 
-        //calcPic();
+        this.calcPic();
 
 
-        var xPixel = (this.x - xPicO) | 0;
-        var yPixel = (this.y - yPicO) | 0;
-
+        var xPixel = (this.x - xPicO);
+        var yPixel = (this.y - yPicO);
+        //console.log(xPixel, yPixel);
         var xFlipPic = this.facing == -1;
 
         context.translate(xPixel + (xFlipPic ? wPic : 0)/*- (int) Mario.instance.levelScene.xCam*/, yPixel);
@@ -264,7 +284,7 @@ export class Hero {
         if (xFlipPic) {
             context.scale(-1, 1);
         }
-        context.drawImage(AssetManager.getAsset('hero'), 0, 0);
+        context.drawImage(AssetManager.getSheet('hero', this.xPic, 0), 0, 0);
 
         context.restore();
     }

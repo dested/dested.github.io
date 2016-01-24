@@ -14,10 +14,14 @@ export class Level {
             this.tiles[x] = [];
             for (var y = 0; y < 20; y++) {
                 this.tiles[x][y] = (y == 15);
-                if(x==20){
+                if(x==27){
                     this.tiles[x][y] = true;
                 }
-                if(x==15 && y<12){
+                if(x==24 && y<14){
+                    this.tiles[x][y] = true;
+                }
+
+                if(x==15 && y<11){
                     this.tiles[x][y] = true;
                 }
 
@@ -50,8 +54,6 @@ export class Level {
 
     tick():void {
         this.hero.tick();
-
-
     }
 
     isBlocking(x:Number, y:Number, xa:Number, ya:Number):boolean {

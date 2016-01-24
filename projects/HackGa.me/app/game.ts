@@ -13,7 +13,7 @@ export class Game {
 
         this.level = new Level();
         this.hero = new Hero(this.level);
-        this.level.setHero(this.hero, 5, 5);
+        this.level.setHero(this.hero, 32, 32);
 
 
         this.canvas = <HTMLCanvasElement>document.getElementById('game');
@@ -24,7 +24,7 @@ export class Game {
 
         setInterval(()=> {
             this.tick();
-        }, 1000 / 16);
+        }, 1000 / 24);
         this.renderFrame();
         this.resizeCanvas();
     }
@@ -35,7 +35,7 @@ export class Game {
 
     private render():void {
         this.context.save();
-        this.context.scale(3,3);
+        this.context.scale(3, 3);
         this.level.render(this.context);
         this.context.restore();
     }
@@ -49,8 +49,8 @@ export class Game {
         window.requestAnimationFrame(()=> {
             window.stats.begin();
             this.canvas.width = this.canvas.width;
-            this.context.msImageSmoothingEnabled=false;
-            this.context.imageSmoothingEnabled=false;
+            this.context.msImageSmoothingEnabled = false;
+            this.context.imageSmoothingEnabled = false;
             this.render();
             this.renderFrame();
             window.stats.end();
