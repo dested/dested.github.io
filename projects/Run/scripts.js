@@ -21,7 +21,7 @@
 
     };
     $scope.callback.changeDuration= function (section) {
-      section.
+      // section.
     };
 
     $scope.model.calculate = function () {
