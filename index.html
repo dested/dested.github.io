@@ -26,12 +26,13 @@
             border-radius: 15px;
             border: solid 2px silver;
         }
+
         [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
             display: none !important;
         }
     </style>
 </head>
-<body ng-controller="main" >
+<body ng-controller="main">
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -116,6 +117,30 @@
 
     </div>
     <hr>
+    <script src="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.min.js">
+    </script>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.css"/>
+<style>
+    .calendar:hover{
+        color:black;
+        text-decoration: none;
+    }
+
+    .calendar{
+        color:black;
+        text-decoration: none;
+    }
+</style>
+    <!-- Prepare a container for your calendar. -->
+    <a href="https://github.com/dested">
+        <div class="calendar">
+            <!-- Loading stuff -->
+            Loading the data just for you.
+        </div>
+    </a>
+    <script>
+        GitHubCalendar(".calendar", "dested");
+    </script>
     <footer>
         <div class="row">
             <div class="col-lg-12">
@@ -142,7 +167,7 @@
             title: 'Our Sonic',
             github: 'https://github.com/OurSonic/OurSonicTyped',
             description: 'A hand built engine for simulating the original Sonic the Hedgehog games for Sega Genesis. Pure typescript implementation.',
-            keywords: ['javascript', 'typescript', 'angular 2', 'aws','lambda', 'canvas']
+            keywords: ['javascript', 'typescript', 'angular 2', 'aws', 'lambda', 'canvas']
         },
         {
             url: 'https://itunes.apple.com/us/app/penguin-shuffle-uncover-path/id909070508',
@@ -284,7 +309,9 @@
             description: 'A very simple Cubic Bezier Curve implementation in javascript',
             keywords: ['javascript', 'canvas']
         },
-    ].sort(function(a,b){return Math.random()*100-50;})
+    ].sort(function (a, b) {
+        return Math.random() * 100 - 50;
+    })
 
 }).filter('to_trusted', ['$sce', function ($sce) {
     return function (text) {
