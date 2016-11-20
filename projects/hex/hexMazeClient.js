@@ -3,7 +3,7 @@
     self.players = [];
     self.currentPlayerID = null;
     self.currentPlayer = null;
-    var client = this.client = io.connect('198.211.107.235:9000');
+    var client = this.client = io.connect('https://api.dested.com:9000');
 
 
     client.on('Game.PlayerLeft', function (data) {
