@@ -15,7 +15,7 @@
 
     <title>Dested LLC</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/3-col-portfolio.css" rel="stylesheet">
     <style>
         .github {
@@ -74,7 +74,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-3 portfolio-item" style="min-height:390px;" ng-repeat="project in projects">
+        <div class="col-md-3 portfolio-item" style="min-height:400px;" ng-repeat="project in projects">
             <a ng-href="{{project.url}}">
                 <img class="img-responsive project-image" ng-src="{{project.image}}" alt="{{project.title}}">
             </a>
@@ -100,7 +100,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-3 portfolio-item" style="min-height:390px;" ng-repeat="project in toys">
+        <div class="col-md-2 portfolio-item" style="min-height:410px;" ng-repeat="project in toys">
             <a ng-href="{{project.url}}">
                 <img class="img-responsive project-image" ng-src="{{project.image}}" alt="{{project.title}}">
             </a>
@@ -173,9 +173,9 @@
             url: 'https://itunes.apple.com/us/app/penguin-shuffle-uncover-path/id909070508',
             image: '/projects-images/penguin-shuffle.png',
             title: 'Penguin Shuffle!',
-            github: null,
+            github: 'https://github.com/Penguio-Framework/PenguinShuffle',
             description: 'A fun puzzle game for Android and IOS, built in C# using Xamarin, mono-game, and a custom engine.',
-            keywords: ['c#', 'xamarin', 'android', 'ios']
+            keywords: ['c#', 'xamarin', 'android', 'ios','penguio']
         },
         {
             url: 'http://styr.com',
@@ -205,7 +205,7 @@
             url: 'projects/BingoBlockParty/index.html',
             image: "/projects-images/bingo.png",
             title: 'Bingo Block Party',
-            github: 'https://github.com/dested/Social-War-Games-Lambda',
+            github: 'https://github.com/Penguio-Framework/BingoBlockParty',
             description: 'A physics based multiplayer ball and bingo game. This product compiles to the Web, Android, and IOS using a custom engine. Still in development.',
             keywords: ['javascript', 'c#', 'canvas', 'xamarin', 'android', 'ios']
         },
@@ -229,6 +229,13 @@
 
     $scope.toys = [
         {
+            url: 'https://github.com/Penguio-Framework',
+            image: '/projects-images/penguio.png',
+            title: 'Penguio Framework',
+            github: 'https://github.com/Penguio-Framework',
+            description: 'A Xamarin/Monogame based framework and CLI tool that allows for deploying a common codebase to Android, iOS, WindowsPhone, Windows8, Windows Desktop, and HTML5. ',
+            keywords: ['c#',"Xamarin","monogame","canvas"]
+        },     {
             url: 'projects/wire/index.html',
             image: '/projects-images/wire-world.png',
             title: 'Wire World in Javascript',
@@ -240,7 +247,7 @@
             url: 'http://runrunjump.com',
             image: "/projects-images/runrunjump.png",
             title: 'Run Run Jump',
-            github: null,
+            github: 'https://github.com/dested/RunRunJump',
             description: 'An idea for a 2d platformer with full level and physics editing capabilities.',
             keywords: ['javascript', 'performance', 'canvas']
         },
@@ -248,7 +255,7 @@
             url: 'https://www.youtube.com/watch?v=RF7PwocNlCw',
             image: "/projects-images/mario.png",
             title: 'Mario AI',
-            github: 'https://github.com/dested/Social-War-Games-Lambda',
+            github: 'https://github.com/dested/MarioAi',
             description: 'My AI agent for the 2009 <a href="http://julian.togelius.com/mariocompetition2009/">MarioAI</a> competition. Uses A* to pathfind through the level.',
             keywords: ['java', 'performance']
         },
