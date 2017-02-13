@@ -100,7 +100,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-2 portfolio-item" style="min-height:410px;" ng-repeat="project in toys">
+        <div class="col-md-2 portfolio-item" style="min-height:500px;" ng-repeat="project in toys">
             <a ng-href="{{project.url}}">
                 <img class="img-responsive project-image" ng-src="{{project.image}}" alt="{{project.title}}">
             </a>
@@ -290,6 +290,14 @@
             github: 'https://github.com/dested/jsprofiler',
             description: 'A javascript profiler that supports line by line statistical analysis. Uses Istanbul and esprima for code instrumentation.',
             keywords: ['javascript', 'performance', 'code-utility']
+        },     
+        {
+            url: 'projects/snake/index.html',
+            image: "/projects-images/snake.png",
+            title: 'Snake A*',
+            github: 'https://github.com/dested/SnakeAStar',
+            description: 'A solver for snake using the A* path finding algorithm.',
+            keywords: ['javascript', 'c#', 'canvas','weekend-project']
         },        {
             url: 'http://aiplays.com/tetris',
             image: "/projects-images/aiplaystetris.png",
