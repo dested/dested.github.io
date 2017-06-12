@@ -74,7 +74,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-3 portfolio-item" style="min-height:400px;" ng-repeat="project in projects">
+        <div class="col-md-25 col-sm-12 portfolio-item" style="min-height:400px;" ng-repeat="project in projects">
             <a ng-href="{{project.url}}">
                 <img class="img-responsive project-image" ng-src="{{project.image}}" alt="{{project.title}}">
             </a>
@@ -170,14 +170,6 @@
             keywords: ['javascript', 'typescript', 'angular 2', 'aws', 'lambda', 'canvas']
         },
         {
-            url: 'https://itunes.apple.com/us/app/penguin-shuffle-uncover-path/id909070508',
-            image: '/projects-images/penguin-shuffle.png',
-            title: 'Penguin Shuffle!',
-            github: 'https://github.com/Penguio-Framework/PenguinShuffle',
-            description: 'A fun puzzle game for Android and IOS, built in C# using Xamarin, mono-game, and a custom engine.',
-            keywords: ['c#', 'xamarin', 'android', 'ios','penguio']
-        },
-        {
             url: 'http://styr.com',
             image: '/projects-images/styr.png',
             title: 'STYR Labs',
@@ -186,12 +178,12 @@
             keywords: ['typescript', 'tabris.js', 'aws', '.net', 'angular.js']
         },
         {
-            url: 'https://github.com/Shuffle-Game/AnyCardGame',
-            image: '/projects-images/acg.png',
-            title: 'Any Card Game',
-            github: 'https://github.com/Shuffle-Game/AnyCardGame',
-            description: 'A game editor built to allow developers to create their own custom card games, have them hosted, any playable over the internet. Development is ongoing.',
-            keywords: ['javascript', 'typescript', 'angular 2', 'node.js']
+            url: 'https://itunes.apple.com/us/app/penguin-shuffle-uncover-path/id909070508',
+            image: '/projects-images/penguin-shuffle.png',
+            title: 'Penguin Shuffle!',
+            github: 'https://github.com/Penguio-Framework/PenguinShuffle',
+            description: 'A fun puzzle game for Android and IOS, built in C# using Xamarin, mono-game, and a custom engine.',
+            keywords: ['c#', 'xamarin', 'android', 'ios','penguio']
         },
         {
             url: 'http://socialwargames.com',
@@ -202,20 +194,23 @@
             keywords: ['javascript', 'typescript', 'aws lambda', 'canvas']
         },
         {
+            url: 'https://github.com/Shuffle-Game/AnyCardGame',
+            image: '/projects-images/acg.png',
+            title: 'Any Card Game',
+            github: 'https://github.com/Shuffle-Game/AnyCardGame',
+            description: 'A game editor built to allow developers to create their own custom card games, have them hosted, any playable over the internet. Development is ongoing.',
+            keywords: ['javascript', 'typescript', 'angular 2', 'node.js']
+        },
+    ];
+
+    $scope.toys = [
+        {
             url: 'projects/BingoBlockParty/index.html',
             image: "/projects-images/bingo.png",
             title: 'Bingo Block Party',
             github: 'https://github.com/Penguio-Framework/BingoBlockParty',
             description: 'A physics based multiplayer ball and bingo game. This product compiles to the Web, Android, and IOS using a custom engine. Still in development.',
             keywords: ['javascript', 'c#', 'canvas', 'xamarin', 'android', 'ios']
-        },
-        {
-            url: 'http://baubly.s3-us-west-2.amazonaws.com/index.html',
-            image: "/projects-images/baubly.png",
-            title: 'Baubly',
-            github: 'https://github.com/dested/Baubly',
-            description: 'An idea for a multiplayer realtime strategy game.',
-            keywords: ['typescript', 'canvas', 'nodejs']
         },
         {
             url: 'projects/hex/index.html',
@@ -225,9 +220,6 @@
             description: 'A party based maze game with a creative level layout. Maze layout done by <a href="http://www.dllu.net/">Daniel Lu</a>. Multiplayer facilitated through socket.io.',
             keywords: ['javascript', 'c#', 'network-multiplayer', 'canvas']
         },
-    ];
-
-    $scope.toys = [
         {
             url: 'https://github.com/Penguio-Framework',
             image: '/projects-images/penguio.png',
