@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Color Sorter</title>
+    <style>
+        body {
+            background-color: black;
+            flex: 1;
+            display: flex;;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .drawer {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .drawer button {
+            background: white;
+            border: 0;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<div class="drawer">
+    <canvas id="canvas" style=border:solid 2px black></canvas>
+    <button onclick=random()>random</button>
+</div>
+
+<script>
+    let canvas = document.getElementById("canvas");
+    let size = 100;
+    let blockSize = 5;
+
+    canvas.width = size * blockSize;
+    canvas.height = size * blockSize;
+    let context = canvas.getContext("2d");
+    let colors = [];
+
+    function random() {
+        for (let x = 0; x < size; x++) {
+            colors[x] = [];
+            for (let y = 0; y < size; y++) {
+                colors[x][y] = randomColor();
+            }
+        }
+    }
+
+    random();
+
+    setInterval(() => {
+        tickOne();
+        drawTick();
+    }, 1);
+
+    function tickOne() {
+        for (let x = 0; x < size; x++) {
+            for (let y = 0; y < size; y++) {
+                // uncomment these to make the image move forever
+                // colors[x][y].hue=(colors[x][y].hue+.001)%1;
+                // colors[x][y].light=(colors[x][y].light+.001)%1;
+                colors[x][y].tickedX = false;
+                colors[x][y].tickedY = false;
+            }
+        }
+        for (let x = 0; x < size; x++) {
+            for (let y = 0; y < size; y++) {
+                if (!colors[x][y].tickedX) {
+                    if (
+                        x > 0 &&
+                        !colors[x - 1][y].tickedX &&
+                        colors[x][y].hue > colors[x - 1][y].hue
+                    ) {
+                        colors[x][y].tickedX = true;
+                        colors[x - 1][y].tickedX = true;
+                        [colors[x - 1][y], colors[x][y]] = [colors[x][y], colors[x - 1][y]];
+                    }
+                    if (
+                        x < size - 1 &&
+                        !colors[x + 1][y].tickedX &&
+                        colors[x][y].hue < colors[x + 1][y].hue
+                    ) {
+                        colors[x][y].tickedX = true;
+                        colors[x + 1][y].tickedX = true;
+                        [colors[x + 1][y], colors[x][y]] = [colors[x][y], colors[x + 1][y]];
+                    }
+                }
+                if (
+                    y > 0 &&
+                    !colors[x][y - 1].tickedY &&
+                    colors[x][y].light > colors[x][y - 1].light
+                ) {
+                    colors[x][y].tickedY = true;
+                    colors[x][y - 1].tickedY = true;
+                    [colors[x][y - 1], colors[x][y]] = [colors[x][y], colors[x][y - 1]];
+                }
+                if (!colors[x][y].tickedY) {
+                    if (
+                        y < size - 1 &&
+                        !colors[x][y + 1].tickedY &&
+                        colors[x][y].light < colors[x][y + 1].light
+                    ) {
+                        colors[x][y].tickedY = true;
+                        colors[x][y + 1].tickedY = true;
+                        [colors[x][y], colors[x][y + 1]] = [colors[x][y + 1], colors[x][y]];
+                    }
+                }
+            }
+        }
+    }
+
+    function randomColor() {
+        let col = {
+            red: (Math.random() * 255) | 0,
+            green: (Math.random() * 255) | 0,
+            blue: (Math.random() * 255) | 0
+        };
+
+        var hsl = rgbToHsl(col.red, col.green, col.blue);
+        col.hue = hsl[0];
+        col.sat = hsl[1];
+        col.light = hsl[2];
+        if (col.sat < 0.97) {
+            return randomColor();
+        }
+
+        return col;
+    }
+
+    function rgbToHsl(r, g, b) {
+        (r /= 255), (g /= 255), (b /= 255);
+
+        var max = Math.max(r, g, b),
+            min = Math.min(r, g, b);
+        var h,
+            s,
+            l = (max + min) / 2;
+
+        if (max == min) {
+            h = s = 0; // achromatic
+        } else {
+            var d = max - min;
+            s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+
+            switch (max) {
+                case r:
+                    h = (g - b) / d + (g < b ? 6 : 0);
+                    break;
+                case g:
+                    h = (b - r) / d + 2;
+                    break;
+                case b:
+                    h = (r - g) / d + 4;
+                    break;
+            }
+
+            h /= 6;
+        }
+
+        return [h, s, l];
+    }
+
+    function drawTick() {
+        context.fillStyle = "black";
+        context.fillRect(0, 0, size, size);
+        for (let x = 0; x < size; x++) {
+            for (let y = 0; y < size; y++) {
+                let col = colors[x][y];
+                context.fillStyle = `rgba(${col.red},${col.green},${col.blue},1)`;
+                context.fillRect(x * blockSize, y * blockSize, blockSize, blockSize);
+            }
+        }
+    }
+
+</script>
+</body>
+</html>
