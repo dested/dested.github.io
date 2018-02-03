@@ -1,0 +1,35 @@
+{
+  "name": "dested.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --port 8281 --open",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://dested@github.com/dested/dested.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dested/dested.github.io/issues"
+  },
+  "homepage": "https://github.com/dested/dested.github.io#readme",
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.4.0",
+    "source-map-loader": "^0.2.3",
+    "typescript": "^2.7.1",
+    "webpack-dev-server": "^2.11.1",
+    "@types/react": "^16.0.36",
+    "@types/react-dom": "^16.0.3"
+  },
+  "dependencies": {
+    "webpack": "^3.10.0",
+    "glamor": "^2.20.40",
+    "glamorous": "^4.11.4",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
+}
