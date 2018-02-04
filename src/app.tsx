@@ -3,7 +3,7 @@ import * as React from 'react';
 import {Header} from './header';
 import glamorous from 'glamorous';
 import {Fragment} from 'react';
-import {Hero} from './hero';
+import {Swiper} from './components/swiper';
 
 export interface IProject {
     url: string;
@@ -261,10 +261,11 @@ export class App extends React.Component<Props, State> {
             <Fragment>
                 <Header/>
                 <Body>
-                <Hero
-                    heros={this.state.projects}
-                    activeHero={this.state.activeHero}
-                    selectHero={(hero) => this.selectHero(hero)}
+                <Swiper
+                    height={'500px'}
+                    items={this.state.toys}
+                    activeItem={this.state.activeHero}
+                    selectItem={(hero) => this.selectHero(hero as IProject)}
                 />
                 {
                     this.state.activeHero && (

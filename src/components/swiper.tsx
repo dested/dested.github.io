@@ -1,22 +1,48 @@
-import * as React from 'react';
 import glamorous from 'glamorous';
-import {IProject} from './app';
+import * as React from 'react';
 
-const HeroOuter = glamorous.div(
+export interface SwiperItem {
+    image: string;
+}
+
+interface Props {
+    height: string;
+    items: SwiperItem[];
+    activeItem: SwiperItem;
+    selectItem: (item: SwiperItem) => void;
+}
+
+interface State {
+    offsetX: number;
+    dragging: boolean;
+    elementWidth: number;
+    shownIndex: number;
+    swipeable: SwipeableState;
+}
+
+interface SwipeableState {
+    start: number;
+    x: number | null;
+    swiping: boolean;
+}
+
+const SwiperOuter = glamorous.div<{ height: string }>(
     {
         backgroundColor: '#555',
-        height: '500px',
         width: '100%',
         overflow: 'hidden',
         position: 'relative',
         userSelect: 'no-select'
     },
+    p => ({
+        height: p.height
+    })
 );
 
-const HeroHolder = glamorous.div<{ numberOfHeros: number }>(
+const SwiperHolder = glamorous.div<{ numberOfHeros: number }>(
     {
         backgroundColor: '#555',
-        height: '500px',
+        height: '100%',
         display: 'flex',
     },
     p => ({
@@ -24,7 +50,7 @@ const HeroHolder = glamorous.div<{ numberOfHeros: number }>(
     })
 );
 
-const HeroImage = glamorous.div<{ image: string }>(
+const SwiperImage = glamorous.div<{ image: string }>(
     {
         width: '100%',
         height: '100%',
@@ -39,110 +65,69 @@ const HeroImage = glamorous.div<{ image: string }>(
     })
 );
 
-interface Props {
-    heros: IProject[];
-    activeHero: IProject;
-    selectHero: (hero: IProject) => void;
-}
-
-interface SwipeableState {
-    start: number;
-    x: number | null;
-    y: number | null;
-    swiping: boolean;
-}
-
-interface SwipePosition {
-    deltaX: number;
-    deltaY: number;
-    absX: number;
-    absY: number;
-    velocity: number;
-}
-
-interface State {
-    offsetX: number;
-    dragging: boolean;
-    elementWidth: number;
-    shownIndex: number;
-}
-
-export class Hero extends React.Component<Props, State> {
-
-    swipeable: SwipeableState;
+export class Swiper extends React.Component<Props, State> {
 
     private static getPosition(e: TouchEvent & MouseEvent) {
-        return 'touches' in e
-            ? {x: e.touches[0].clientX, y: e.touches[0].clientY}
-            : {x: e.clientX, y: e.clientY};
+        return 'touches' in e ? {x: e.touches[0].clientX} : {x: e.clientX};
     }
 
     private static getMovingPosition(e: TouchEvent & MouseEvent) {
-        return 'changedTouches' in e
-            ? {x: e.changedTouches[0].clientX, y: e.changedTouches[0].clientY}
-            : {x: e.clientX, y: e.clientY};
+        return 'changedTouches' in e ? {x: e.changedTouches[0].clientX} : {x: e.clientX};
     }
 
-    private static calculatePos(e: TouchEvent & MouseEvent, state: SwipeableState): SwipePosition {
-        const {x, y} = Hero.getMovingPosition(e);
+    private static calculatePos(e: TouchEvent & MouseEvent, state: SwipeableState): { deltaX: number; absX: number; velocity: number; } {
+        const {x} = Swiper.getMovingPosition(e);
 
         const deltaX = state.x! - x;
-        const deltaY = state.y! - y;
 
         const absX = Math.abs(deltaX);
-        const absY = Math.abs(deltaY);
 
         const time = Date.now() - state.start;
-        const velocity = Math.sqrt(absX * absX + absY * absY) / time;
+        const velocity = Math.sqrt(absX * absX) / time;
 
-        return {deltaX, deltaY, absX, absY, velocity};
-    }
-
-    private static getInitialState(): SwipeableState {
-        return {
-            x: null,
-            y: null,
-            swiping: false,
-            start: 0,
-        };
+        return {deltaX, absX, velocity};
     }
 
     constructor(props: Props) {
         super(props);
-        this.swipeable = Hero.getInitialState();
+
         this.state = {
             shownIndex: 0,
             offsetX: 0,
             dragging: false,
-            elementWidth: 0
+            elementWidth: 0,
+            swipeable: {x: null, swiping: false, start: 0}
         };
     }
 
     private onTouchStart(e: TouchEvent & MouseEvent) {
-        const {x, y} = Hero.getPosition(e);
+        const {x} = Swiper.getPosition(e);
         e.preventDefault();
-        this.swipeable = {start: Date.now(), x, y, swiping: false};
+        this.setState((prev) => ({...prev, swipeable: {start: Date.now(), x, swiping: false}}));
     }
 
     private onTouchMove(e: TouchEvent & MouseEvent) {
-        if (!this.swipeable.x || !this.swipeable.y || e.touches && e.touches.length > 1) {
+        if (!this.state.swipeable.x || e.touches && e.touches.length > 1) {
             return;
         }
 
-        const pos = Hero.calculatePos(e, this.swipeable);
-
-        // if swipe is under delta and we have not already started to track a swipe: return
-        let delta = 10;
-
-        if (pos.absX < delta && pos.absY < delta && !this.swipeable.swiping) {
-            return;
-        }
+        const pos = Swiper.calculatePos(e, this.state.swipeable);
 
         let resultX = this.state.elementWidth * this.state.shownIndex + pos.deltaX;
-        if (resultX > 0 && resultX < this.state.elementWidth * (this.props.heros.length - 1)) {
-            this.setState({dragging: true, offsetX: pos.deltaX});
+        let buffer = this.state.elementWidth / 2;
+
+        let upperEdge = this.state.elementWidth * (this.props.items.length - 1);
+        if (resultX > -buffer && resultX < upperEdge + buffer) {
+            if (resultX < 0) {
+                pos.deltaX /= 4; // adds a spring at the beginning
+            }
+            if (resultX > upperEdge) {
+                pos.deltaX /= 4; // adds a spring at the end
+            }
+            this.setState(prev => ({...prev, dragging: true, offsetX: pos.deltaX, swipeable: {...prev.swipeable, swiping: true}}));
+        } else {
+            this.setState(prev => ({...prev, swipeable: {...prev.swipeable, swiping: true}}));
         }
-        this.swipeable.swiping = true;
         e.stopPropagation();
         e.preventDefault();
     }
@@ -165,8 +150,8 @@ export class Hero extends React.Component<Props, State> {
 
     private onTouchEnd(e: TouchEvent & MouseEvent) {
         let newShownIndex = this.state.shownIndex;
-        if (this.swipeable.swiping) {
-            const pos = Hero.calculatePos(e, this.swipeable);
+        if (this.state.swipeable.swiping) {
+            const pos = Swiper.calculatePos(e, this.state.swipeable);
             e.stopPropagation();
 
             const flickThreshold = 0.6;
@@ -190,14 +175,12 @@ export class Hero extends React.Component<Props, State> {
         if (newShownIndex < 0) {
             newShownIndex = 0;
         }
-        if (newShownIndex > this.props.heros.length - 1) {
-            newShownIndex = this.props.heros.length - 1;
+        if (newShownIndex > this.props.items.length - 1) {
+            newShownIndex = this.props.items.length - 1;
         }
 
-        this.setState({...this.state, offsetX: 0, dragging: false, shownIndex: newShownIndex});
-        this.props.selectHero(this.props.heros[newShownIndex]);
-
-        this.swipeable = Hero.getInitialState();
+        this.setState(prev => ({...prev, offsetX: 0, dragging: false, shownIndex: newShownIndex, swipeable: {x: null, swiping: false, start: 0}}));
+        this.props.selectItem(this.props.items[newShownIndex]);
     }
 
     private setDivReference(d: HTMLDivElement): void {
@@ -213,30 +196,31 @@ export class Hero extends React.Component<Props, State> {
 
     render() {
         return (
-            <HeroOuter
+            <SwiperOuter
+                height={this.props.height}
                 innerRef={(d: HTMLDivElement) => this.setDivReference(d)}
             >
-                <HeroHolder
+                <SwiperHolder
                     style={{
                         transform: `translate(${-(this.state.elementWidth * this.state.shownIndex + this.state.offsetX)}px, 0)`,
                         transition: this.state.dragging ? '' : 'transform .5s'
                     }}
-                    numberOfHeros={this.props.heros.length}
+                    numberOfHeros={this.props.items.length}
                     onTouchStart={this.onTouchStart.bind(this)}
                     onTouchMove={this.onTouchMove.bind(this)}
                     onTouchEnd={this.onTouchEnd.bind(this)}
 
                     onMouseDown={this.onMouseDown.bind(this)}
                 >
-                    {this.props.heros.map(h => (<HeroImage key={h.title} image={h.image}/>))}
-                </HeroHolder>
-                <HeroDots heros={this.props.heros} activeHero={this.props.activeHero} selectHero={(hero) => this.props.selectHero(hero)}/>
-            </HeroOuter>
+                    {this.props.items.map(h => (<SwiperImage key={h.image} image={h.image}/>))}
+                </SwiperHolder>
+                <SwiperDots items={this.props.items} activeItem={this.props.activeItem} selectItem={(hero) => this.props.selectItem(hero)}/>
+            </SwiperOuter>
         );
     }
 }
 
-const HeroDotHolder = glamorous.div(
+const SwiperDotHolder = glamorous.div(
     {
         position: 'absolute',
         bottom: 30,
@@ -246,27 +230,34 @@ const HeroDotHolder = glamorous.div(
     }
 );
 
-const HeroDot = glamorous.div<{ active: boolean }>(
+const SwiperDot = glamorous.div<{ active: boolean }>(
     {
         borderRadius: '5px',
         marginLeft: '5px',
         marginRight: '5px',
         width: '10px',
         height: '10px',
+        transition: 'background-color .5s'
     },
     p => ({
         backgroundColor: p.active ? '#fff' : '#222'
     })
 );
 
-let HeroDots: React.SFC<Props> = props => {
+interface DotsProps {
+    items: SwiperItem[];
+    activeItem: SwiperItem;
+    selectItem: (item: SwiperItem) => void;
+}
+
+let SwiperDots: React.SFC<DotsProps> = props => {
     return (
-        <HeroDotHolder>
+        <SwiperDotHolder>
             {
-                props.heros.map(hero => (
-                    <HeroDot key={hero.title} active={hero === props.activeHero} onClick={() => props.selectHero(hero)}/>
+                props.items.map(hero => (
+                    <SwiperDot key={hero.image} active={hero === props.activeItem} onClick={() => props.selectItem(hero)}/>
                 ))
             }
-        </HeroDotHolder>
+        </SwiperDotHolder>
     );
 };
