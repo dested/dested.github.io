@@ -1,0 +1,75 @@
+[
+  {
+    "url": "https://oursonic.org",
+    "image": "assets/project-images/sonic.png",
+    "title": "Our Sonic",
+    "github": "https://github.com/OurSonic/OurSonicTyped",
+    "description": "A hand built engine for simulating the original Sonic the Hedgehog games for Sega Genesis. Pure typescript implementation.",
+    "keywords": [
+      "javascript",
+      "typescript",
+      "angular 2",
+      "aws",
+      "lambda",
+      "canvas"
+    ],
+    "isToy": false
+  },
+  {
+    "url": "http://styr.com",
+    "image": "assets/project-images/styr.png",
+    "title": "STYR Labs",
+    "description": "A typescript based native Android and iOS app with a .net api.",
+    "keywords": [
+      "typescript",
+      "tabris.js",
+      "aws",
+      ".net",
+      "angular.js"
+    ],
+    "isToy": false
+  },
+  {
+    "url": "https://itunes.apple.com/us/app/penguin-shuffle-uncover-path/id909070508",
+    "image": "assets/project-images/penguin-shuffle-2.png",
+    "title": "Penguin Shuffle!",
+    "github": "https://github.com/Penguio-Framework/PenguinShuffle",
+    "description": "A fun puzzle game for Android and IOS, built in C# using Xamarin, mono-game, and a custom engine.",
+    "keywords": [
+      "c#",
+      "xamarin",
+      "android",
+      "ios",
+      "penguio"
+    ],
+    "isToy": false
+  },
+  {
+    "url": "http://socialwargames.com",
+    "image": "assets/project-images/socialwargames.png",
+    "title": "Social War Games",
+    "github": "https://github.com/dested/Social-War-Games",
+    "description": "An online Social Experiment",
+    "keywords": [
+      "javascript",
+      "typescript",
+      "mmo",
+      "canvas"
+    ],
+    "isToy": false
+  },
+  {
+    "url": "https://github.com/Shuffle-Game/AnyCardGame",
+    "image": "assets/project-images/acg.png",
+    "title": "Any Card Game",
+    "github": "https://github.com/Shuffle-Game/AnyCardGame",
+    "description": "A game editor built to allow developers to create their own custom card games, have them hosted, any playable over the internet. Development is ongoing.",
+    "keywords": [
+      "javascript",
+      "typescript",
+      "angular 2",
+      "node.js"
+    ],
+    "isToy": false
+  }
+]

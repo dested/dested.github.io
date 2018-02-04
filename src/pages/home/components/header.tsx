@@ -52,7 +52,7 @@ const Link = glamorous.a<{ area: string }>(
     })
 );
 
-export let Header: React.SFC<{}> = props => {
+export let Header: React.SFC = () => {
     return (
         <NavHeaderOuter>
             <NavHeader role="navigation">
