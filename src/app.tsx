@@ -1,27 +1,46 @@
-import * as React from "react";
+import * as React from 'react';
 // import {ProjectComponent} from "./project";
-import {Header} from "./header";
-
+import {Header} from './header';
+import glamorous from 'glamorous';
+import {Fragment} from 'react';
+import {Hero} from './hero';
 
 export interface IProject {
-    url: string,
-    image: string,
-    title: string,
-    github?: string,
-    description: string,
-    keywords: string[]
-    isToy: boolean
+    url: string;
+    image: string;
+    title: string;
+    github?: string;
+    description: string;
+    keywords: string[];
+    isToy: boolean;
 }
 
-export class App extends React.Component<{}, {}> {
+const Body = glamorous.div({
+    backgroundColor: '#ccc',
+    marginTop: '4rem',
+    display: 'flex',
+    flexDirection: 'column',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    width: '1570px'
+});
 
+interface Props {
+
+}
+
+interface State {
     projects: IProject[];
     toys: IProject[];
+    activeHero: IProject;
+}
 
-    constructor(props: {}, context: any) {
-        super(props, context);
+export class App extends React.Component<Props, State> {
 
-        this.projects = [
+    constructor(props: Props) {
+        super(props);
+
+        let projects = [
             {
                 url: 'https://oursonic.org',
                 image: 'assets/project-images/sonic.png',
@@ -67,10 +86,10 @@ export class App extends React.Component<{}, {}> {
                 isToy: false
             },
         ];
-        this.toys = [
+        let toys = [
             {
                 url: 'projects/BingoBlockParty/index.html',
-                image: "assets/project-images/bingo.png",
+                image: 'assets/project-images/bingo.png',
                 title: 'Bingo Block Party',
                 github: 'https://github.com/Penguio-Framework/BingoBlockParty',
                 description: 'A physics based multiplayer ball and bingo game. This product compiles to the Web, Android, and IOS using a custom engine. Still in development.',
@@ -92,7 +111,7 @@ export class App extends React.Component<{}, {}> {
                 title: 'Penguio Framework',
                 github: 'https://github.com/Penguio-Framework',
                 description: 'A Xamarin/Monogame based framework and CLI tool that allows for deploying a common codebase to Android, iOS, WindowsPhone, Windows8, Windows Desktop, and HTML5. ',
-                keywords: ['c#', "Xamarin", "monogame", "canvas"],
+                keywords: ['c#', 'Xamarin', 'monogame', 'canvas'],
                 isToy: true
             }, {
                 url: 'projects/wire/index.html',
@@ -105,7 +124,7 @@ export class App extends React.Component<{}, {}> {
             },
             {
                 url: 'http://runrunjump.com',
-                image: "assets/project-images/runrunjump.png",
+                image: 'assets/project-images/runrunjump.png',
                 title: 'Run Run Jump',
                 github: 'https://github.com/dested/RunRunJump',
                 description: 'An idea for a 2d platformer with full level and physics editing capabilities.',
@@ -114,7 +133,7 @@ export class App extends React.Component<{}, {}> {
             },
             {
                 url: 'https://www.youtube.com/watch?v=RF7PwocNlCw',
-                image: "assets/project-images/mario.png",
+                image: 'assets/project-images/mario.png',
                 title: 'Mario AI',
                 github: 'https://github.com/dested/MarioAi',
                 description: 'My AI agent for the 2009 <a href="http://julian.togelius.com/mariocompetition2009/">MarioAI</a> competition. Uses A* to pathfind through the level.',
@@ -123,7 +142,7 @@ export class App extends React.Component<{}, {}> {
             },
             {
                 url: 'projects/Triangles/index.html',
-                image: "assets/project-images/triangles.png",
+                image: 'assets/project-images/triangles.png',
                 title: 'Triangles Puzzle Game',
                 github: 'https://github.com/dested/Triangles-',
                 description: 'A rough implementation of an interesting puzzle game concept.',
@@ -132,7 +151,7 @@ export class App extends React.Component<{}, {}> {
             },
             {
                 url: 'projects/polygroup/index.html',
-                image: "assets/project-images/poly-group.png",
+                image: 'assets/project-images/poly-group.png',
                 title: 'Server Clustering Algorithm',
                 description: 'An implementation of how user clustering could work for a Massive Multiplayer game.',
                 keywords: ['javascript', 'performance', 'canvas'],
@@ -140,7 +159,7 @@ export class App extends React.Component<{}, {}> {
             },
             {
                 url: 'projects/hex-project/index.html',
-                image: "assets/project-images/hex-project.png",
+                image: 'assets/project-images/hex-project.png',
                 title: 'Hex Game Project',
                 github: 'https://github.com/dested/TurnRPG',
                 description: 'A rough implementation of an interesting puzzle game concept.',
@@ -149,7 +168,7 @@ export class App extends React.Component<{}, {}> {
             },
             {
                 url: 'projects/profiler/index.html',
-                image: "assets/project-images/profiler.png",
+                image: 'assets/project-images/profiler.png',
                 title: 'Javascript Profiler',
                 github: 'https://github.com/dested/jsprofiler',
                 description: 'A javascript profiler that supports line by line statistical analysis. Uses Istanbul and esprima for code instrumentation.',
@@ -158,7 +177,7 @@ export class App extends React.Component<{}, {}> {
             },
             {
                 url: 'projects/snake/index.html',
-                image: "assets/project-images/snake.png",
+                image: 'assets/project-images/snake.png',
                 title: 'Snake A*',
                 github: 'https://github.com/dested/SnakeAStar',
                 description: 'A solver for snake using the A* path finding algorithm.',
@@ -166,7 +185,7 @@ export class App extends React.Component<{}, {}> {
                 isToy: true
             }, {
                 url: 'http://aiplays.com/tetris',
-                image: "assets/project-images/aiplaystetris.png",
+                image: 'assets/project-images/aiplaystetris.png',
                 title: 'AI Plays: TETRIS',
                 github: 'https://github.com/dested/aiplays',
                 description: 'A scripting engine that allows developers to write an AI for tetris.',
@@ -175,7 +194,7 @@ export class App extends React.Component<{}, {}> {
             },
             {
                 url: 'projects/color-sorter/index.html',
-                image: "assets/project-images/color-sorter.png",
+                image: 'assets/project-images/color-sorter.png',
                 title: 'Color Sorter',
                 github: 'https://gist.github.com/dested/7309dc3898485f27f611440002ac75a8',
                 description: 'Sorts a 2d array of random colors by Hue and Light',
@@ -185,7 +204,7 @@ export class App extends React.Component<{}, {}> {
 
             {
                 url: 'https://twitter.com/TwtPlayTetris',
-                image: "assets/project-images/tpt-2.png",
+                image: 'assets/project-images/tpt-2.png',
                 title: 'Twitter Plays Tetris',
                 github: 'https://github.com/dested/twitter-plays-tetris',
                 description: 'Community driven Tetris game played on Twitter',
@@ -195,7 +214,7 @@ export class App extends React.Component<{}, {}> {
 
             {
                 url: 'https://github.com/dested/Peer-Test',
-                image: "assets/project-images/webrtc-test.png",
+                image: 'assets/project-images/webrtc-test.png',
                 title: 'Peer to Peer Test',
                 github: 'https://github.com/dested/Peer-Test',
                 description: 'A test application to determine the viability of web-rtc for large scale mostly serverless games.',
@@ -204,7 +223,7 @@ export class App extends React.Component<{}, {}> {
             },
             {
                 url: 'https://github.com/dested/MultiplayerPathFindingEngine',
-                image: "assets/project-images/multiplayer-engine.png",
+                image: 'assets/project-images/multiplayer-engine.png',
                 title: 'Multiplayer Pathfinding Engine',
                 github: 'https://github.com/dested/MultiplayerPathFindingEngine',
                 description: 'A test to build a horizontally scalable mmo engine for the web.',
@@ -213,7 +232,7 @@ export class App extends React.Component<{}, {}> {
             },
             {
                 url: 'projects/bezier/index.html',
-                image: "assets/project-images/bezier.png",
+                image: 'assets/project-images/bezier.png',
                 title: 'Cubic Bezier Curve',
                 github: 'https://gist.github.com/dested/83adfc1afc684a7ed65b86ea01259661',
                 description: 'A very simple Cubic Bezier Curve implementation in javascript',
@@ -223,16 +242,41 @@ export class App extends React.Component<{}, {}> {
         ].sort(() => {
             return Math.random() * 100 - 50;
         });
+
+        this.state = {
+            projects: projects,
+            toys: toys,
+            activeHero: projects[0]
+        };
+    }
+
+    private selectHero(hero: IProject): void {
+        this.setState((prevState) => {
+            return {...prevState, activeHero: hero};
+        });
     }
 
     render() {
         return (
-            <Header>
-            </Header>
+            <Fragment>
+                <Header/>
+                <Body>
+                <Hero
+                    heros={this.state.projects}
+                    activeHero={this.state.activeHero}
+                    selectHero={(hero) => this.selectHero(hero)}
+                />
+                {
+                    this.state.activeHero && (
+                        <Fragment>
+                            <div>{this.state.activeHero.title}</div>
+                            <div>{this.state.activeHero.description}</div>
+                        </Fragment>
+                    )
+                }
+                </Body>
+            </Fragment>
 
-            /*    [...this.projects,...this.toys].map((p, index) => (
-                    <ProjectComponent key={p.title} project={p} left={index % 2 == 0}/>
-                ))*/
         );
     }
 }
