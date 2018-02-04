@@ -27,13 +27,13 @@ const Site = glamorous.a({
     gridArea: 'site',
     fontSize: '1rem',
     color: '#eee',
-    textDecoration: 'none',
+    textDecoration: 'none'
 });
 const Github = glamorous.a({
     gridArea: 'github',
     fontSize: '1rem',
     color: '#eee',
-    textDecoration: 'none',
+    textDecoration: 'none'
 });
 const Description = glamorous.span({
     gridArea: 'description',
@@ -45,20 +45,21 @@ const KeywordHolder = glamorous.div({
     justifySelf: 'right'
 });
 
-export let HeroDescription: React.SFC<{ hero: IProject }> = props => {
+export let HeroDescription: React.SFC<{hero: IProject}> = props => {
     let {hero} = props;
 
     return (
         <Holder>
-            <Title>
-                {hero.title}
-            </Title>
+            <Title>{hero.title}</Title>
             <Site href={hero.url}>site</Site>
             {hero.github && <Github href={hero.github}>github</Github>}
             <KeywordHolder>
-                <Keywords keywords={hero.keywords}/>
+                <Keywords keywords={hero.keywords} />
             </KeywordHolder>
-            <Description>{hero.description} {hero.description} {hero.description} {hero.description} {hero.description} {hero.description}</Description>
+            <Description>
+                {hero.description} {hero.description} {hero.description} {hero.description} {hero.description}{' '}
+                {hero.description}
+            </Description>
         </Holder>
     );
 };

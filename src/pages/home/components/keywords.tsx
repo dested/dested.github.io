@@ -10,10 +10,6 @@ const Keyword = glamorous.span({
     marginLeft: '5px'
 });
 
-export let Keywords: React.SFC<{ keywords: string[] }> = ({keywords}) => {
-    return (
-        <Fragment>
-            {keywords.map(k => (<Keyword key={k}>{k}</Keyword>))}
-        </Fragment>
-    );
+export let Keywords: React.SFC<{keywords: string[]}> = ({keywords}) => {
+    return <Fragment>{keywords.map(k => <Keyword key={k}>{k}</Keyword>)}</Fragment>;
 };

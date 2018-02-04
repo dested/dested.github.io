@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "pretty": "prettier \"*/**/*.ts*\"  --config .prettierrc --write",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --port 8281 --open",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
@@ -25,7 +26,8 @@
     "@types/react": "^16.0.36",
     "@types/react-dom": "^16.0.3",
     "tslint": "^5.7.0",
-    "tslint-react": "^3.2.0"
+    "tslint-react": "^3.2.0",
+    "prettier": "^1.10.2"
   },
   "dependencies": {
     "webpack": "^3.10.0",

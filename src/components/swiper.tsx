@@ -28,7 +28,7 @@ interface SwipeableState {
     swiping: boolean;
 }
 
-const SwiperOuter = glamorous.div<{ height: string }>(
+const SwiperOuter = glamorous.div<{height: string}>(
     {
         backgroundColor: '#555',
         width: '100%',
@@ -41,18 +41,18 @@ const SwiperOuter = glamorous.div<{ height: string }>(
     })
 );
 
-const SwiperHolder = glamorous.div<{ numberOfItems: number }>(
+const SwiperHolder = glamorous.div<{numberOfItems: number}>(
     {
         backgroundColor: '#555',
         height: '100%',
-        display: 'flex',
+        display: 'flex'
     },
     p => ({
-        width: `${p.numberOfItems * 100}%`,
+        width: `${p.numberOfItems * 100}%`
     })
 );
 
-const SwiperImage = glamorous.div<{ image: string }>(
+const SwiperImage = glamorous.div<{image: string}>(
     {
         width: '100%',
         height: '100%',
@@ -78,7 +78,10 @@ export class Swiper extends React.Component<Props, State> {
         return 'changedTouches' in e ? {x: e.changedTouches[0].clientX} : {x: e.clientX};
     }
 
-    private static calculatePos(e: TouchEvent & MouseEvent, state: SwipeableState): { deltaX: number; absX: number; velocity: number; } {
+    private static calculatePos(
+        e: TouchEvent & MouseEvent,
+        state: SwipeableState
+    ): {deltaX: number; absX: number; velocity: number} {
         const {x} = Swiper.getMovingPosition(e);
 
         const deltaX = state.x! - x;
@@ -111,7 +114,7 @@ export class Swiper extends React.Component<Props, State> {
     }
 
     private onTouchMove(e: TouchEvent & MouseEvent) {
-        if (!this.state.swipeable.x || e.touches && e.touches.length > 1) {
+        if (!this.state.swipeable.x || (e.touches && e.touches.length > 1)) {
             return;
         }
 
@@ -128,9 +131,15 @@ export class Swiper extends React.Component<Props, State> {
             if (resultX > upperEdge) {
                 pos.deltaX /= 4; // adds a spring at the end
             }
-            this.setState(({...this.state, didTouch: true, dragging: true, offsetX: pos.deltaX, swipeable: {...this.state.swipeable, swiping: true}}));
+            this.setState({
+                ...this.state,
+                didTouch: true,
+                dragging: true,
+                offsetX: pos.deltaX,
+                swipeable: {...this.state.swipeable, swiping: true}
+            });
         } else {
-            this.setState(({...this.state, didTouch: true, swipeable: {...this.state.swipeable, swiping: true}}));
+            this.setState({...this.state, didTouch: true, swipeable: {...this.state.swipeable, swiping: true}});
         }
         e.stopPropagation();
         e.preventDefault();
@@ -183,7 +192,13 @@ export class Swiper extends React.Component<Props, State> {
             newShownIndex = this.props.items.length - 1;
         }
 
-        this.setState(prev => ({...prev, offsetX: 0, dragging: false, shownIndex: newShownIndex, swipeable: {x: null, swiping: false, start: 0}}));
+        this.setState(prev => ({
+            ...prev,
+            offsetX: 0,
+            dragging: false,
+            shownIndex: newShownIndex,
+            swipeable: {x: null, swiping: false, start: 0}
+        }));
         this.props.selectItem(this.props.items[newShownIndex]);
     }
 
@@ -205,58 +220,57 @@ export class Swiper extends React.Component<Props, State> {
     }
 
     componentDidMount(): void {
-        this.autoInterval = window.setInterval(
-            () => {
-                if (this.state.didTouch) {
-                    this.setState((prev) => ({...prev, didTouch: false}));
-                } else {
-                    this.setState((prev) => {
-                        let shownIndex = (prev.shownIndex + 1) % this.props.items.length;
-                        this.props.selectItem(this.props.items[shownIndex]);
-                        return ({...prev, shownIndex: shownIndex});
-                    });
-                }
-            },
-            5000);
+        this.autoInterval = window.setInterval(() => {
+            if (this.state.didTouch) {
+                this.setState(prev => ({...prev, didTouch: false}));
+            } else {
+                this.setState(prev => {
+                    let shownIndex = (prev.shownIndex + 1) % this.props.items.length;
+                    this.props.selectItem(this.props.items[shownIndex]);
+                    return {...prev, shownIndex: shownIndex};
+                });
+            }
+        }, 5000);
     }
 
     render() {
         return (
-            <SwiperOuter
-                height={this.props.height}
-                innerRef={(d: HTMLDivElement) => this.setDivReference(d)}
-            >
+            <SwiperOuter height={this.props.height} innerRef={(d: HTMLDivElement) => this.setDivReference(d)}>
                 <SwiperHolder
                     style={{
-                        transform: `translate(${-(this.state.elementWidth * this.state.shownIndex + this.state.offsetX)}px, 0)`,
+                        transform: `translate(${-(
+                            this.state.elementWidth * this.state.shownIndex +
+                            this.state.offsetX
+                        )}px, 0)`,
                         transition: this.state.dragging ? '' : 'transform .5s'
                     }}
                     numberOfItems={this.props.items.length}
-
                     onTouchStart={this.onTouchStart.bind(this)}
                     onTouchMove={this.onTouchMove.bind(this)}
                     onTouchEnd={this.onTouchEnd.bind(this)}
                     onMouseDown={this.onMouseDown.bind(this)}
                 >
-                    {this.props.items.map(h => (<SwiperImage key={h.image} image={h.image}/>))}
+                    {this.props.items.map(h => <SwiperImage key={h.image} image={h.image} />)}
                 </SwiperHolder>
-                <SwiperDots items={this.props.items} activeItem={this.props.activeItem} selectItem={(item) => this.props.selectItem(item)}/>
+                <SwiperDots
+                    items={this.props.items}
+                    activeItem={this.props.activeItem}
+                    selectItem={item => this.props.selectItem(item)}
+                />
             </SwiperOuter>
         );
     }
 }
 
-const SwiperDotHolder = glamorous.div(
-    {
-        position: 'absolute',
-        bottom: 30,
-        display: 'flex',
-        justifyContent: 'center',
-        width: '100%'
-    }
-);
+const SwiperDotHolder = glamorous.div({
+    position: 'absolute',
+    bottom: 30,
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%'
+});
 
-const SwiperDot = glamorous.div<{ active: boolean }>(
+const SwiperDot = glamorous.div<{active: boolean}>(
     {
         borderRadius: '5px',
         marginLeft: '5px',
@@ -279,11 +293,9 @@ interface DotsProps {
 let SwiperDots: React.SFC<DotsProps> = props => {
     return (
         <SwiperDotHolder>
-            {
-                props.items.map(item => (
-                    <SwiperDot key={item.image} active={item === props.activeItem} onClick={() => props.selectItem(item)}/>
-                ))
-            }
+            {props.items.map(item => (
+                <SwiperDot key={item.image} active={item === props.activeItem} onClick={() => props.selectItem(item)} />
+            ))}
         </SwiperDotHolder>
     );
 };

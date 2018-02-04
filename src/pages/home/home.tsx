@@ -1,20 +1,23 @@
 import * as React from 'react';
-// import {ProjectComponent} from "./project";
-import glamorous from 'glamorous';
 import {Fragment} from 'react';
+import glamorous from 'glamorous';
+
+import projectData from '../../data/projects.json';
+import toyData from '../../data/toys.json';
+
+import {IProject} from '../../models/project';
 import {Swiper} from '../../components/swiper';
 import {Header} from './components/header';
 import {HeroDescription} from './components/heroDescription';
 import {ToyLeft, ToyRight} from './components/toy';
-import {IProject} from '../../models/project';
-import {url} from '../../utils/styleUtils';
-import projectData from '../../data/projects.json';
-import toyData from '../../data/toys.json';
 import {Intro} from './components/intro';
+import {Github} from './components/github';
+import {Footer} from './components/footer';
 
-const Body = glamorous.div({
-    backgroundColor: '#ccc',
-    marginTop: '4rem',
+const Holder = glamorous.div({
+    marginTop: 'calc(4rem + 15px)',
+    marginBottom: '15px',
+
     display: 'flex',
     flexDirection: 'column',
     marginLeft: 'auto',
@@ -22,9 +25,14 @@ const Body = glamorous.div({
     width: '1570px'
 });
 
-interface Props {
+const SectionTitle = glamorous.div({
+    padding: '10px',
+    textAlign: 'center',
+    color: '#333',
+    fontSize: '4rem'
+});
 
-}
+interface Props {}
 
 interface State {
     projects: IProject[];
@@ -33,7 +41,6 @@ interface State {
 }
 
 export class Home extends React.Component<Props, State> {
-
     constructor(props: Props) {
         super(props);
 
@@ -50,7 +57,7 @@ export class Home extends React.Component<Props, State> {
     }
 
     private selectHero(hero: IProject): void {
-        this.setState((prevState) => {
+        this.setState(prevState => {
             return {...prevState, activeHero: hero};
         });
     }
@@ -58,20 +65,23 @@ export class Home extends React.Component<Props, State> {
     render() {
         return (
             <Fragment>
-                <Header/>
-                <Body>
-                <Intro/>
-                <Swiper
-                    height={'500px'}
-                    items={this.state.projects}
-                    activeItem={this.state.activeHero}
-                    selectItem={(hero) => this.selectHero(hero as IProject)}
-                />
-                <HeroDescription hero={this.state.activeHero}/>
-                {this.state.toys.map((t, i) => (i % 2 === 0 ? <ToyLeft toy={t}/> : <ToyRight toy={t}/>))}
-                </Body>
+                <Header />
+                <Holder>
+                    <Intro />
+                    <SectionTitle>Featured Projects</SectionTitle>
+                    <Swiper
+                        height={'500px'}
+                        items={this.state.projects}
+                        activeItem={this.state.activeHero}
+                        selectItem={hero => this.selectHero(hero as IProject)}
+                    />
+                    <HeroDescription hero={this.state.activeHero} />
+                    <SectionTitle>Toys</SectionTitle>
+                    {this.state.toys.map((t, i) => (i % 2 === 0 ? <ToyLeft toy={t} /> : <ToyRight toy={t} />))}
+                    <Github />
+                </Holder>
+                <Footer />
             </Fragment>
-
         );
     }
 }

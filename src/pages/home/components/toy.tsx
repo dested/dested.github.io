@@ -8,71 +8,101 @@ const Holder = glamorous.div({
     width: '100%',
     height: '600px',
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    paddingTop: '15px',
+    paddingBottom: '15px'
 });
 
-export let ToyLeft: React.SFC<{ toy: IProject }> = ({toy}) => {
+export let ToyLeft: React.SFC<{toy: IProject}> = ({toy}) => {
     return (
         <Holder>
-            <Toy toy={toy}/>
-            <ToyDescription toy={toy}/>
+            <Toy toy={toy} />
+            <ToyDescription toy={toy} />
         </Holder>
     );
 };
-export let ToyRight: React.SFC<{ toy: IProject }> = ({toy}) => {
+export let ToyRight: React.SFC<{toy: IProject}> = ({toy}) => {
     return (
         <Holder>
-            <ToyDescription toy={toy}/>
-            <Toy toy={toy}/>
+            <ToyDescription toy={toy} />
+            <Toy toy={toy} />
         </Holder>
     );
 };
-
 
 const ToyHolder = glamorous.div({
-    width: '600px'
+    width: '600px',
+    backgroundColor: '#ccc'
 });
 
-const ToyImage = glamorous.div<{ image: string }>(
+const ToyImage = glamorous.div<{image: string}>(
     {
         backgroundSize: 'cover',
         width: '100%',
-        height: '100%',
+        height: '100%'
     },
     ({image}) => ({
         backgroundImage: url(image)
     })
 );
-export let Toy: React.SFC<{ toy: IProject }> = ({toy}) => {
+export let Toy: React.SFC<{toy: IProject}> = ({toy}) => {
     return (
         <ToyHolder>
-            <ToyImage image={toy.image}/>
+            <ToyImage image={toy.image} />
         </ToyHolder>
     );
 };
 
-
 const DescriptionHolder = glamorous.div({
     flex: 1,
     display: 'flex',
+    padding: '10px',
     flexDirection: 'column',
     backgroundColor: '#555',
     color: '#eee'
 });
 
 const KeywordHolder = glamorous.div({
-    justifySelf: 'right'
+    justifySelf: 'right',
+    padding: '10px'
 });
 
-export let ToyDescription: React.SFC<{ toy: IProject }> = ({toy}) => {
+const Title = glamorous.span({fontSize: '2em'});
+
+const Description = glamorous.span({
+    padding: '5px'
+});
+
+const Github = glamorous.a({
+    color: '#ccc',
+    textDecoration: 'none'
+});
+
+const Url = glamorous.a({
+    color: '#ccc',
+    textDecoration: 'none'
+});
+
+export let ToyDescription: React.SFC<{toy: IProject}> = ({toy}) => {
     return (
         <DescriptionHolder>
-            <span>{toy.title}</span>
-            <span>{toy.description} {toy.description} {toy.description} {toy.description} {toy.description} {toy.description}</span>
-            <span>{toy.github}</span>
-            <span>{toy.url}</span>
+            <Title>{toy.title}</Title>
+            <Description
+                dangerouslySetInnerHTML={{
+                    __html:
+                        toy.description +
+                        toy.description +
+                        toy.description +
+                        toy.description +
+                        toy.description +
+                        toy.description +
+                        toy.description
+                }}
+            />
+            <Url href={toy.url}>site</Url>
+            <Github href={toy.github}>github</Github>
             <KeywordHolder>
-                <Keywords keywords={toy.keywords}/>
+                <Keywords keywords={toy.keywords} />
             </KeywordHolder>
         </DescriptionHolder>
     );

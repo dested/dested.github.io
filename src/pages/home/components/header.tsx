@@ -1,14 +1,15 @@
 import * as React from 'react';
 import glamorous from 'glamorous';
 
-const NavHeaderOuter = glamorous.div({
+const Holder = glamorous.div({
     backgroundColor: '#444',
     position: 'fixed',
     top: 0,
     width: '100%',
+    zIndex: 100
 });
 
-const NavHeader = glamorous.div({
+const Nav = glamorous.div({
     backgroundColor: '#222',
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -30,16 +31,16 @@ const NavHeader = glamorous.div({
             ". resume"
             ". contact"
         `,
-        height: 'auto',
+        height: 'auto'
     }
 });
 
 const Name = glamorous.div({
     color: '#fff',
     gridArea: 'name',
-    marginLeft: '10px',
+    marginLeft: '10px'
 });
-const Link = glamorous.a<{ area: string }>(
+const Link = glamorous.a<{area: string}>(
     {
         color: '#9d9d9d',
         display: 'block',
@@ -54,14 +55,22 @@ const Link = glamorous.a<{ area: string }>(
 
 export let Header: React.SFC = () => {
     return (
-        <NavHeaderOuter>
-            <NavHeader role="navigation">
+        <Holder>
+            <Nav role="navigation">
                 <Name>Salvatore Aiello</Name>
-                <Link area={'github'} href={'https://github.com/dested'}>Github</Link>
-                <Link area={'linkedin'} href={'https://www.linkedin.com/in/dested'}>LinkedIn</Link>
-                <Link area={'resume'} href={'mailto:dested@gmail.com?subject=Please%20send%20me%20your%20resume!'}>Resume</Link>
-                <Link area={'contact'} href={'mailto:dested@gmail.com'}>Contact</Link>
-            </NavHeader>
-        </NavHeaderOuter>
+                <Link area={'github'} href={'https://github.com/dested'}>
+                    Github
+                </Link>
+                <Link area={'linkedin'} href={'https://www.linkedin.com/in/dested'}>
+                    LinkedIn
+                </Link>
+                <Link area={'resume'} href={'mailto:dested@gmail.com?subject=Please%20send%20me%20your%20resume!'}>
+                    Resume
+                </Link>
+                <Link area={'contact'} href={'mailto:dested@gmail.com'}>
+                    Contact
+                </Link>
+            </Nav>
+        </Holder>
     );
 };
