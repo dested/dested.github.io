@@ -4,12 +4,10 @@ import {Fragment} from 'react';
 
 const Keyword = glamorous.span({
     padding: '5px',
-    backgroundColor: '#CCC',
-    color: '#222',
-    borderRadius: '4px',
-    marginLeft: '5px'
+    fontSize: '.7rem',
+    color: '#5D5D5D',
 });
 
-export let Keywords: React.SFC<{keywords: string[]}> = ({keywords}) => {
+export let Keywords: React.SFC<{ keywords: string[] }> = ({keywords}) => {
     return <Fragment>{keywords.map(k => <Keyword key={k}>{k}</Keyword>)}</Fragment>;
 };

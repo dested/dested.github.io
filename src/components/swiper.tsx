@@ -280,7 +280,7 @@ const SwiperDot = glamorous.div<{active: boolean}>(
         transition: 'background-color .5s'
     },
     p => ({
-        backgroundColor: p.active ? '#fff' : '#222'
+        backgroundColor: p.active ? '#fff' : '#858585'
     })
 );
 

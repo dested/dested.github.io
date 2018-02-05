@@ -9,29 +9,12 @@ import {IProject} from '../../models/project';
 import {Swiper} from '../../components/swiper';
 import {Header} from './components/header';
 import {HeroDescription} from './components/heroDescription';
-import {ToyLeft, ToyRight} from './components/toy';
 import {Intro} from './components/intro';
 import {Github} from './components/github';
 import {Footer} from './components/footer';
 import {Section} from '../../components/section';
 import {centerMargin} from '../../utils/styleUtils';
-
-const Page = glamorous.div({
-    marginTop: 'calc(4rem + 15px)',
-    display: 'flex',
-    flexDirection: 'column',
-});
-
-const Spacer = glamorous.div(
-    {
-        ...centerMargin,
-        height: '2px',
-        width: '10vw',
-        background: '#5D5D5D',
-        marginTop: '10px',
-        marginBottom: '10px',
-    }
-);
+import {Toy} from './components/toy';
 
 interface Props {
 }
@@ -41,6 +24,19 @@ interface State {
     toys: IProject[];
     activeHero: IProject;
 }
+
+const Page = glamorous.div({
+    marginTop: 'calc(4rem + 15px)',
+    display: 'flex',
+    flexDirection: 'column'
+});
+
+const ToyHolder = glamorous.div({
+    display: 'grid',
+    justifyContent: 'space-between',
+    gridTemplateColumns: 'repeat(auto-fill,300px)',
+    flexDirection: 'row',
+});
 
 export class Home extends React.Component<Props, State> {
     constructor(props: Props) {
@@ -71,7 +67,7 @@ export class Home extends React.Component<Props, State> {
                 <Intro/>
                 <Section color={'#F1F1F1'} title={'Featured Projects'}>
                     <Swiper
-                        height={'500px'}
+                        height={'600px'}
                         items={this.state.projects}
                         activeItem={this.state.activeHero}
                         selectItem={hero => this.selectHero(hero as IProject)}
@@ -79,15 +75,9 @@ export class Home extends React.Component<Props, State> {
                     <HeroDescription hero={this.state.activeHero}/>
                 </Section>
                 <Section color={'#dfdfdf'} title={'Toys'}>
-                    {this.state.toys.map((t, i) => (
-                        <Fragment>
-                            {i % 2 === 0 ? <ToyLeft toy={t}/> : <ToyRight toy={t}/>}
-                            <Spacer/>
-                        </Fragment>
-                    ))}
+                    <ToyHolder>{this.state.toys.map(toy => <Toy key={toy.title} toy={toy}/>)}</ToyHolder>
                 </Section>
                 <Github/>
-
                 <Footer/>
             </Page>
         );
