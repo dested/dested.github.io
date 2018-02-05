@@ -1,9 +1,12 @@
 const path = require("path");
+const MinifyPlugin = require("babel-minify-webpack-plugin");
+const PROD = JSON.parse(process.env.PROD_ENV || '0');
+
 // https://github.com/webpack/docs/wiki/webpack-dev-server
 module.exports = {
     entry: "./src/index.tsx",
     output: {
-        path: path.resolve(__dirname, "public"),
+        path: path.resolve(__dirname, 'public', 'dist'),
         filename: "bundle.js",
         publicPath: "/dist/"
     },
@@ -11,13 +14,18 @@ module.exports = {
         contentBase: "public/",
     },
     // Enable sourcemaps for debugging webpack's output.
-    devtool: "source-map",
+    ...(PROD ? {} : {devtool: "source-map"}),
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
         extensions: [".ts", ".tsx", ".js", ".json"]
     },
-
+    plugins:
+        PROD ?
+            [
+                new MinifyPlugin({}, {})
+            ] :
+            [],
     module: {
         rules: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
