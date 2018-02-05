@@ -1,9 +1,9 @@
 import * as React from 'react';
 import glamorous from 'glamorous';
+import {Section} from '../../../components/section';
 
 const Holder = glamorous.div({
     width: '100%',
-    backgroundColor: '#ccc'
 });
 
 export class Github extends React.PureComponent {
@@ -14,11 +14,13 @@ export class Github extends React.PureComponent {
 
     render() {
         return (
-            <Holder className={'github'}>
-                <a href="https://github.com/dested" className="hidden-xs hidden-s">
-                    <div className="calendar">Loading the data just for you.</div>
-                </a>
-            </Holder>
+            <Section color={'#fff'} title={'GitHub'}>
+                <Holder className={'github'}>
+                    <a href="https://github.com/dested" className="hidden-xs hidden-s">
+                        <div className="calendar">Loading the data just for you.</div>
+                    </a>
+                </Holder>
+            </Section>
         );
     }
 }

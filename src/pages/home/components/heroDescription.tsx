@@ -4,10 +4,10 @@ import {IProject} from '../../../models/project';
 import {Keywords} from './keywords';
 
 const Holder = glamorous.div({
-    backgroundColor: '#444',
+    backgroundColor: '#F1F1F1',
     height: '200px',
     padding: '20px',
-    color: '#DDD',
+    color: '#333',
     display: 'grid',
     gridTemplateAreas: `
         "title site github keywords"
@@ -26,13 +26,13 @@ const Title = glamorous.span({
 const Site = glamorous.a({
     gridArea: 'site',
     fontSize: '1rem',
-    color: '#eee',
+    color: '#5D5D5D',
     textDecoration: 'none'
 });
 const Github = glamorous.a({
     gridArea: 'github',
     fontSize: '1rem',
-    color: '#eee',
+    color: '#5D5D5D',
     textDecoration: 'none'
 });
 const Description = glamorous.span({

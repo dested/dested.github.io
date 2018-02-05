@@ -1,31 +1,31 @@
 import * as React from 'react';
 import glamorous from 'glamorous';
 import {IProject} from '../../../models/project';
-import {url} from '../../../utils/styleUtils';
 import {Keywords} from './keywords';
+import {Swiper} from '../../../components/swiper';
 
 const Holder = glamorous.div({
     width: '100%',
-    height: '600px',
+    height: '300px',
     display: 'flex',
     flexDirection: 'row',
-    paddingTop: '15px',
-    paddingBottom: '15px'
+    paddingTop: '10px',
+    paddingBottom: '10px'
 });
 
-export let ToyLeft: React.SFC<{toy: IProject}> = ({toy}) => {
+export let ToyLeft: React.SFC<{ toy: IProject }> = ({toy}) => {
     return (
         <Holder>
-            <Toy toy={toy} />
-            <ToyDescription toy={toy} />
+            <Toy toy={toy}/>
+            <ToyDescription toy={toy}/>
         </Holder>
     );
 };
-export let ToyRight: React.SFC<{toy: IProject}> = ({toy}) => {
+export let ToyRight: React.SFC<{ toy: IProject }> = ({toy}) => {
     return (
         <Holder>
-            <ToyDescription toy={toy} />
-            <Toy toy={toy} />
+            <ToyDescription toy={toy}/>
+            <Toy toy={toy}/>
         </Holder>
     );
 };
@@ -35,31 +35,45 @@ const ToyHolder = glamorous.div({
     backgroundColor: '#ccc'
 });
 
-const ToyImage = glamorous.div<{image: string}>(
-    {
-        backgroundSize: 'cover',
-        width: '100%',
-        height: '100%'
-    },
-    ({image}) => ({
-        backgroundImage: url(image)
-    })
-);
-export let Toy: React.SFC<{toy: IProject}> = ({toy}) => {
-    return (
-        <ToyHolder>
-            <ToyImage image={toy.image} />
-        </ToyHolder>
-    );
-};
+class Toy extends React.Component<{ toy: IProject }, { selectedImage: { image: string }; images: { image: string }[] }> {
+    constructor(props: { toy: IProject }) {
+        super(props);
+        const images = [
+            {image: props.toy.image},
+            {image: props.toy.image},
+            {image: props.toy.image},
+            {image: props.toy.image},
+            {image: props.toy.image},
+            {image: props.toy.image},
+            {image: props.toy.image}
+        ];
+        this.state = {
+            images: images,
+            selectedImage: images[0]
+        };
+    }
+
+    render() {
+        return (
+            <ToyHolder>
+                <Swiper
+                    height={'calc(300px - 20px)'}
+                    selectItem={image => this.setState(prev => ({...prev, selectedImage: image}))}
+                    activeItem={this.state.selectedImage}
+                    items={this.state.images}
+                />
+            </ToyHolder>
+        );
+    }
+}
 
 const DescriptionHolder = glamorous.div({
     flex: 1,
     display: 'flex',
     padding: '10px',
     flexDirection: 'column',
-    backgroundColor: '#555',
-    color: '#eee'
+    backgroundColor: '#FFF',
+    color: '#5D5D5D'
 });
 
 const KeywordHolder = glamorous.div({
@@ -83,26 +97,26 @@ const Url = glamorous.a({
     textDecoration: 'none'
 });
 
-export let ToyDescription: React.SFC<{toy: IProject}> = ({toy}) => {
+export let ToyDescription: React.SFC<{ toy: IProject }> = ({toy}) => {
     return (
         <DescriptionHolder>
             <Title>{toy.title}</Title>
             <Description
                 dangerouslySetInnerHTML={{
                     __html:
-                        toy.description +
-                        toy.description +
-                        toy.description +
-                        toy.description +
-                        toy.description +
-                        toy.description +
-                        toy.description
+                    toy.description +
+                    toy.description +
+                    toy.description +
+                    toy.description +
+                    toy.description +
+                    toy.description +
+                    toy.description
                 }}
             />
             <Url href={toy.url}>site</Url>
             <Github href={toy.github}>github</Github>
             <KeywordHolder>
-                <Keywords keywords={toy.keywords} />
+                <Keywords keywords={toy.keywords}/>
             </KeywordHolder>
         </DescriptionHolder>
     );

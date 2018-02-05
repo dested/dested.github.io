@@ -1,8 +1,9 @@
 import * as React from 'react';
 import glamorous from 'glamorous';
+import {centerMargin} from '../../../utils/styleUtils';
 
 const Holder = glamorous.div({
-    backgroundColor: '#444',
+    backgroundColor: '#5D5D5D',
     position: 'fixed',
     top: 0,
     width: '100%',
@@ -10,9 +11,8 @@ const Holder = glamorous.div({
 });
 
 const Nav = glamorous.div({
-    backgroundColor: '#222',
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    backgroundColor: '#5D5D5D',
+    ...centerMargin,
     width: '1570px',
     height: '4rem',
     fontSize: '1.5rem',
@@ -42,7 +42,7 @@ const Name = glamorous.div({
 });
 const Link = glamorous.a<{area: string}>(
     {
-        color: '#9d9d9d',
+        color: '#e5e5e5',
         display: 'block',
         textDecoration: 'none',
         textAlign: 'right',
