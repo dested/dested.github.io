@@ -1,10 +1,16 @@
 declare module '*/projects.json' {
-    import {IProject} from 'models/project';
+    import {IProject} from 'models';
     const value: IProject[];
     export default value;
 }
 declare module '*/toys.json' {
-    import {IProject} from 'models/project';
-    const value: IProject[];
+    import {IToy} from 'models';
+    const value: IToy[];
+    export default value;
+}
+
+declare module '*/resume.json' {
+    import {IResumeItem} from 'models';
+    const value: IResumeItem[];
     export default value;
 }

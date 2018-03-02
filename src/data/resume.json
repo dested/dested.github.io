@@ -1,0 +1,137 @@
+[
+  {
+    "title": "Chief Technology Officer",
+    "company": "STYR Labs",
+    "contractor": false,
+    "url": "https://styr.com/",
+    "location": "Scottsdale, AZ",
+    "startDate": "October 2016",
+    "endDate": "Present",
+    "details": [
+      "Built the development team from its inception to a stable team of 10 in 4 months",
+      "Outlined and built architecture for a brand-new backend system, database, web portal, and mobile applications",
+      "Worked closely with CEO to devise and develop features that would affect our business",
+      "Oversaw development of 4 mobile applications, 2 web portals, and countless 3rd party integrations, used by tens of thousands of paying customers each day",
+      "Integrated a custom hardware stack to support the seamless communication with multiple proprietary BlueTooth devices",
+      "Devised process for backend and application deploys to allow seamless consistent deploys every time",
+      "Managed and procured relationships with 3rd party vendors"
+    ]
+  },
+  {
+    "title": "VP, Architecture Development Lead",
+    "company": "Healthiest You",
+    "contractor": false,
+    "url": "https://www.healthiestyou.com/",
+    "location": "Scottsdale, AZ",
+    "startDate": "March 2015",
+    "endDate": "October 2016",
+    "details": [
+      "Led a team of 6 frontend and backend developers",
+      "Oversaw transition to WebRTC-based doctor video network; resulted in 100,000+ annual membership boost and 12 million annual revenue increase",
+      "Parallelized member feed processes utilizing AWS queueing and server caching system",
+      "Rebuilt backend API layer and purpose-built MongoDB ORM into stable, structured stack; increasing junior .NET developer productivity",
+      "Released Ionic-based Android/iOS application; utilized by 10,000+ users daily",
+      "Architected framework for internal and external use web portals; ensured integration capability with 20+ third party networks"
+    ]
+  },
+  {
+    "title": "Senior AngularJS Engineer, Front End Lead",
+    "company": "LeaseHawk",
+    "contractor": true,
+    "url": "https://www.leasehawk.com/",
+    "location": "Scottsdale, AZ",
+    "startDate": "November 2014",
+    "endDate": "March 2015",
+    "details": [
+      "Managed customer lead generation system",
+      "Converted legacy app to AngularJS, TypeScript to interact with KendoUI and bootstrap",
+      "Developed and maintained custom code generation templates; streamlined new WebAPI methods implementation by eliminating need for front end service code",
+      "Devised pivotal backend and frontend patterns with sound architecture for new feature build; reduced development team administrative bloat",
+      "Built custom directives for unique business needs including non-standard scheduler, drag and drop widget manager, and claim-driven menu system"
+    ]
+  },
+  {
+    "title": "Senior AngularJS Engineer",
+    "company": "Blackboard Transact",
+    "contractor": true,
+    "url": "https://www.blackboard.com/campus-access-card/blackboard-transact.html",
+    "location": "Phoenix, AZ",
+    "startDate": "April 2014",
+    "endDate": "November 2014",
+    "details": [
+      "Brought in to construct architecture and stack for all new product frontend development",
+      "Built code generation utilities for boilerplate code and web services; facilitated seamless backend service integration",
+      "Utilized custom mock server capabilities; accelerated frontend development and simplified end-to-end Testability"
+    ]
+  },
+  {
+    "title": "Senior JavaScript Engineer, Front End Lead",
+    "company": "Nike",
+    "contractor": true,
+    "url": "https://www.nike.com",
+    "location": "Portland, OR",
+    "startDate": "November 2013",
+    "endDate": "April 2014",
+    "details": [
+      "Structured and developed JavaScript login/registration suite for utilization across all Nike products, internal and external",
+      "Met required specification of 20kd gzipped payload, pure static loading, lean server communication, localization support, form customization and millisecond response time",
+      "Worked closely with bizdev from multiple teams to assure the product we were building would work for their needs."
+    ]
+  },
+  {
+    "title": "Senior Software Engineer, Team Lead",
+    "company": "GannettLocal",
+    "contractor": true,
+    "url": "https://www.godigitalmarketing.com",
+    "location": "Phoenix, AZ",
+    "startDate": "April 2013",
+    "endDate": "November 2013",
+    "details": [
+      "Architected single-page custom web application for management of multi-platform Search Engine Marketing; distributed created pay-per-click search advertisements seamlessly and produced realtime campaign adjustments based on tracked analytics",
+      "Coded frontend utilizing AngularJS; connected to lightweight ASP.net WebAPI layer to process and route calls through the business layer to MSSQL via Entity framework",
+      "Utilized then-new JavaScript MVC framework for role and security management"
+    ]
+  },
+  {
+    "title": "Software Developer",
+    "company": "Global Waters",
+    "contractor": true,
+    "url": "https://www.gwresources.com/",
+    "location": "Phoenix, AZ",
+    "startDate": "August 2012",
+    "endDate": "April 2013",
+    "details": [
+      "Developed water and property management system for deployment in existing municipalities, incorporating customer relations, work orders, bill payment, consumption status and record management; reduced costs of solution and remained current with industry trends",
+      "Utilized AJAX technologies to create seamless user experience which communicated with ASP.net MVC3, connected to MSSQL database via Entity and implemented JavaScript work order management system with ESRI and Dojo; met customer expectations of system features",
+      "Generated backend billing engine to process customer information and create customer bills"
+    ]
+  },
+  {
+    "title": "Software Developer",
+    "company": "TRIWest",
+    "contractor": true,
+    "url": "https://www.triwest.com/",
+    "location": "Phoenix, AZ",
+    "startDate": "March 2012",
+    "endDate": "August 2012",
+    "details": [
+      "Managed operations team in revamping of IT Department support protocols; built application to catalog critical server errors and maintained on-call support team and ticket system to increase efficiency",
+      "Led addition of asynchronous communication to predominantly synchronous application",
+      "Developed and maintained internal and external ASP.net and ASP.net MVC applications; external application utilized 2.3 million beneficiaries and providers daily"
+    ]
+  },
+  {
+    "title": "Lead Software Developer",
+    "company": "DataMonkey Technologies",
+    "contractor": false,
+    "url": "https://www.linkedin.com/company/data-monkey-technologies/",
+    "location": "Phoenix, AZ",
+    "startDate": "May 2008",
+    "endDate": "March 2012",
+    "details": [
+      "Architected system for financial accounts that populated custom database with data pulled from multiple external sources; replaced manually-updated tools with automatically generated reports sent to company shareholders",
+      "Utilized custom DevExpress Winforms Reporting tool to create complex custom reports with ability for data sanitizing with user-created logic, format for print, and generate multiple output formats",
+      "Built in capability for simultaneous multi-user updates through C# 4.0 and unique server components"
+    ]
+  }
+]

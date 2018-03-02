@@ -14,7 +14,7 @@ module.exports = {
         contentBase: "public/",
     },
     // Enable sourcemaps for debugging webpack's output.
-    ...(PROD ? {} : {devtool: "source-map"}),
+    // devtool: "source-map",
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
