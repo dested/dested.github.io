@@ -105,6 +105,28 @@ export class Swiper extends React.Component<Props, State> {
             elementWidth: 0,
             swipeable: {x: null, swiping: false, start: 0}
         };
+        this.onMouseMove = this.onMouseMove.bind(this);
+        this.onMouseUp = this.onMouseUp.bind(this);
+    }
+
+    private onMouseDown(e: TouchEvent & MouseEvent) {
+        // tslint:disable-next-line
+        document.addEventListener('mousemove', this.onMouseMove as any);
+        // tslint:disable-next-line
+        document.addEventListener('mouseup', this.onMouseUp as any);
+        this.onTouchStart(e);
+    }
+
+    private onMouseMove(e: TouchEvent & MouseEvent) {
+        this.onTouchMove(e);
+    }
+
+    private onMouseUp(e: TouchEvent & MouseEvent) {
+        // tslint:disable-next-line
+        document.removeEventListener('mousemove', this.onMouseMove as any);
+        // tslint:disable-next-line
+        document.removeEventListener('mouseup', this.onMouseUp as any);
+        this.onTouchEnd(e);
     }
 
     private onTouchStart(e: TouchEvent & MouseEvent) {
@@ -143,22 +165,6 @@ export class Swiper extends React.Component<Props, State> {
         }
         e.stopPropagation();
         e.preventDefault();
-    }
-
-    private onMouseDown(e: TouchEvent & MouseEvent) {
-        document.addEventListener('mousemove', this.onMouseMove.bind(this));
-        document.addEventListener('mouseup', this.onMouseUp.bind(this));
-        this.onTouchStart(e);
-    }
-
-    private onMouseMove(e: TouchEvent & MouseEvent) {
-        this.onTouchMove(e);
-    }
-
-    private onMouseUp(e: TouchEvent & MouseEvent) {
-        document.removeEventListener('mousemove', this.onMouseMove.bind(this));
-        document.removeEventListener('mouseup', this.onMouseUp.bind(this));
-        this.onTouchEnd(e);
     }
 
     private onTouchEnd(e: TouchEvent & MouseEvent) {
