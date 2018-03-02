@@ -48,9 +48,9 @@ export let Section: React.SFC<Props> = props => {
 
 const MainHolder = glamorous.div<Props>(
     {
-        paddingBottom: '20px',
+        paddingBottom: '50px',
         height: '600px',
-        paddingTop: '150px'
+        paddingTop: '100px'
     },
     ({color}) => ({
         backgroundColor: color

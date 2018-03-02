@@ -1,23 +1,33 @@
 import * as React from 'react';
 import glamorous from 'glamorous';
-import {IProject} from '../../../models/project';
+import {IToy} from '../../../models';
 import {Keywords} from './keywords';
 import {Swiper} from '../../../components/swiper';
 import {centerMargin} from '../../../utils/styleUtils';
 
-const Holder = glamorous.div({
-    display: 'flex',
-    width: '300px',
-    flexDirection: 'column',
-    paddingTop: '10px',
-    paddingBottom: '10px'
-});
+const Holder = glamorous.div<{isSelected: boolean}>(
+    {
+        display: 'flex',
+        width: '300px',
+        flexDirection: 'column',
+        paddingTop: '10px',
+        paddingBottom: '10px',
+        transition: 'opacity .5s'
+    },
+    ({isSelected}) => ({
+        opacity: isSelected ? 1 : 0.3
+    })
+);
 
-export let Toy: React.SFC<{ toy: IProject }> = ({toy}) => {
+export let Toy: React.SFC<{toy: IToy; selectedKeyword: string | null; selectKeyword: (keyword: string) => void}> = ({
+    toy,
+    selectedKeyword,
+    selectKeyword
+}) => {
     return (
-        <Holder>
-            <ToyImage toy={toy}/>
-            <ToyDescription toy={toy}/>
+        <Holder isSelected={selectedKeyword === null || toy.keywords.indexOf(selectedKeyword) >= 0}>
+            <ToyImage toy={toy} />
+            <ToyDescription toy={toy} selectKeyword={selectKeyword} />
         </Holder>
     );
 };
@@ -27,18 +37,10 @@ const ToyHolder = glamorous.div({
     backgroundColor: '#ccc'
 });
 
-class ToyImage extends React.Component<{ toy: IProject }, { selectedImage: { image: string }; images: { image: string }[] }> {
-    constructor(props: { toy: IProject }) {
+class ToyImage extends React.Component<{toy: IToy}, {selectedImage: {image: string}; images: {image: string}[]}> {
+    constructor(props: {toy: IToy}) {
         super(props);
-        const images = [
-            {image: props.toy.image + '?1'},
-            {image: props.toy.image + '?2'},
-            {image: props.toy.image + '?3'},
-            {image: props.toy.image + '?4'},
-            {image: props.toy.image + '?5'},
-            {image: props.toy.image + '?6'},
-            {image: props.toy.image + '?7'}
-        ];
+        const images = props.toy.images.map(a => ({image: a}));
         this.state = {
             images: images,
             selectedImage: images[0]
@@ -69,7 +71,8 @@ const DescriptionHolder = glamorous.div({
 });
 
 const KeywordHolder = glamorous.div({
-    padding: '10px',
+    margin: '10px',
+    marginBottom: 0,
     ':before': {
         content: '""',
         width: '260px',
@@ -90,16 +93,19 @@ const Description = glamorous.span({
 });
 
 const Github = glamorous.a({
-    color: '#5d5d5d',
-    textDecoration: 'none'
+    color: '#5d5d5d'
 });
 
 const Url = glamorous.a({
-    color: '#5d5d5d',
-    textDecoration: 'none'
+    color: '#5d5d5d'
 });
 
-export let ToyDescription: React.SFC<{ toy: IProject }> = ({toy}) => {
+interface Props {
+    toy: IToy;
+    selectKeyword: (keyword: string) => void;
+}
+
+export let ToyDescription: React.SFC<Props> = ({toy, selectKeyword}) => {
     return (
         <DescriptionHolder>
             <Title>{toy.title}</Title>
@@ -107,9 +113,9 @@ export let ToyDescription: React.SFC<{ toy: IProject }> = ({toy}) => {
                 <Url href={toy.url}>site</Url>
                 <Github href={toy.github}>github</Github>
             </div>
-            <Description dangerouslySetInnerHTML={{__html: toy.description}}/>
+            <Description dangerouslySetInnerHTML={{__html: toy.description}} />
             <KeywordHolder>
-                <Keywords keywords={toy.keywords}/>
+                <Keywords keywords={toy.keywords} selectKeyword={selectKeyword} />
             </KeywordHolder>
         </DescriptionHolder>
     );

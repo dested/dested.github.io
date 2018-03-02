@@ -12,7 +12,7 @@ const Inner = glamorous.div({
     ...centerMargin,
     width: '1570px',
     height: '4rem',
-    fontSize: '1.5rem',
+    fontSize: '1.3rem',
     alignItems: 'center',
     justifyContent: 'center',
     display: 'flex',
@@ -24,7 +24,7 @@ export let Footer: React.SFC = () => {
     return (
         <Holder>
             <Inner>
-                <Copyright>Copyright © Dested LLC {new Date().getFullYear()}</Copyright>
+                <Copyright>Copyright © Salvatore Aiello {new Date().getFullYear()}</Copyright>
             </Inner>
         </Holder>
     );

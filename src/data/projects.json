@@ -4,72 +4,73 @@
     "image": "assets/project-images/sonic.png",
     "title": "Our Sonic",
     "github": "https://github.com/OurSonic/OurSonicTyped",
-    "description": "A hand built engine for simulating the original Sonic the Hedgehog games for Sega Genesis. Pure typescript implementation.",
+    "pitch": "Hand built engine for simulating the original Sonic the Hedgehog games for Sega Genesis",
+    "description": "This project uses no external libraries aside from Angular for UI. Sonic 2 and 3 level data was exported out of the original ROM files using a C# to convert tile data to JSON. The engine is a strict TypeScript application that achieves rendering at 60fps using canvas. Many performance tricks were employed to hit the 60fps goal such as using multiple canvases for different layers, storing the screens pixels in a typed array and using putImageData vs drawImage, and culling every pixel possible during draw. The API is hosted serverless using AWS API Gateway and Lambda.",
     "keywords": [
       "javascript",
       "typescript",
-      "angular 2",
+      "angular",
       "aws",
       "lambda",
       "canvas"
-    ],
-    "isToy": false
+    ]
   },
   {
     "url": "http://styr.com",
     "image": "assets/project-images/styr.png",
     "title": "STYR Labs",
-    "description": "A typescript based native Android and iOS app with a .net api.",
+    "pitch": "Mobile app used by tens of thousands of active users every day",
+    "description": "A TypeScript based native Android and iOS app utilizing a .NET restful API hosted on AWS. Native UI rendering was accomplished using Tabris.JS. We built a custom UI framework on top of Tabris.JS to facilitate things like page and state management, as well as a custom testing framework to support our specific use case. The app has gone through many rapid iterations, striving to never breaking backwards compatibility while still providing the best experience for new users. We have white labeled the app for many vendors around the world, as well as full i18n support.",
     "keywords": [
       "typescript",
       "tabris.js",
       "aws",
-      ".net",
-      "angular.js"
-    ],
-    "isToy": false
+      "c#",
+      "angular"
+    ]
   },
   {
     "url": "https://itunes.apple.com/us/app/penguin-shuffle-uncover-path/id909070508",
     "image": "assets/project-images/penguin-shuffle-2.png",
     "title": "Penguin Shuffle!",
     "github": "https://github.com/Penguio-Framework/PenguinShuffle",
-    "description": "A fun puzzle game for Android and IOS, built in C# using Xamarin, mono-game, and a custom engine.",
+    "pitch": "A fun puzzle game for Android and iOS",
+    "description": "A simple local multiplayer puzzle game where you compete with your friends to guess how many moves it will take to reach the goal. The game has amassed several hundred purchases on Android and iOS with very little advertising. It is MonoGame/Xamarin application utilizing my Penguio framework for deploying a C# game to Android, iOS, Windows Phone, Steam, and HTML5 from a single code base. All development done by me, with the art and audio done on contract.",
     "keywords": [
       "c#",
       "xamarin",
       "android",
       "ios",
       "penguio"
-    ],
-    "isToy": false
+    ]
   },
   {
     "url": "http://socialwargames.com",
     "image": "assets/project-images/socialwargames.png",
     "title": "Social War Games",
     "github": "https://github.com/dested/Social-War-Games",
-    "description": "An online Social Experiment",
+    "pitch": "An Online Social Experiment",
+    "description": "Social War Games allows you to participate with and compete against other players on the internet in real time. It uses a voting mechanism to decide which series of moves should happen next. The most popular moves for each unit during the 5 minute long turn will be executed at the beginning of the next turn, in the vein of TwitchPlaysPokemon. It uses ReactJS for its UI and 2D Canvas for the gameplay, all using TypeScript. The backend is a Restful .NET Core application hosted on AWS.",
     "keywords": [
+      "react",
       "javascript",
       "typescript",
-      "mmo",
+      "multiplayer",
       "canvas"
-    ],
-    "isToy": false
+    ]
   },
   {
     "url": "https://github.com/Shuffle-Game/AnyCardGame",
     "image": "assets/project-images/acg.png",
     "title": "Any Card Game",
     "github": "https://github.com/Shuffle-Game/AnyCardGame",
-    "description": "A game editor built to allow developers to create their own custom card games, have them hosted, any playable over the internet. Development is ongoing.",
+    "pitch": "Design, Build, and Play Card Games",
+    "description": "AnyCardGame is a game editor built to allow developers to create their own custom card games, have them hosted, any playable over the internet. The card games are built using TypeScript or JavaScript, with Monaco as a code editor, and designed using a HTML based editor. Games can be tested, debugged, and played all through the web app. The app is built using angular 1.5, game server built using .NET and NodeJS. Server to server communication was facilitated via Redis.",
     "keywords": [
       "javascript",
       "typescript",
-      "angular 2",
-      "node.js"
-    ],
-    "isToy": false
+      "angular",
+      "redis"
+    ]
   }
 ]

@@ -1,20 +1,21 @@
 import * as React from 'react';
 import glamorous from 'glamorous';
-import {IProject} from '../../../models/project';
+import {IProject} from '../../../models';
 import {Keywords} from './keywords';
 
 const Holder = glamorous.div({
-    backgroundColor: '#F1F1F1',
-    height: '200px',
+    backgroundColor: 'white',
+    height: '240px',
     padding: '20px',
     color: '#333',
     display: 'grid',
     gridTemplateAreas: `
-        "title site github keywords"
+        "title title . keywords"
+        "pitch pitch . links"
         "description description description description"
     `,
     gridTemplateColumns: `auto 50px 30px 1fr`,
-    gridTemplateRows: `50px 1fr`,
+    gridTemplateRows: `50px auto auto auto`,
     alignItems: 'center'
 });
 
@@ -23,17 +24,23 @@ const Title = glamorous.span({
     fontSize: '2rem'
 });
 
+const Links = glamorous.a({
+    gridArea: 'links',
+    justifySelf: 'right'
+});
 const Site = glamorous.a({
-    gridArea: 'site',
     fontSize: '1rem',
     color: '#5D5D5D',
-    textDecoration: 'none'
+    marginRight: '10px'
 });
 const Github = glamorous.a({
-    gridArea: 'github',
     fontSize: '1rem',
-    color: '#5D5D5D',
-    textDecoration: 'none'
+    color: '#5D5D5D'
+});
+const Pitch = glamorous.span({
+    gridArea: 'pitch',
+    paddingTop: '10px',
+    fontSize: '1.5em'
 });
 const Description = glamorous.span({
     gridArea: 'description',
@@ -45,21 +52,24 @@ const KeywordHolder = glamorous.div({
     justifySelf: 'right'
 });
 
-export let HeroDescription: React.SFC<{hero: IProject}> = props => {
-    let {hero} = props;
+interface Props {
+    hero: IProject;
+    selectKeyword: (keyword: string) => void;
+}
 
+export let HeroDescription: React.SFC<Props> = ({hero, selectKeyword}) => {
     return (
         <Holder>
             <Title>{hero.title}</Title>
-            <Site href={hero.url}>site</Site>
-            {hero.github && <Github href={hero.github}>github</Github>}
+            <Links>
+                <Site href={hero.url}>site</Site>
+                {hero.github && <Github href={hero.github}>github</Github>}
+            </Links>
             <KeywordHolder>
-                <Keywords keywords={hero.keywords} />
+                <Keywords keywords={hero.keywords} selectKeyword={selectKeyword} />
             </KeywordHolder>
-            <Description>
-                {hero.description} {hero.description} {hero.description} {hero.description} {hero.description}{' '}
-                {hero.description}
-            </Description>
+            <Pitch>{hero.pitch}</Pitch>
+            <Description>{hero.description}</Description>
         </Holder>
     );
 };

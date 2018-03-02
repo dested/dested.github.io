@@ -3,7 +3,7 @@ import glamorous from 'glamorous';
 import {Section} from '../../../components/section';
 
 const Holder = glamorous.div({
-    width: '100%',
+    width: '100%'
 });
 
 export class Github extends React.PureComponent {
