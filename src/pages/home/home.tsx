@@ -17,9 +17,11 @@ import {Toy} from './components/toy';
 import {Resume} from './components/resume';
 import {media} from '../../utils/styleUtils';
 
-interface Props {}
+interface Props {
+}
 
 interface State {
+    showResume: boolean;
     projects: IProject[];
     resume: IResumeItem[];
     toys: IToy[];
@@ -74,6 +76,7 @@ export class Home extends React.Component<Props, State> {
             projects,
             toys,
             resume,
+            showResume: window.location.host.includes('resume'),
             activeHero: projects[0],
             selectedToyKeyword: null
         };
@@ -93,8 +96,8 @@ export class Home extends React.Component<Props, State> {
                     this.setState(prev => ({...prev, selectedToyKeyword: null}))
                 }
             >
-                <Header />
-                <Intro />
+                <Header/>
+                <Intro/>
                 <Section color={'#F1F1F1'} title={'Featured Projects'}>
                     <HeroImage>
                         <Swiper
@@ -109,6 +112,11 @@ export class Home extends React.Component<Props, State> {
                         selectKeyword={keyword => this.setState(prev => ({...prev, selectedToyKeyword: keyword}))}
                     />
                 </Section>
+                {this.state.showResume && (
+                    <Section color={'#F1F1F1'} title={'Resume'}>
+                        <Resume resume={this.state.resume}/>
+                    </Section>
+                )}
                 <Section color={'#dfdfdf'} title={'Toys'}>
                     <ToyHolder>
                         {this.state.toys.map(toy => (
@@ -123,11 +131,9 @@ export class Home extends React.Component<Props, State> {
                         ))}
                     </ToyHolder>
                 </Section>
-                <Section color={'#F1F1F1'} title={'Resume'}>
-                    <Resume resume={this.state.resume} />
-                </Section>
-                <Github />
-                <Footer />
+
+                <Github/>
+                <Footer/>
             </Page>
         );
     }
