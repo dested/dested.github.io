@@ -2,10 +2,10 @@ import * as React from 'react';
 import glamorous from 'glamorous';
 import {IProject} from '../../../models';
 import {Keywords} from './keywords';
+import {media} from '../../../utils/styleUtils';
 
 const Holder = glamorous.div({
     backgroundColor: 'white',
-    height: '240px',
     padding: '20px',
     color: '#333',
     display: 'grid',
@@ -16,7 +16,17 @@ const Holder = glamorous.div({
     `,
     gridTemplateColumns: `auto 50px 30px 1fr`,
     gridTemplateRows: `50px auto auto auto`,
-    alignItems: 'center'
+    alignItems: 'center',
+    [media.phone]: {
+        gridTemplateAreas: `
+            "title title"
+            "pitch pitch"
+            "description description"
+            "links keywords"
+        `,
+        gridTemplateColumns: `1fr 1fr`,
+        gridTemplateRows: `auto`
+    }
 });
 
 const Title = glamorous.span({
@@ -26,7 +36,10 @@ const Title = glamorous.span({
 
 const Links = glamorous.a({
     gridArea: 'links',
-    justifySelf: 'right'
+    justifySelf: 'right',
+    [media.phone]: {
+        justifySelf: 'left'
+    }
 });
 const Site = glamorous.a({
     fontSize: '1rem',

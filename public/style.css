@@ -16,6 +16,20 @@ body {
 .github .calendar {
     color: black;
     text-decoration: none;
+    border: 0;
+}
+
+@media (max-width: 769px) {
+    .github .calendar {
+        min-height: auto;
+        width: auto;
+        border: 0;
+    }
+
+    .github .calendar .mb-5,
+    .github .calendar .contrib-column {
+        display: none;
+    }
 }
 
 a {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import glamorous from 'glamorous';
-import {centerMargin} from '../utils/styleUtils';
+import {centerMargin, media} from '../utils/styleUtils';
 
 const Holder = glamorous.div<Props>(
     {
@@ -12,8 +12,22 @@ const Holder = glamorous.div<Props>(
     })
 );
 const Inner = glamorous.div({
-    ...centerMargin,
-    width: '1570px'
+    maxWidth: '100%',
+    [media.phone]: {
+        width: '100vw'
+    },
+    [media.tablet]: {
+        width: '960px',
+        ...centerMargin
+    },
+    [media.desktop]: {
+        width: '1140px',
+        ...centerMargin
+    },
+    [media.bigDesktop]: {
+        width: '1570px',
+        ...centerMargin
+    }
 });
 
 const SectionTitle = glamorous.div<{big?: boolean}>(
@@ -48,9 +62,8 @@ export let Section: React.SFC<Props> = props => {
 
 const MainHolder = glamorous.div<Props>(
     {
-        paddingBottom: '50px',
-        height: '600px',
-        paddingTop: '100px'
+        paddingBottom: '60px',
+        paddingTop: '50px'
     },
     ({color}) => ({
         backgroundColor: color

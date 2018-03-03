@@ -1,6 +1,7 @@
 import * as React from 'react';
 import glamorous from 'glamorous';
 import {IResumeItem} from '../../../models';
+import {media} from '../../../utils/styleUtils';
 
 const Holder = glamorous.div({
     flexDirection: 'column'
@@ -17,7 +18,17 @@ const ResumeItem = glamorous.div({
         "details details details"
     `,
     gridTemplateColumns: `auto`,
-    gridTemplateRows: `1fr .5fr auto`
+    gridTemplateRows: `1fr .5fr auto`,
+    [media.phone]: {
+        gridTemplateAreas: `
+            "title"
+            "duration"
+            "company"
+            "details"
+        `,
+        gridTemplateColumns: `1fr`,
+        gridTemplateRows: `1fr`
+    }
 });
 
 const Title = glamorous.div({
@@ -39,7 +50,10 @@ const Consultant = glamorous.span({
 
 const Duration = glamorous.div({
     gridArea: 'duration',
-    justifySelf: 'end'
+    justifySelf: 'end',
+    [media.phone]: {
+        justifySelf: 'start'
+    }
 });
 const Details = glamorous.ul({
     gridArea: 'details',
@@ -53,7 +67,7 @@ export let Resume: React.SFC<{resume: IResumeItem[]}> = ({resume}) => {
     return (
         <Holder>
             {resume.map(r => (
-                <ResumeItem>
+                <ResumeItem key={r.company}>
                     <Title>{r.title}</Title>
                     <Company>
                         <CompanyName href={r.url}>{r.company}</CompanyName>
@@ -62,7 +76,7 @@ export let Resume: React.SFC<{resume: IResumeItem[]}> = ({resume}) => {
                     <Duration>
                         {r.startDate} - {r.endDate}
                     </Duration>
-                    <Details>{r.details.map(d => <Detail>{d}</Detail>)}</Details>
+                    <Details>{r.details.map(d => <Detail key={d}>{d}</Detail>)}</Details>
                 </ResumeItem>
             ))}
         </Holder>

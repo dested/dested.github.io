@@ -15,6 +15,7 @@ import {Footer} from './components/footer';
 import {Section} from '../../components/section';
 import {Toy} from './components/toy';
 import {Resume} from './components/resume';
+import {media} from '../../utils/styleUtils';
 
 interface Props {}
 
@@ -35,8 +36,28 @@ const Page = glamorous.div({
 const ToyHolder = glamorous.div({
     display: 'grid',
     justifyContent: 'space-between',
-    gridTemplateColumns: 'repeat(auto-fill,300px)',
-    flexDirection: 'row'
+    [media.phone]: {
+        gridTemplateColumns: '1fr'
+    },
+    [media.tablet]: {
+        gridTemplateColumns: 'repeat(3, 1fr)'
+    },
+    [media.desktop]: {
+        gridTemplateColumns: 'repeat(4, 1fr)'
+    },
+    [media.bigDesktop]: {
+        gridTemplateColumns: 'repeat(5, 1fr)'
+    }
+});
+
+const HeroImage = glamorous.div({
+    height: '600px',
+    [media.phone]: {
+        height: '300px'
+    },
+    [media.tablet]: {
+        height: '400px'
+    }
 });
 
 export class Home extends React.Component<Props, State> {
@@ -75,12 +96,14 @@ export class Home extends React.Component<Props, State> {
                 <Header />
                 <Intro />
                 <Section color={'#F1F1F1'} title={'Featured Projects'}>
-                    <Swiper
-                        height={'600px'}
-                        items={this.state.projects}
-                        activeItem={this.state.activeHero}
-                        selectItem={hero => this.selectHero(hero as IProject)}
-                    />
+                    <HeroImage>
+                        <Swiper
+                            height={'100%'}
+                            items={this.state.projects}
+                            activeItem={this.state.activeHero}
+                            selectItem={hero => this.selectHero(hero as IProject)}
+                        />
+                    </HeroImage>
                     <HeroDescription
                         hero={this.state.activeHero}
                         selectKeyword={keyword => this.setState(prev => ({...prev, selectedToyKeyword: keyword}))}

@@ -3,27 +3,32 @@ import glamorous from 'glamorous';
 import {IToy} from '../../../models';
 import {Keywords} from './keywords';
 import {Swiper} from '../../../components/swiper';
-import {centerMargin} from '../../../utils/styleUtils';
+import {centerMargin, media} from '../../../utils/styleUtils';
 
 const Holder = glamorous.div<{isSelected: boolean}>(
     {
         display: 'flex',
-        width: '300px',
+        width: '95%',
         flexDirection: 'column',
         paddingTop: '10px',
         paddingBottom: '10px',
-        transition: 'opacity .5s'
+        transition: 'opacity .5s',
+        [media.phone]: {
+            width: '100%'
+        }
     },
     ({isSelected}) => ({
         opacity: isSelected ? 1 : 0.3
     })
 );
 
-export let Toy: React.SFC<{toy: IToy; selectedKeyword: string | null; selectKeyword: (keyword: string) => void}> = ({
-    toy,
-    selectedKeyword,
-    selectKeyword
-}) => {
+interface ToyProps {
+    toy: IToy;
+    selectedKeyword: string | null;
+    selectKeyword: (keyword: string) => void;
+}
+
+export let Toy: React.SFC<ToyProps> = ({toy, selectedKeyword, selectKeyword}) => {
     return (
         <Holder isSelected={selectedKeyword === null || toy.keywords.indexOf(selectedKeyword) >= 0}>
             <ToyImage toy={toy} />
@@ -33,7 +38,7 @@ export let Toy: React.SFC<{toy: IToy; selectedKeyword: string | null; selectKeyw
 };
 
 const ToyHolder = glamorous.div({
-    width: '300px',
+    width: '100%',
     backgroundColor: '#ccc'
 });
 
@@ -67,19 +72,13 @@ const DescriptionHolder = glamorous.div({
     padding: '10px',
     flexDirection: 'column',
     backgroundColor: '#FFF',
-    color: '#5D5D5D'
+    color: '#5D5D5D',
+    fontSize: '1.2em'
 });
 
 const KeywordHolder = glamorous.div({
     margin: '10px',
-    marginBottom: 0,
-    ':before': {
-        content: '""',
-        width: '260px',
-        position: 'absolute',
-        ...centerMargin,
-        borderTop: 'solid 1px #5D5D5D'
-    }
+    marginBottom: 0
 });
 
 const Title = glamorous.span({

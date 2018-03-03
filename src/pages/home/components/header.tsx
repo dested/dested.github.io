@@ -1,6 +1,6 @@
 import * as React from 'react';
 import glamorous from 'glamorous';
-import {centerMargin} from '../../../utils/styleUtils';
+import {centerMargin, media} from '../../../utils/styleUtils';
 
 const Holder = glamorous.div({
     backgroundColor: '#5D5D5D',
@@ -12,26 +12,29 @@ const Holder = glamorous.div({
 
 const Nav = glamorous.div({
     backgroundColor: '#5D5D5D',
-    ...centerMargin,
-    width: '1570px',
     height: '4rem',
-    fontSize: '1.5rem',
     display: 'grid',
     gridTemplateColumns: '1fr 3fr 1fr 1fr 1fr 1fr',
     gridTemplateAreas: `
-      "name . github linkedin resume contact"
+      "name name github linkedin resume contact"
     `,
     alignItems: 'center',
-    '@media(max-width: 599px)': {
-        gridTemplateColumns: '4fr 1fr',
-        gridTemplateRows: '1fr 1fr 1fr 1fr 1fr',
-        gridTemplateAreas: `
-            "name github"
-            ". linkedin"
-            ". resume"
-            ". contact"
-        `,
-        height: 'auto'
+    ...centerMargin,
+    [media.phone]: {
+        width: '100%',
+        fontSize: '1rem'
+    },
+    [media.tablet]: {
+        width: '960px',
+        fontSize: '1.5rem'
+    },
+    [media.desktop]: {
+        width: '1140px',
+        fontSize: '1.5rem'
+    },
+    [media.bigDesktop]: {
+        width: '1570px',
+        fontSize: '1.5rem'
     }
 });
 

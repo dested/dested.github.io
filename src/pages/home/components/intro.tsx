@@ -1,14 +1,16 @@
 import * as React from 'react';
 import glamorous from 'glamorous';
-import {url, centerMargin} from '../../../utils/styleUtils';
+import {url, centerMargin, media} from '../../../utils/styleUtils';
 import {MainSection, Section} from '../../../components/section';
 
 const Holder = glamorous.div({
-    width: '65%',
+    width: '90%',
     display: 'flex',
-    flexDirection: 'row',
-    fontSize: '1.3rem',
-    ...centerMargin
+    fontSize: '1.2rem',
+    ...centerMargin,
+    [media.phone]: {
+        flexDirection: 'column'
+    }
 });
 
 const Icon = glamorous.div({
@@ -22,9 +24,13 @@ const Icon = glamorous.div({
 
 const Pitch = glamorous.span({
     padding: '10px',
-    lineHeight: '1.5em',
+    lineHeight: '1.2em',
     marginLeft: '10px',
-    flex: 1
+    flex: 1,
+    [media.phone]: {
+        paddingTop: '40px',
+        fontSize: '1.3em'
+    }
 });
 
 export let Intro: React.SFC = () => {

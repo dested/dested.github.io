@@ -111,9 +111,9 @@ export class Swiper extends React.Component<Props, State> {
 
     private onMouseDown(e: TouchEvent & MouseEvent) {
         // tslint:disable-next-line
-        document.addEventListener('mousemove', this.onMouseMove as any);
+        document.addEventListener('mousemove', this.onMouseMove as any, {passive: false});
         // tslint:disable-next-line
-        document.addEventListener('mouseup', this.onMouseUp as any);
+        document.addEventListener('mouseup', this.onMouseUp as any, {passive: false});
         this.onTouchStart(e);
     }
 
@@ -220,8 +220,10 @@ export class Swiper extends React.Component<Props, State> {
     }
 
     componentWillUnmount(): void {
-        document.removeEventListener('mousemove', this.onMouseMove.bind(this));
-        document.removeEventListener('mouseup', this.onMouseUp.bind(this));
+        // tslint:disable-next-line
+        document.removeEventListener('mousemove', this.onMouseMove as any);
+        // tslint:disable-next-line
+        document.removeEventListener('mouseup', this.onMouseUp as any);
         window.clearTimeout(this.autoInterval!);
     }
 
