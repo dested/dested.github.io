@@ -8,13 +8,13 @@
     "startDate": "October 2016",
     "endDate": "Present",
     "details": [
-      "Built the development team from its inception to a stable team of 10 in 4 months",
-      "Outlined and built architecture for a brand-new backend system, database, web portal, and mobile applications",
+      "Built the development team from a single engineer to a stable team of 10 in 4 months",
+      "Outlined and built architecture for a brand-new backend system, database, web portal, and mobile applications, as well as payment processing and order fulfillment",
       "Worked closely with CEO to devise and develop features that would affect our business",
+      "Managed and procured relationships with 3rd party vendors",
       "Oversaw development of 4 mobile applications, 2 web portals, and countless 3rd party integrations, used by tens of thousands of paying customers each day",
-      "Integrated a custom hardware stack to support the seamless communication with multiple proprietary BlueTooth devices",
-      "Devised process for backend and application deploys to allow seamless consistent deploys every time",
-      "Managed and procured relationships with 3rd party vendors"
+      "Integrated a custom hardware stack to support the seamless communication with multiple proprietary Bluetooth devices",
+      "Devised process for backend and application deploys to allow consistent deploys every time."
     ]
   },
   {
@@ -27,9 +27,9 @@
     "endDate": "October 2016",
     "details": [
       "Led a team of 6 frontend and backend developers",
-      "Oversaw transition to WebRTC-based doctor video network; resulted in 100,000+ annual membership boost and 12 million annual revenue increase",
-      "Parallelized member feed processes utilizing AWS queueing and server caching system",
-      "Rebuilt backend API layer and purpose-built MongoDB ORM into stable, structured stack; increasing junior .NET developer productivity",
+      "Oversaw transition to WebRTC-based doctor video network; resulted in 100,000+ annual membership boost and 12 million dollar annual revenue increase",
+      "Parallelized member feed processes utilizing AWS queueing and server caching system to meet the increasing demand",
+      "Rebuilt backend API layer and purpose-built MongoDB ORM into stable, structured stack; increasing junior .NET developer productivity and onboarding",
       "Released Ionic-based Android/iOS application; utilized by 10,000+ users daily",
       "Architected framework for internal and external use web portals; ensured integration capability with 20+ third party networks"
     ]
@@ -43,9 +43,9 @@
     "startDate": "November 2014",
     "endDate": "March 2015",
     "details": [
-      "Managed customer lead generation system",
-      "Converted legacy app to AngularJS, TypeScript to interact with KendoUI and bootstrap",
-      "Developed and maintained custom code generation templates; streamlined new WebAPI methods implementation by eliminating need for front end service code",
+      "Converted legacy app to AngularJS, Typescript to interact with KendoUI and bootstrap",
+      "Enhanced customer lead generation system",
+      "Developed and maintained custom code generation templates; streamlined new WebAPI methods implementation by eliminating need for hand built front end service code",
       "Devised pivotal backend and frontend patterns with sound architecture for new feature build; reduced development team administrative bloat",
       "Built custom directives for unique business needs including non-standard scheduler, drag and drop widget manager, and claim-driven menu system"
     ]
@@ -61,7 +61,7 @@
     "details": [
       "Brought in to construct architecture and stack for all new product frontend development",
       "Built code generation utilities for boilerplate code and web services; facilitated seamless backend service integration",
-      "Utilized custom mock server capabilities; accelerated frontend development and simplified end-to-end Testability"
+      "Utilized custom mock server capabilities; accelerated frontend development and simplified end-to-end testability"
     ]
   },
   {
@@ -87,7 +87,8 @@
     "startDate": "April 2013",
     "endDate": "November 2013",
     "details": [
-      "Architected single-page custom web application for management of multi-platform Search Engine Marketing; distributed created pay-per-click search advertisements seamlessly and produced realtime campaign adjustments based on tracked analytics",
+      "Architected single-page custom web application for management of multi-platform Search Engine Marketing",
+      "Created pay-per-click search advertisements via API seamlessly and produced real-time campaign adjustments based on tracked analytics",
       "Coded frontend utilizing AngularJS; connected to lightweight ASP.net WebAPI layer to process and route calls through the business layer to MSSQL via Entity framework",
       "Utilized then-new JavaScript MVC framework for role and security management"
     ]
@@ -102,7 +103,7 @@
     "endDate": "April 2013",
     "details": [
       "Developed water and property management system for deployment in existing municipalities, incorporating customer relations, work orders, bill payment, consumption status and record management; reduced costs of solution and remained current with industry trends",
-      "Utilized AJAX technologies to create seamless user experience which communicated with ASP.net MVC3, connected to MSSQL database via Entity and implemented JavaScript work order management system with ESRI and Dojo; met customer expectations of system features",
+      "Utilized AJAX technologies to create seamless user experience which communicated with ASP.net MVC3, connected to MSSQL database via Entity Framework and implemented JavaScript work order management system with ESRI and Dojo; met customer expectations of system features",
       "Generated backend billing engine to process customer information and create customer bills"
     ]
   },
@@ -115,7 +116,8 @@
     "startDate": "March 2012",
     "endDate": "August 2012",
     "details": [
-      "Managed operations team in revamping of IT Department support protocols; built application to catalog critical server errors and maintained on-call support team and ticket system to increase efficiency",
+      "Built application to catalog critical server errors and maintained on-call support team and ticket system to increase efficiency",
+      "Managed operations team in revamping of IT Department support protocols",
       "Led addition of asynchronous communication to predominantly synchronous application",
       "Developed and maintained internal and external ASP.net and ASP.net MVC applications; external application utilized 2.3 million beneficiaries and providers daily"
     ]
@@ -131,7 +133,7 @@
     "details": [
       "Architected system for financial accounts that populated custom database with data pulled from multiple external sources; replaced manually-updated tools with automatically generated reports sent to company shareholders",
       "Utilized custom DevExpress Winforms Reporting tool to create complex custom reports with ability for data sanitizing with user-created logic, format for print, and generate multiple output formats",
-      "Built in capability for simultaneous multi-user updates through C# 4.0 and unique server components"
+      "Built in capability for simultaneous multi-user updates through C# 4.0 and unique server Components"
     ]
   }
 ]

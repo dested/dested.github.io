@@ -6,7 +6,8 @@ const Keyword = glamorous.span({
     fontSize: '.7rem',
     color: '#5D5D5D',
     cursor: 'pointer',
-    display: 'inline-block'
+    display: 'inline-block',
+    userSelect: 'none'
 });
 
 interface Props {

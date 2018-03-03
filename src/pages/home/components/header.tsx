@@ -67,7 +67,7 @@ export let Header: React.SFC = () => {
                 <Link area={'linkedin'} href={'https://www.linkedin.com/in/dested'}>
                     LinkedIn
                 </Link>
-                <Link area={'resume'} href={'mailto:dested@gmail.com?subject=Please%20send%20me%20your%20resume!'}>
+                <Link area={'resume'} href={'mailto:dested@gmail.com?subject=I%20have%20the%20perfect%20job%20for%20you%21%20Please%20send%20me%20your%20resume%21'}>
                     Resume
                 </Link>
                 <Link area={'contact'} href={'mailto:dested@gmail.com'}>
