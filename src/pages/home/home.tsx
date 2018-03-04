@@ -53,13 +53,18 @@ const ToyHolder = glamorous.div({
 });
 
 const HeroImage = glamorous.div({
-    height: '600px',
     [media.phone]: {
         height: '300px'
     },
     [media.tablet]: {
         height: '400px'
-    }
+    },
+    [media.desktop]: {
+        height: '600px',
+    },
+    [media.bigDesktop]: {
+        height: '600px',
+    },
 });
 
 export class Home extends React.Component<Props, State> {
