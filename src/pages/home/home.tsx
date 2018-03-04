@@ -30,7 +30,7 @@ interface State {
 }
 
 const Page = glamorous.div({
-    marginTop: 'calc(4rem + 15px)',
+    marginTop: 'calc(4rem)',
     display: 'flex',
     flexDirection: 'column'
 });
@@ -102,7 +102,7 @@ export class Home extends React.Component<Props, State> {
                 }
             >
                 <Header/>
-                <Intro/>
+                {this.state.showResume && <Intro/>}
                 <Section color={'#F1F1F1'} title={'Featured Projects'}>
                     <HeroImage>
                         <Swiper
