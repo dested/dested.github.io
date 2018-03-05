@@ -217,6 +217,22 @@
     ]
   },
   {
+    "url": "https://dested.com/",
+    "images": [
+      "assets/project-images/desteddotcom.png"
+    ],
+    "title": "Dested.com",
+    "github": "https://github.com/dested/dested.com",
+    "description": "This hand built portfolio site",
+    "keywords": [
+      "react",
+      "redux",
+      "javascript",
+      "typescript",
+      "weekend"
+    ]
+  },
+  {
     "url": "https://github.com/dested/Peer-Test",
     "images": [
       "assets/project-images/webrtc-test.png"
