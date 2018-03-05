@@ -1,5 +1,8 @@
 import glamorous from 'glamorous';
 import * as React from 'react';
+import {Dispatch} from 'redux';
+import {connect} from 'react-redux';
+import {PageAction, PageActions} from '../../../actions/page';
 
 const Keyword = glamorous.span({
     padding: '5px',
@@ -12,12 +15,12 @@ const Keyword = glamorous.span({
 
 interface Props {
     keywords: string[];
-    selectKeyword: (keyword: string) => void;
+    setSelectedKeyword: (keyword: string | null) => void;
 }
 
-export let Keywords: React.SFC<Props> = ({keywords, selectKeyword}) => {
+let _Keywords: React.SFC<Props> = ({keywords, setSelectedKeyword}) => {
     const tap = (e: {stopPropagation: () => void}, keyword: string) => {
-        selectKeyword(keyword);
+        setSelectedKeyword(keyword);
         e.stopPropagation();
     };
     return (
@@ -30,3 +33,11 @@ export let Keywords: React.SFC<Props> = ({keywords, selectKeyword}) => {
         </>
     );
 };
+
+export let Keywords = connect(null, (dispatch: Dispatch<PageAction>) => {
+    return {
+        setSelectedKeyword: (keyword: string | null) => {
+            dispatch(PageActions.setSelectedKeyword(keyword));
+        }
+    };
+})(_Keywords);

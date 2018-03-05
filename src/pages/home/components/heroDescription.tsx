@@ -67,10 +67,9 @@ const KeywordHolder = glamorous.div({
 
 interface Props {
     hero: IProject;
-    selectKeyword: (keyword: string) => void;
 }
 
-export let HeroDescription: React.SFC<Props> = ({hero, selectKeyword}) => {
+export let HeroDescription: React.SFC<Props> = ({hero}) => {
     return (
         <Holder>
             <Title>{hero.title}</Title>
@@ -79,7 +78,7 @@ export let HeroDescription: React.SFC<Props> = ({hero, selectKeyword}) => {
                 {hero.github && <Github href={hero.github}>github</Github>}
             </Links>
             <KeywordHolder>
-                <Keywords keywords={hero.keywords} selectKeyword={selectKeyword} />
+                <Keywords keywords={hero.keywords} />
             </KeywordHolder>
             <Pitch>{hero.pitch}</Pitch>
             <Description>{hero.description}</Description>

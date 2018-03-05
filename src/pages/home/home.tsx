@@ -1,9 +1,7 @@
 import * as React from 'react';
 import glamorous from 'glamorous';
 
-import projectData from '../../data/projects.json';
-import toyData from '../../data/toys.json';
-import resumeData from '../../data/resume.json';
+import {connect, DispatchProp} from 'react-redux';
 
 import {IProject, IResumeItem, IToy} from '../../models';
 import {Swiper} from '../../components/swiper';
@@ -16,20 +14,24 @@ import {Section} from '../../components/section';
 import {Toy} from './components/toy';
 import {Resume} from './components/resume';
 import {media} from '../../utils/styleUtils';
+import {PageAction, PageActions} from '../../actions/page';
+import {Store} from '../../reducers';
+import {Dispatch} from 'redux';
 
-interface Props {
-}
-
-interface State {
+interface Props extends DispatchProp<PageAction> {
     showResume: boolean;
     projects: IProject[];
     resume: IResumeItem[];
     toys: IToy[];
-    activeHero: IProject;
-    selectedToyKeyword: string | null;
+    selectedKeyword: string | null;
+    setSelectedKeyword: (keyword: string | null) => void;
 }
 
-const Page = glamorous.div({
+interface State {
+    activeHero: IProject;
+}
+
+const Holder = glamorous.div({
     marginTop: 'calc(4rem)',
     display: 'flex',
     flexDirection: 'column'
@@ -60,30 +62,19 @@ const HeroImage = glamorous.div({
         height: '400px'
     },
     [media.desktop]: {
-        height: '600px',
+        height: '600px'
     },
     [media.bigDesktop]: {
-        height: '600px',
-    },
+        height: '600px'
+    }
 });
 
-export class Home extends React.Component<Props, State> {
+class Page extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
 
-        let projects = projectData;
-        let resume = resumeData;
-        let toys = toyData.sort(() => {
-            return Math.random() * 100 - 50;
-        });
-
         this.state = {
-            projects,
-            toys,
-            resume,
-            showResume: window.location.host.includes('resume'),
-            activeHero: projects[0],
-            selectedToyKeyword: null
+            activeHero: props.projects[0]
         };
     }
 
@@ -95,51 +86,51 @@ export class Home extends React.Component<Props, State> {
 
     render() {
         return (
-            <Page
-                onMouseDown={() =>
-                    this.state.selectedToyKeyword != null &&
-                    this.setState(prev => ({...prev, selectedToyKeyword: null}))
-                }
-            >
-                <Header/>
-                {this.state.showResume && <Intro/>}
+            <Holder onMouseDown={() => this.props.selectedKeyword != null && this.props.setSelectedKeyword(null)}>
+                <Header />
+                {this.props.showResume && <Intro />}
                 <Section color={'#F1F1F1'} title={'Featured Projects'}>
                     <HeroImage>
                         <Swiper
                             height={'100%'}
-                            items={this.state.projects}
+                            items={this.props.projects}
                             activeItem={this.state.activeHero}
                             selectItem={hero => this.selectHero(hero as IProject)}
                         />
                     </HeroImage>
-                    <HeroDescription
-                        hero={this.state.activeHero}
-                        selectKeyword={keyword => this.setState(prev => ({...prev, selectedToyKeyword: keyword}))}
-                    />
+                    <HeroDescription hero={this.state.activeHero} />
                 </Section>
-                {this.state.showResume && (
+                {this.props.showResume && (
                     <Section color={'#F1F1F1'} title={'Resume'}>
-                        <Resume resume={this.state.resume}/>
+                        <Resume resume={this.props.resume} />
                     </Section>
                 )}
                 <Section color={'#dfdfdf'} title={'Toys'}>
-                    <ToyHolder>
-                        {this.state.toys.map(toy => (
-                            <Toy
-                                key={toy.title}
-                                toy={toy}
-                                selectKeyword={keyword =>
-                                    this.setState(prev => ({...prev, selectedToyKeyword: keyword}))
-                                }
-                                selectedKeyword={this.state.selectedToyKeyword}
-                            />
-                        ))}
-                    </ToyHolder>
+                    <ToyHolder>{this.props.toys.map(toy => <Toy key={toy.title} toy={toy} />)}</ToyHolder>
                 </Section>
 
-                <Github/>
-                <Footer/>
-            </Page>
+                <Github />
+                <Footer />
+            </Holder>
         );
     }
 }
+
+export let Home = connect(
+    (state: Store) => {
+        return {
+            showResume: state.pageState.showResume,
+            projects: state.pageState.projects,
+            resume: state.pageState.resume,
+            toys: state.pageState.toys,
+            selectedKeyword: state.pageState.selectedKeyword
+        };
+    },
+    (dispatch: Dispatch<PageAction>) => {
+        return {
+            setSelectedKeyword: (keyword: string | null) => {
+                dispatch(PageActions.setSelectedKeyword(keyword));
+            }
+        };
+    }
+)(Page);

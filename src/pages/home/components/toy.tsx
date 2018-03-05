@@ -3,7 +3,9 @@ import glamorous from 'glamorous';
 import {IToy} from '../../../models';
 import {Keywords} from './keywords';
 import {Swiper} from '../../../components/swiper';
-import {centerMargin, media} from '../../../utils/styleUtils';
+import {media} from '../../../utils/styleUtils';
+import {Store} from '../../../reducers';
+import {connect} from 'react-redux';
 
 const Holder = glamorous.div<{isSelected: boolean}>(
     {
@@ -25,17 +27,22 @@ const Holder = glamorous.div<{isSelected: boolean}>(
 interface ToyProps {
     toy: IToy;
     selectedKeyword: string | null;
-    selectKeyword: (keyword: string) => void;
 }
 
-export let Toy: React.SFC<ToyProps> = ({toy, selectedKeyword, selectKeyword}) => {
+let _Toy: React.SFC<ToyProps> = ({toy, selectedKeyword}) => {
     return (
         <Holder isSelected={selectedKeyword === null || toy.keywords.indexOf(selectedKeyword) >= 0}>
             <ToyImage toy={toy} />
-            <ToyDescription toy={toy} selectKeyword={selectKeyword} />
+            <ToyDescription toy={toy} />
         </Holder>
     );
 };
+
+export let Toy = connect((state: Store) => {
+    return {
+        selectedKeyword: state.pageState.selectedKeyword
+    };
+})(_Toy);
 
 const ToyHolder = glamorous.div({
     width: '100%',
@@ -101,10 +108,9 @@ const Url = glamorous.a({
 
 interface Props {
     toy: IToy;
-    selectKeyword: (keyword: string) => void;
 }
 
-export let ToyDescription: React.SFC<Props> = ({toy, selectKeyword}) => {
+export let ToyDescription: React.SFC<Props> = ({toy}) => {
     return (
         <DescriptionHolder>
             <Title>{toy.title}</Title>
@@ -114,7 +120,7 @@ export let ToyDescription: React.SFC<Props> = ({toy, selectKeyword}) => {
             </div>
             <Description dangerouslySetInnerHTML={{__html: toy.description}} />
             <KeywordHolder>
-                <Keywords keywords={toy.keywords} selectKeyword={selectKeyword} />
+                <Keywords keywords={toy.keywords} />
             </KeywordHolder>
         </DescriptionHolder>
     );
