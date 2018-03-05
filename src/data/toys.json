@@ -34,7 +34,6 @@
     ]
   },
   {
-    "url": "https://github.com/Penguio-Framework",
     "images": [
       "assets/project-images/penguio.png"
     ],
@@ -233,7 +232,6 @@
     ]
   },
   {
-    "url": "https://github.com/dested/Peer-Test",
     "images": [
       "assets/project-images/webrtc-test.png"
     ],
@@ -250,7 +248,6 @@
     ]
   },
   {
-    "url": "https://github.com/dested/MultiplayerPathFindingEngine",
     "images": [
       "assets/project-images/multiplayer-engine.png"
     ],

@@ -2,7 +2,6 @@ import * as React from 'react';
 import glamorous from 'glamorous';
 import {IToy} from '../../../models';
 import {Keywords} from './keywords';
-import {Swiper} from '../../../components/swiper';
 import {media} from '../../../utils/styleUtils';
 import {Store} from '../../../reducers';
 import {connect} from 'react-redux';
@@ -29,10 +28,23 @@ interface ToyProps {
     selectedKeyword: string | null;
 }
 
+const ToyLink = glamorous.a({
+    width: '100%',
+    height: '300px'
+});
+
+const ToyImage = glamorous.img({
+    background: '#FFF',
+    width: '100%',
+    height: '300px'
+});
+
 let _Toy: React.SFC<ToyProps> = ({toy, selectedKeyword}) => {
     return (
         <Holder isSelected={selectedKeyword === null || toy.keywords.indexOf(selectedKeyword) >= 0}>
-            <ToyImage toy={toy} />
+            <ToyLink href={toy.url || toy.github}>
+                <ToyImage src={toy.images[0]} alt={toy.title} />
+            </ToyLink>
             <ToyDescription toy={toy} />
         </Holder>
     );
@@ -43,35 +55,6 @@ export let Toy = connect((state: Store) => {
         selectedKeyword: state.pageState.selectedKeyword
     };
 })(_Toy);
-
-const ToyHolder = glamorous.div({
-    width: '100%',
-    backgroundColor: '#ccc'
-});
-
-class ToyImage extends React.Component<{toy: IToy}, {selectedImage: {image: string}; images: {image: string}[]}> {
-    constructor(props: {toy: IToy}) {
-        super(props);
-        const images = props.toy.images.map(a => ({image: a}));
-        this.state = {
-            images: images,
-            selectedImage: images[0]
-        };
-    }
-
-    render() {
-        return (
-            <ToyHolder>
-                <Swiper
-                    height={'calc(300px)'}
-                    selectItem={image => this.setState(prev => ({...prev, selectedImage: image}))}
-                    activeItem={this.state.selectedImage}
-                    items={this.state.images}
-                />
-            </ToyHolder>
-        );
-    }
-}
 
 const DescriptionHolder = glamorous.div({
     flex: 1,
@@ -115,7 +98,7 @@ export let ToyDescription: React.SFC<Props> = ({toy}) => {
         <DescriptionHolder>
             <Title>{toy.title}</Title>
             <div style={{display: 'flex', justifyContent: 'space-around'}}>
-                <Url href={toy.url}>site</Url>
+                {toy.url && <Url href={toy.url}>site</Url>}
                 <Github href={toy.github}>github</Github>
             </div>
             <Description dangerouslySetInnerHTML={{__html: toy.description}} />
