@@ -28,7 +28,7 @@ interface SwipeableState {
     swiping: boolean;
 }
 
-const SwiperOuter = glamorous.div<{height: string}>(
+const SwiperOuter = glamorous.div<{ height: string }>(
     {
         backgroundColor: '#555',
         width: '100%',
@@ -41,7 +41,7 @@ const SwiperOuter = glamorous.div<{height: string}>(
     })
 );
 
-const SwiperHolder = glamorous.div<{numberOfItems: number}>(
+const SwiperHolder = glamorous.div<{ numberOfItems: number }>(
     {
         backgroundColor: '#555',
         height: '100%',
@@ -52,7 +52,7 @@ const SwiperHolder = glamorous.div<{numberOfItems: number}>(
     })
 );
 
-const SwiperImage = glamorous.div<{image: string}>(
+const SwiperImage = glamorous.div<{ image: string }>(
     {
         width: '100%',
         height: '100%',
@@ -78,10 +78,11 @@ export class Swiper extends React.Component<Props, State> {
         return 'changedTouches' in e ? {x: e.changedTouches[0].clientX} : {x: e.clientX};
     }
 
+
     private static calculatePos(
         e: TouchEvent & MouseEvent,
         state: SwipeableState
-    ): {deltaX: number; absX: number; velocity: number} {
+    ): { deltaX: number; absX: number; velocity: number } {
         const {x} = Swiper.getMovingPosition(e);
 
         const deltaX = state.x! - x;
@@ -208,6 +209,13 @@ export class Swiper extends React.Component<Props, State> {
         this.props.selectItem(this.props.items[newShownIndex]);
     }
 
+    componentWillReceiveProps(nextProps: Readonly<Props>): void {
+        if (nextProps.activeItem !== this.props.activeItem) {
+            let index = this.props.items.indexOf(nextProps.activeItem);
+            this.setState(prev => ({...prev, shownIndex: index}));
+        }
+    }
+
     private setDivReference(d: HTMLDivElement): void {
         if (!d) {
             return;
@@ -228,17 +236,20 @@ export class Swiper extends React.Component<Props, State> {
     }
 
     componentDidMount(): void {
-        this.autoInterval = window.setInterval(() => {
-            if (this.state.didTouch) {
-                this.setState(prev => ({...prev, didTouch: false}));
-            } else {
-                this.setState(prev => {
-                    let shownIndex = (prev.shownIndex + 1) % this.props.items.length;
-                    this.props.selectItem(this.props.items[shownIndex]);
-                    return {...prev, shownIndex: shownIndex};
-                });
-            }
-        }, 5000);
+        this.autoInterval = window.setInterval(
+            () => {
+                if (this.state.didTouch) {
+                    this.setState(prev => ({...prev, didTouch: false}));
+                } else {
+                    this.setState(prev => {
+                        let shownIndex = (prev.shownIndex + 1) % this.props.items.length;
+                        this.props.selectItem(this.props.items[shownIndex]);
+                        return {...prev, shownIndex: shownIndex};
+                    });
+                }
+            },
+            13000
+        );
     }
 
     render() {
@@ -258,7 +269,7 @@ export class Swiper extends React.Component<Props, State> {
                     onTouchEnd={this.onTouchEnd.bind(this)}
                     onMouseDown={this.onMouseDown.bind(this)}
                 >
-                    {this.props.items.map(h => <SwiperImage key={h.image} image={h.image} />)}
+                    {this.props.items.map(h => <SwiperImage key={h.image} image={h.image}/>)}
                 </SwiperHolder>
                 <SwiperDots
                     items={this.props.items}
@@ -272,13 +283,16 @@ export class Swiper extends React.Component<Props, State> {
 
 const SwiperDotHolder = glamorous.div({
     position: 'absolute',
-    bottom: 30,
+    bottom: '0px',
+    height: '30px',
     display: 'flex',
     justifyContent: 'center',
-    width: '100%'
+    alignItems: 'center',
+    width: '100%',
+    backgroundColor: 'rgba(0,0,0,.8)'
 });
 
-const SwiperDot = glamorous.div<{active: boolean}>(
+const SwiperDot = glamorous.div<{ active: boolean }>(
     {
         borderRadius: '5px',
         marginLeft: '5px',
@@ -302,7 +316,11 @@ let SwiperDots: React.SFC<DotsProps> = props => {
     return (
         <SwiperDotHolder>
             {props.items.map(item => (
-                <SwiperDot key={item.image} active={item === props.activeItem} onClick={() => props.selectItem(item)} />
+                <SwiperDot
+                    key={item.image}
+                    active={item === props.activeItem}
+                    onClick={() => props.selectItem(item)}
+                />
             ))}
         </SwiperDotHolder>
     );
