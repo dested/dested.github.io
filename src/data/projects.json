@@ -1,5 +1,33 @@
 [
   {
+    "url": "http://cleverrx.com",
+    "image": "assets/project-images/clever.png",
+    "title": "Clever Rx",
+    "pitch": "Find the cheapest drugs for all the pharmacies around you; easy, fast and free!",
+    "description": "A FullStack TypeScript/React Native/NodeJS, Android and iOS app for quickly getting the best price for your prescriptions. ",
+    "keywords": [
+      "react native",
+      "serverless",
+      "apigateway",
+      "nodejs",
+      "typescript"
+    ]
+  },
+  {
+    "url": "http://styr.com",
+    "image": "assets/project-images/styr.png",
+    "title": "STYR Labs",
+    "pitch": "Mobile app used by tens of thousands of active users every day",
+    "description": "A TypeScript based native Android and iOS app utilizing a .NET restful API hosted on AWS. Native UI rendering was accomplished using React Native. App has full white-labeling support as well as i18n and has been recomposed for many vendors around the world.",
+    "keywords": [
+      "typescript",
+      "react native",
+      "aws",
+      "c#",
+      "angular"
+    ]
+  },
+  {
     "url": "https://oursonic.org",
     "image": "assets/project-images/sonic.png",
     "title": "Our Sonic",
@@ -15,20 +43,7 @@
       "canvas"
     ]
   },
-  {
-    "url": "http://styr.com",
-    "image": "assets/project-images/styr.png",
-    "title": "STYR Labs",
-    "pitch": "Mobile app used by tens of thousands of active users every day",
-    "description": "A TypeScript based native Android and iOS app utilizing a .NET restful API hosted on AWS. Native UI rendering was accomplished using Tabris.JS. We built a custom UI framework on top of Tabris.JS to facilitate things like page and state management, as well as a custom testing framework to support our specific use case. The app has gone through many rapid iterations, striving to never breaking backwards compatibility while still providing the best experience for new users. We have white labeled the app for many vendors around the world, as well as full i18n support.",
-    "keywords": [
-      "typescript",
-      "tabris.js",
-      "aws",
-      "c#",
-      "angular"
-    ]
-  },
+
   {
     "url": "https://itunes.apple.com/us/app/penguin-shuffle-uncover-path/id909070508",
     "image": "assets/project-images/penguin-shuffle.png",

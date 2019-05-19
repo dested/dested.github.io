@@ -1,18 +1,34 @@
 [
   {
+    "title": "Principal Architect",
+    "company": "Clever Rx",
+    "contractor": true,
+    "url": "https://cleverrx.com/",
+    "location": "Scottsdale, AZ",
+    "startDate": "January 2019",
+    "endDate": "May 2019",
+    "details": [
+      "Architected and maintained a React Native Android/iOS app written in TypeScript",
+      "Architected and maintained a fully stateless RESTful API using Serverless, NodeJS, and TypeScript, hosted on AWS API Gateway",
+      "Worked closely with the CEO to convert business rules into real executable logic",
+      "Designed custom modern UI",
+      "Integrated with several third-party APIs for things such as prescription lookup and drug pricing"
+    ]
+  },{
     "title": "Chief Technology Officer",
     "company": "STYR Labs",
     "contractor": false,
     "url": "https://styr.com/",
     "location": "Scottsdale, AZ",
     "startDate": "October 2016",
-    "endDate": "Present",
+    "endDate": "April 2019",
     "details": [
       "Built the development team from a single engineer to a stable team of 10 in 4 months",
       "Outlined and built architecture for a brand-new backend system, database, web portal, and mobile applications, as well as payment processing and order fulfillment",
+      "Pioneered the use of TypeScript, React Native, and Serverless",
       "Worked closely with CEO to devise and develop features that would affect our business",
       "Managed and procured relationships with 3rd party vendors",
-      "Oversaw development of 4 mobile applications, 2 web portals, and countless 3rd party integrations, used by tens of thousands of paying customers each day",
+      "Oversaw development of 7 mobile applications, 4 web portals, and countless 3rd party integrations, used by tens of thousands of paying customers each day",
       "Integrated a custom hardware stack to support the seamless communication with multiple proprietary Bluetooth devices",
       "Devised process for backend and application deploys to allow consistent deploys every time."
     ]
@@ -91,49 +107,6 @@
       "Created pay-per-click search advertisements via API seamlessly and produced real-time campaign adjustments based on tracked analytics",
       "Coded frontend utilizing AngularJS; connected to lightweight ASP.net WebAPI layer to process and route calls through the business layer to MSSQL via Entity framework",
       "Utilized then-new JavaScript MVC framework for role and security management"
-    ]
-  },
-  {
-    "title": "Software Developer",
-    "company": "Global Waters",
-    "contractor": true,
-    "url": "https://www.gwresources.com/",
-    "location": "Phoenix, AZ",
-    "startDate": "August 2012",
-    "endDate": "April 2013",
-    "details": [
-      "Developed water and property management system for deployment in existing municipalities, incorporating customer relations, work orders, bill payment, consumption status and record management; reduced costs of solution and remained current with industry trends",
-      "Utilized AJAX technologies to create seamless user experience which communicated with ASP.net MVC3, connected to MSSQL database via Entity Framework and implemented JavaScript work order management system with ESRI and Dojo; met customer expectations of system features",
-      "Generated backend billing engine to process customer information and create customer bills"
-    ]
-  },
-  {
-    "title": "Software Developer",
-    "company": "TRIWest",
-    "contractor": true,
-    "url": "https://www.triwest.com/",
-    "location": "Phoenix, AZ",
-    "startDate": "March 2012",
-    "endDate": "August 2012",
-    "details": [
-      "Built application to catalog critical server errors and maintained on-call support team and ticket system to increase efficiency",
-      "Managed operations team in revamping of IT Department support protocols",
-      "Led addition of asynchronous communication to predominantly synchronous application",
-      "Developed and maintained internal and external ASP.net and ASP.net MVC applications; external application utilized 2.3 million beneficiaries and providers daily"
-    ]
-  },
-  {
-    "title": "Lead Software Developer",
-    "company": "DataMonkey Technologies",
-    "contractor": false,
-    "url": "https://www.linkedin.com/company/data-monkey-technologies/",
-    "location": "Phoenix, AZ",
-    "startDate": "May 2008",
-    "endDate": "March 2012",
-    "details": [
-      "Architected system for financial accounts that populated custom database with data pulled from multiple external sources; replaced manually-updated tools with automatically generated reports sent to company shareholders",
-      "Utilized custom DevExpress Winforms Reporting tool to create complex custom reports with ability for data sanitizing with user-created logic, format for print, and generate multiple output formats",
-      "Built in capability for simultaneous multi-user updates through C# 4.0 and unique server Components"
     ]
   }
 ]
