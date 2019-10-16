@@ -17,6 +17,10 @@ const Holder = glamorous.div({
   gridTemplateColumns: `auto 50px 30px 1fr`,
   gridTemplateRows: `50px auto auto auto`,
   alignItems: 'center',
+
+  borderBottomRightRadius: '20px',
+  borderBottomLeftRadius: '20px',
+  overflow: 'hidden',
   [media.phone]: {
     gridTemplateAreas: `
             "title title"
@@ -76,6 +80,7 @@ export let HeroDescription: React.SFC<Props> = ({hero}) => {
       <Links>
         <Site href={hero.url}>site</Site>
         {hero.github && <Github href={hero.github}>github</Github>}
+        {hero.link && <Github href={hero.link}>link</Github>}
       </Links>
       <KeywordHolder>
         <Keywords keywords={hero.keywords} />

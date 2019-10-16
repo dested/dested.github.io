@@ -55,6 +55,9 @@ const ToyHolder = glamorous.div({
 });
 
 const HeroImage = glamorous.div({
+  borderTopRightRadius: '20px',
+  borderTopLeftRadius: '20px',
+  overflow: 'hidden',
   [media.phone]: {
     height: '300px'
   },

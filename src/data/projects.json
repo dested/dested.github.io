@@ -1,6 +1,21 @@
 [
   {
-    "url": "http://cleverrx.com",
+    "url": "https://doubledatesapp.com",
+    "image": "assets/project-images/doubledates.png",
+    "title": "DoubleDates",
+    "pitch": "Make New Friends, Together",
+    "link": "https://apps.apple.com/us/app/doubledates/id1367625072",
+    "description": "A FullStack TypeScript/React Native/NodeJS/Serverless, Android and iOS app for couples to meet other couples and create events together.",
+    "keywords": [
+      "react native",
+      "serverless",
+      "apigateway",
+      "nodejs",
+      "typescript"
+    ]
+  },
+  {
+    "url": "https://cleverrx.com",
     "image": "assets/project-images/clever.png",
     "title": "Clever Rx",
     "pitch": "Find the cheapest drugs for all the pharmacies around you; easy, fast and free!",
@@ -14,7 +29,7 @@
     ]
   },
   {
-    "url": "http://styr.com",
+    "url": "https://styr.com",
     "image": "assets/project-images/styr.png",
     "title": "STYR Labs",
     "pitch": "Mobile app used by tens of thousands of active users every day",
@@ -72,20 +87,6 @@
       "typescript",
       "multiplayer",
       "canvas"
-    ]
-  },
-  {
-    "url": "https://github.com/Shuffle-Game/AnyCardGame",
-    "image": "assets/project-images/acg.png",
-    "title": "Any Card Game",
-    "github": "https://github.com/Shuffle-Game/AnyCardGame",
-    "pitch": "Design, Build, and Play Card Games",
-    "description": "AnyCardGame is a game editor built to allow developers to create their own custom card games, have them hosted, any playable over the internet. The card games are built using TypeScript or JavaScript, with Monaco as a code editor, and designed using a HTML based editor. Games can be tested, debugged, and played all through the web app. The app is built using angular 1.5, game server built using .NET and NodeJS. Server to server communication was facilitated via Redis.",
-    "keywords": [
-      "javascript",
-      "typescript",
-      "angular",
-      "redis"
     ]
   }
 ]

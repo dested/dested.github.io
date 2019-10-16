@@ -14,6 +14,7 @@ export interface IProject {
   image: string;
   title: string;
   github?: string;
+  link?: string;
   pitch: string;
   description: string;
   keywords: string[];

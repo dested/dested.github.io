@@ -12,9 +12,11 @@ const Holder = glamorous.div<{isSelected: boolean}>(
     display: 'flex',
     width: '95%',
     flexDirection: 'column',
-    paddingTop: '10px',
-    paddingBottom: '10px',
+    marginTop: '10px',
+    marginBottom: '10px',
     transition: 'opacity .5s',
+    borderRadius: '10px',
+    overflow: 'hidden',
     [media.phone]: {
       width: '100%'
     }
