@@ -44,7 +44,7 @@
     "tslint-react": "^4.0.0",
     "typescript": "^3.4.5",
     "utility-types": "^1.1.0",
-    "webpack-dev-server": "^2.11.5"
+    "webpack-dev-server": "^3.1.11"
   },
   "dependencies": {
     "glamor": "^2.20.40",
