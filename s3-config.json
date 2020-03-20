@@ -1,0 +1,8 @@
+{
+  "prod": {
+    "bucket": "dested.com",
+    "cloudfront": "EHGS3HZV53S53",
+    "command": "yarn build",
+    "path": "public"
+  }
+}

@@ -6,13 +6,7 @@
     "pitch": "Make New Friends, Together",
     "link": "https://apps.apple.com/us/app/doubledates/id1367625072",
     "description": "A FullStack TypeScript/React Native/NodeJS/Serverless, Android and iOS app for couples to meet other couples and create events together.",
-    "keywords": [
-      "react native",
-      "serverless",
-      "apigateway",
-      "nodejs",
-      "typescript"
-    ]
+    "keywords": ["react native", "serverless", "apigateway", "nodejs", "typescript"]
   },
   {
     "url": "https://cleverrx.com",
@@ -20,43 +14,41 @@
     "title": "Clever Rx",
     "pitch": "Find the cheapest drugs for all the pharmacies around you; easy, fast and free!",
     "description": "A FullStack TypeScript/React Native/NodeJS, Android and iOS app for quickly getting the best price for your prescriptions. ",
-    "keywords": [
-      "react native",
-      "serverless",
-      "apigateway",
-      "nodejs",
-      "typescript"
-    ]
+    "keywords": ["react native", "serverless", "apigateway", "nodejs", "typescript"]
+  },
+  {
+    "url": "https://styr.com",
+    "image": "assets/project-images/styr-2.png",
+    "title": "STYR Labs V2",
+    "pitch": "Mobile app used by tens of thousands of active users every day",
+    "description": "A TypeScript based native Android and iOS app utilizing a .NET restful API hosted on AWS. Native UI rendering was accomplished using React Native. App has full white-labeling support as well as i18n and has been recomposed for many vendors around the world.",
+    "keywords": ["typescript", "react native", "aws", "c#"]
   },
   {
     "url": "https://styr.com",
     "image": "assets/project-images/styr.png",
-    "title": "STYR Labs",
+    "title": "STYR Labs V1",
     "pitch": "Mobile app used by tens of thousands of active users every day",
     "description": "A TypeScript based native Android and iOS app utilizing a .NET restful API hosted on AWS. Native UI rendering was accomplished using React Native. App has full white-labeling support as well as i18n and has been recomposed for many vendors around the world.",
-    "keywords": [
-      "typescript",
-      "react native",
-      "aws",
-      "c#",
-      "angular"
-    ]
+    "keywords": ["typescript", "react native", "aws", "c#"]
   },
+
   {
-    "url": "https://oursonic.org",
-    "image": "assets/project-images/sonic.png",
-    "title": "Our Sonic",
-    "github": "https://github.com/OurSonic/OurSonicTyped",
-    "pitch": "Hand built engine for simulating the original Sonic the Hedgehog games for Sega Genesis",
-    "description": "This project uses no external libraries aside from Angular for UI. Sonic 2 and 3 level data were exported out of the original ROM files using a C# library to convert tile data to JSON. The engine is a strict TypeScript application that achieves rendering at 60fps using canvas. Many performance tricks were employed to hit the 60fps goal such as using multiple canvases for different layers, storing the screens pixels in a typed array and using putImageData vs drawImage, and culling every pixel possible during draw. The API is hosted serverless using AWS API Gateway and Lambda.",
-    "keywords": [
-      "javascript",
-      "typescript",
-      "angular",
-      "aws",
-      "lambda",
-      "canvas"
-    ]
+    "url": "https://gyftbaby.com",
+    "image": "assets/project-images/gyft.png",
+    "title": "GYFT Baby",
+    "pitch": "Mobile app for tracking your pregnancy",
+    "description": "A TypeScript based native Android and iOS app built for woman to track and share special moments about their pregnancy with friends and family.",
+    "keywords": ["typescript", "react native", "aws", "c#"]
+  },
+
+  {
+    "url": "https://dyper.com",
+    "image": "assets/project-images/dyper.png",
+    "title": "DYPER",
+    "pitch": "Mobile app used by tens of thousands of active customers",
+    "description": "A TypeScript based native Android and iOS app to purchase our biodegradable compostable children's diapers. The app also facilitates tracking diaper changes to get the most bang for your buck.",
+    "keywords": ["typescript", "react native", "aws", "c#"]
   },
 
   {
@@ -66,13 +58,16 @@
     "github": "https://github.com/Penguio-Framework/PenguinShuffle",
     "pitch": "A fun puzzle game for Android and iOS",
     "description": "A simple local multiplayer puzzle game where you compete with your friends to guess how many moves it will take to reach the goal. The game has amassed several hundred purchases on Android and iOS with very little advertising. It is a MonoGame/Xamarin application utilizing my Penguio framework for deploying a C# game to Android, iOS, Windows Phone, Steam, and HTML5 from a single code base. All development done by me, with the art and audio done on contract.",
-    "keywords": [
-      "c#",
-      "xamarin",
-      "android",
-      "ios",
-      "penguio"
-    ]
+    "keywords": ["c#", "xamarin", "android", "ios", "penguio"]
+  },
+  {
+    "url": "https://oursonic.org",
+    "image": "assets/project-images/sonic.png",
+    "title": "Our Sonic",
+    "github": "https://github.com/OurSonic/OurSonicTyped",
+    "pitch": "Hand built engine for simulating the original Sonic the Hedgehog games for Sega Genesis",
+    "description": "This project uses no external libraries aside from Angular for UI. Sonic 2 and 3 level data were exported out of the original ROM files using a C# library to convert tile data to JSON. The engine is a strict TypeScript application that achieves rendering at 60fps using canvas. Many performance tricks were employed to hit the 60fps goal such as using multiple canvases for different layers, storing the screens pixels in a typed array and using putImageData vs drawImage, and culling every pixel possible during draw. The API is hosted serverless using AWS API Gateway and Lambda.",
+    "keywords": ["javascript", "typescript", "angular", "aws", "lambda", "canvas"]
   },
   {
     "url": "http://socialwargames.com",
@@ -81,12 +76,6 @@
     "github": "https://github.com/dested/Social-War-Games",
     "pitch": "An Online Social Experiment",
     "description": "Social War Games allows you to participate with and compete against other players on the internet in real time. It uses a voting mechanism to decide which series of moves should happen next, with the most popular moves for each unit during the 5-minute-long turn will be executed at the beginning of the next turn, in the vein of TwitchPlaysPokemon. It uses ReactJS for its UI and 2D Canvas for the gameplay, all using TypeScript. The backend is a horizontally scalable restful .NET Core API hosted on AWS. This allows tens of thousands of players to participate in the game at any given time.",
-    "keywords": [
-      "react",
-      "javascript",
-      "typescript",
-      "multiplayer",
-      "canvas"
-    ]
+    "keywords": ["react", "javascript", "typescript", "multiplayer", "canvas"]
   }
 ]

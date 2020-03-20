@@ -1,262 +1,143 @@
 [
   {
     "url": "projects/BingoBlockParty/index.html",
-    "images": [
-      "assets/project-images/bingo.png"
-    ],
+    "images": ["assets/project-images/bingo.png"],
     "title": "Bingo Block Party",
     "github": "https://github.com/Penguio-Framework/BingoBlockParty",
     "description": "A physics based multiplayer ball and bingo game. This product compiles to the Web, Android, and IOS using the Penguio engine",
-    "keywords": [
-      "javascript",
-      "penguio",
-      "multiplayer",
-      "c#",
-      "canvas",
-      "xamarin",
-      "android",
-      "ios"
-    ]
+    "keywords": ["javascript", "penguio", "multiplayer", "c#", "canvas", "xamarin", "android", "ios"]
   },
   {
     "url": "projects/hex/index.html",
-    "images": [
-      "assets/project-images/hexmaze.png"
-    ],
+    "images": ["assets/project-images/hexmaze.png"],
     "title": "Multiplayer Hexagon Maze",
     "github": "https://github.com/dested/Hexmaze",
     "description": "A party based maze game with a creative level layout. Maze layout done by <a href='http://www.dllu.net/'>Daniel Lu</a>. Multiplayer facilitated through socket.io",
-    "keywords": [
-      "javascript",
-      "c#",
-      "multiplayer",
-      "canvas"
-    ]
+    "keywords": ["javascript", "c#", "multiplayer", "canvas"]
   },
   {
-    "images": [
-      "assets/project-images/penguio.png"
-    ],
+    "images": ["assets/project-images/penguio.png"],
     "title": "Penguio Framework",
     "github": "https://github.com/Penguio-Framework",
     "description": "A Monogame/Xamarin based framework and CLI tool that allows for deploying a common codebase to Android, iOS, WindowsPhone, Windows8, Windows Desktop, and HTML5",
-    "keywords": [
-      "c#",
-      "tool",
-      "javascript",
-      "xamarin",
-      "monogame",
-      "canvas"
-    ]
+    "keywords": ["c#", "tool", "javascript", "xamarin", "monogame", "canvas"]
   },
   {
     "url": "projects/wire/index.html",
-    "images": [
-      "assets/project-images/wire-world.png"
-    ],
+    "images": ["assets/project-images/wire-world.png"],
     "title": "Wire World in Javascript",
     "github": "https://github.com/dested/WireWorld",
     "description": "An implementation of the <a href='http://www.quinapalus.com/wires11.html'>Wire World</a> cellular automaton computer in TypeScript",
-    "keywords": [
-      "performance",
-      "javascript",
-      "typescript",
-      "canvas",
-      "weekend"
-    ]
+    "keywords": ["performance", "javascript", "typescript", "canvas", "weekend"]
   },
   {
     "url": "http://runrunjump.com",
-    "images": [
-      "assets/project-images/runrunjump.png"
-    ],
+    "images": ["assets/project-images/runrunjump.png"],
     "title": "Run Run Jump",
     "github": "https://github.com/dested/RunRunJump",
     "description": "An idea for a 2d platformer with full level and physics editing capabilities",
-    "keywords": [
-      "javascript",
-      "typescript",
-      "canvas",
-      "weekend"
-    ]
+    "keywords": ["javascript", "typescript", "canvas", "weekend"]
   },
   {
     "url": "https://www.youtube.com/watch?v=RF7PwocNlCw",
-    "images": [
-      "assets/project-images/mario.png"
-    ],
+    "images": ["assets/project-images/mario.png"],
     "title": "Mario AI",
     "github": "https://github.com/dested/MarioAi",
     "description": "My AI agent for the 2009 <a href='http://julian.togelius.com/mariocompetition2009/'>MarioAI</a> competition. Uses A* to progress through the level.",
-    "keywords": [
-      "java",
-      "pathfinding",
-      "performance"
-    ]
+    "keywords": ["java", "pathfinding", "performance"]
   },
   {
     "url": "projects/Triangles/index.html",
-    "images": [
-      "assets/project-images/triangles.png"
-    ],
+    "images": ["assets/project-images/triangles.png"],
     "title": "Triangles Puzzle Game",
     "github": "https://github.com/dested/Triangles-",
     "description": "A rough implementation of an interesting puzzle game concept",
-    "keywords": [
-      "javascript",
-      "weekend",
-      "c#",
-      "canvas"
-    ]
+    "keywords": ["javascript", "weekend", "c#", "canvas"]
+  },
+  {
+    "url": "https://quickga.me",
+    "images": ["assets/project-images/dots.png"],
+    "title": "Dots Game",
+    "github": "https://github.com/dested/dots-game",
+    "description": "A concept for a simple multiplayer game.",
+    "keywords": ["typescript", "weekend", "canvas", "multiplayer"]
   },
   {
     "url": "projects/polygroup/index.html",
-    "images": [
-      "assets/project-images/poly-group.png"
-    ],
+    "images": ["assets/project-images/poly-group.png"],
     "title": "Server Clustering Algorithm",
     "description": "An implementation of how user clustering could work for a Massive Multiplayer game",
-    "keywords": [
-      "javascript",
-      "performance",
-      "canvas",
-      "multiplayer",
-      "weekend"
-    ]
+    "keywords": ["javascript", "performance", "canvas", "multiplayer", "weekend"]
   },
   {
     "url": "projects/hex-project/index.html",
-    "images": [
-      "assets/project-images/hex-project.png"
-    ],
+    "images": ["assets/project-images/hex-project.png"],
     "title": "Hex Game Project",
     "github": "https://github.com/dested/TurnRPG",
     "description": "A rough implementation of an interesting puzzle game concept",
-    "keywords": [
-      "javascript",
-      "c#",
-      "canvas"
-    ]
+    "keywords": ["javascript", "c#", "canvas"]
   },
   {
     "url": "projects/profiler/index.html",
-    "images": [
-      "assets/project-images/profiler.png"
-    ],
+    "images": ["assets/project-images/profiler.png"],
     "title": "Javascript Profiler",
     "github": "https://github.com/dested/jsprofiler",
     "description": "A javascript profiler that supports line by line statistical analysis. Uses Istanbul and ESPrima for code instrumentation",
-    "keywords": [
-      "javascript",
-      "tool",
-      "performance",
-      "weekend"
-    ]
+    "keywords": ["javascript", "tool", "performance", "weekend"]
   },
   {
     "url": "projects/snake/index.html",
-    "images": [
-      "assets/project-images/snake.png"
-    ],
+    "images": ["assets/project-images/snake.png"],
     "title": "Snake A*",
     "github": "https://github.com/dested/SnakeAStar",
     "description": "A solver for snake using the A* path finding algorithm",
-    "keywords": [
-      "javascript",
-      "pathfinding",
-      "c#",
-      "canvas",
-      "weekend"
-    ]
+    "keywords": ["javascript", "pathfinding", "c#", "canvas", "weekend"]
   },
   {
     "url": "http://aiplays.com/tetris",
-    "images": [
-      "assets/project-images/aiplaystetris.png"
-    ],
+    "images": ["assets/project-images/aiplaystetris.png"],
     "title": "AI Plays: TETRIS",
     "github": "https://github.com/dested/aiplays",
     "description": "A scripting engine that allows developers to write an AI for Tetris",
-    "keywords": [
-      "javascript",
-      "typescript",
-      "tool",
-      "weekend",
-      "canvas"
-    ]
+    "keywords": ["javascript", "typescript", "tool", "weekend", "canvas"]
   },
   {
     "url": "projects/color-sorter/index.html",
-    "images": [
-      "assets/project-images/color-sorter.png"
-    ],
+    "images": ["assets/project-images/color-sorter.png"],
     "title": "Color Sorter",
     "github": "https://gist.github.com/dested/7309dc3898485f27f611440002ac75a8",
     "description": "Sorts a 2d array of random colors by Hue and Light",
-    "keywords": [
-      "javascript",
-      "typescript",
-      "canvas",
-      "weekend"
-    ]
+    "keywords": ["javascript", "typescript", "canvas", "weekend"]
   },
   {
     "url": "https://twitter.com/TwtPlayTetris",
-    "images": [
-      "assets/project-images/tpt-2.png"
-    ],
+    "images": ["assets/project-images/tpt-2.png"],
     "title": "Twitter Plays Tetris",
     "github": "https://github.com/dested/twitter-plays-tetris",
     "description": "Community driven Tetris game played on Twitter",
-    "keywords": [
-      "multiplayer",
-      "javascript",
-      "typescript",
-      "weekend"
-    ]
+    "keywords": ["multiplayer", "javascript", "typescript", "weekend"]
   },
   {
-    "images": [
-      "assets/project-images/webrtc-test.png"
-    ],
+    "images": ["assets/project-images/webrtc-test.png"],
     "title": "Peer to Peer Test",
     "github": "https://github.com/dested/Peer-Test",
     "description": "A test application to determine the viability of web-rtc for large scale mostly \"serverless\" games",
-    "keywords": [
-      "typescript",
-      "performance",
-      "javascript",
-      "webrtc",
-      "weekend",
-      "tool"
-    ]
+    "keywords": ["typescript", "performance", "javascript", "webrtc", "weekend", "tool"]
   },
   {
-    "images": [
-      "assets/project-images/multiplayer-engine.png"
-    ],
+    "images": ["assets/project-images/multiplayer-engine.png"],
     "title": "MMO Engine",
     "github": "https://github.com/dested/MultiplayerPathFindingEngine",
     "description": "A test to build a horizontally scalable mmo engine for the web",
-    "keywords": [
-      "c#",
-      "javascript",
-      "multiplayer"
-    ]
+    "keywords": ["c#", "javascript", "multiplayer"]
   },
   {
     "url": "projects/bezier/index.html",
-    "images": [
-      "assets/project-images/bezier.png"
-    ],
+    "images": ["assets/project-images/bezier.png"],
     "title": "Cubic Bezier Curve",
     "github": "https://gist.github.com/dested/83adfc1afc684a7ed65b86ea01259661",
     "description": "A very simple Cubic Bezier Curve implementation in javascript",
-    "keywords": [
-      "javascript",
-      "canvas",
-      "weekend"
-    ]
+    "keywords": ["javascript", "canvas", "weekend"]
   },
   {
     "url": "https://github.com/Shuffle-Game/AnyCardGame",
@@ -264,12 +145,6 @@
     "title": "Any Card Game",
     "github": "https://github.com/Shuffle-Game/AnyCardGame",
     "description": "AnyCardGame is a game editor built to allow developers to create their own custom card games, have them hosted, any playable over the internet.  Games can be built, tested, debugged, and played all through the web app.",
-    "keywords": [
-      "javascript",
-      "typescript",
-      "angular",
-      "redis"
-    ]
+    "keywords": ["javascript", "typescript", "angular", "redis"]
   }
-
 ]
