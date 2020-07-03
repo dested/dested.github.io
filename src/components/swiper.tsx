@@ -1,6 +1,6 @@
 import glamorous from 'glamorous';
 import * as React from 'react';
-import {url} from '../utils/styleUtils';
+import {media, url} from '../utils/styleUtils';
 import {SwiperDots} from './swiperDots';
 
 export interface SwiperItem {
@@ -53,15 +53,23 @@ const SwiperHolder = glamorous.div<{numberOfItems: number}>(
   })
 );
 
-const SwiperImage = glamorous.div<{image: string}>(
+export const SwiperImage = glamorous.div<{image: string}>(
   {
     width: '100%',
-    height: '100%',
-    top: 0,
-    position: 'relative',
-    overflow: 'hidden',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover'
+    backgroundSize: 'cover',
+    [media.phone]: {
+      height: '200px'
+    },
+    [media.tablet]: {
+      height: '400px'
+    },
+    [media.desktop]: {
+      height: '600px'
+    },
+    [media.bigDesktop]: {
+      height: '600px'
+    }
   },
   p => ({
     backgroundImage: url(p.image)
@@ -223,9 +231,9 @@ export class Swiper extends React.Component<Props, State> {
 
   componentWillUnmount(): void {
     // tslint:disable-next-line
-        document.removeEventListener('mousemove', this.onMouseMove as any);
+    document.removeEventListener('mousemove', this.onMouseMove as any);
     // tslint:disable-next-line
-        document.removeEventListener('mouseup', this.onMouseUp as any);
+    document.removeEventListener('mouseup', this.onMouseUp as any);
     window.clearTimeout(this.autoInterval!);
   }
 

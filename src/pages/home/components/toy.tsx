@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {IToy} from '../../../models';
 import {Store} from '../../../reducers';
 import {media} from '../../../utils/styleUtils';
-import {Keywords} from './keywords';
 import {ToyDescription} from './toyDescription';
 
 const Holder = glamorous.div<{isSelected: boolean}>(

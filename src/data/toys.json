@@ -8,12 +8,20 @@
     "keywords": ["javascript", "penguio", "multiplayer", "c#", "canvas", "xamarin", "android", "ios"]
   },
   {
-    "url": "projects/hex/index.html",
-    "images": ["assets/project-images/hexmaze.png"],
-    "title": "Multiplayer Hexagon Maze",
-    "github": "https://github.com/dested/Hexmaze",
-    "description": "A party based maze game with a creative level layout. Maze layout done by <a href='http://www.dllu.net/'>Daniel Lu</a>. Multiplayer facilitated through socket.io",
-    "keywords": ["javascript", "c#", "multiplayer", "canvas"]
+    "url": "https://s3.us-west-2.amazonaws.com/tileattack.net/index.html",
+    "images": ["assets/project-images/tile-attack.png"],
+    "title": "Tile Attack",
+    "github": "https://github.com/dested/tileattack",
+    "description": "A remake of the classic tetris attack game in typescript.",
+    "keywords": ["javascript", "typescript", "canvas"]
+  },
+  {
+    "url": "https://baubly.s3.us-west-2.amazonaws.com/index.html",
+    "images": ["assets/project-images/baubly.png"],
+    "title": "Baubly",
+    "github": "https://github.com/dested/Baubly",
+    "description": "Test for a hexagon game engine",
+    "keywords": ["javascript", "engine", "typescript", "canvas"]
   },
   {
     "images": ["assets/project-images/penguio.png"],

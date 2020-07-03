@@ -6,15 +6,15 @@
     "pitch": "Make New Friends, Together",
     "link": "https://apps.apple.com/us/app/doubledates/id1367625072",
     "description": "A FullStack TypeScript/React Native/NodeJS/Serverless, Android and iOS app for couples to meet other couples and create events together.",
-    "keywords": ["react native", "serverless", "apigateway", "nodejs", "typescript"]
+    "keywords": ["react native", "serverless", "nodejs", "typescript"]
   },
   {
     "url": "https://cleverrx.com",
     "image": "assets/project-images/clever.png",
-    "title": "Clever Rx",
+    "title": "Clever RX",
     "pitch": "Find the cheapest drugs for all the pharmacies around you; easy, fast and free!",
     "description": "A FullStack TypeScript/React Native/NodeJS, Android and iOS app for quickly getting the best price for your prescriptions. ",
-    "keywords": ["react native", "serverless", "apigateway", "nodejs", "typescript"]
+    "keywords": ["react native", "serverless", "nodejs", "typescript"]
   },
   {
     "url": "https://styr.com",
@@ -70,12 +70,21 @@
     "keywords": ["javascript", "typescript", "angular", "aws", "lambda", "canvas"]
   },
   {
-    "url": "http://socialwargames.com",
+    "url": "https://socialwargames.com",
     "image": "assets/project-images/socialwargames.png",
     "title": "Social War Games",
     "github": "https://github.com/dested/Social-War-Games",
     "pitch": "An Online Social Experiment",
     "description": "Social War Games allows you to participate with and compete against other players on the internet in real time. It uses a voting mechanism to decide which series of moves should happen next, with the most popular moves for each unit during the 5-minute-long turn will be executed at the beginning of the next turn, in the vein of TwitchPlaysPokemon. It uses ReactJS for its UI and 2D Canvas for the gameplay, all using TypeScript. The backend is a horizontally scalable restful .NET Core API hosted on AWS. This allows tens of thousands of players to participate in the game at any given time.",
     "keywords": ["react", "javascript", "typescript", "multiplayer", "canvas"]
+  },
+  {
+    "url": "https://orbitalga.me/",
+    "image": "assets/project-images/orbital.png",
+    "title": "Orbital",
+    "github": "https://github.com/dested/orbitalga.me",
+    "pitch": "Multiplayer Space Invaders",
+    "description": "Social War Games allows you to participate with and compete against other players on the internet in real time. It uses a voting mechanism to decide which series of moves should happen next, with the most popular moves for each unit during the 5-minute-long turn will be executed at the beginning of the next turn, in the vein of TwitchPlaysPokemon. It uses ReactJS for its UI and 2D Canvas for the gameplay, all using TypeScript. The backend is a horizontally scalable restful .NET Core API hosted on AWS. This allows tens of thousands of players to participate in the game at any given time.",
+    "keywords": ["react", "javascript", "typescript", "multiplayer", "serverless", "canvas"]
   }
 ]

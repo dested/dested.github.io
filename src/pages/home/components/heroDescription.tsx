@@ -5,7 +5,7 @@ import {media} from '../../../utils/styleUtils';
 import {Keywords} from './keywords';
 
 const Holder = glamorous.div({
-  backgroundColor: 'white',
+  backgroundColor: '#fff',
   padding: '20px',
   color: '#333',
   display: 'grid',
@@ -35,6 +35,7 @@ const Holder = glamorous.div({
 
 const Title = glamorous.span({
   gridArea: 'title',
+  fontWeight: 'bold',
   fontSize: '2rem'
 });
 
@@ -56,6 +57,7 @@ const Github = glamorous.a({
 });
 const Pitch = glamorous.span({
   gridArea: 'pitch',
+  fontStyle: 'italic',
   paddingTop: '10px',
   fontSize: '1.5em'
 });

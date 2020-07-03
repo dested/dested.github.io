@@ -2,7 +2,7 @@ export interface IResumeItem {
   title: string;
   company: string;
   url: string;
-  contractor: string;
+  contractor: boolean;
   location: string;
   startDate: string;
   endDate: string;
@@ -11,6 +11,7 @@ export interface IResumeItem {
 
 export interface IProject {
   url: string;
+  type?: 'video';
   image: string;
   title: string;
   github?: string;
@@ -21,8 +22,9 @@ export interface IProject {
 }
 
 export interface IToy {
-  url: string;
+  url?: string;
   images: string[];
+  type?: 'video';
   title: string;
   github?: string;
   description: string;

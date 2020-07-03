@@ -6,7 +6,7 @@ import {PageAction, PageActions} from '../../../actions/page';
 
 const Keyword = glamorous.span({
   padding: '5px',
-  fontSize: '.7rem',
+  fontSize: '1.3rem',
   color: '#5D5D5D',
   cursor: 'pointer',
   display: 'inline-block',

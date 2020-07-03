@@ -6,7 +6,7 @@ import {connect, DispatchProp} from 'react-redux';
 import {Dispatch} from 'redux';
 import {PageAction, PageActions} from '../../actions/page';
 import {Section} from '../../components/section';
-import {Swiper} from '../../components/swiper';
+import {Swiper, SwiperImage} from '../../components/swiper';
 import {IProject, IResumeItem, IToy} from '../../models';
 import {Store} from '../../reducers';
 import {media} from '../../utils/styleUtils';
@@ -34,42 +34,33 @@ interface State {
 const Holder = glamorous.div({
   marginTop: 'calc(4rem)',
   display: 'flex',
-  flexDirection: 'column'
+  flexDirection: 'column',
 });
 
 const ToyHolder = glamorous.div({
   display: 'grid',
   justifyContent: 'space-between',
   [media.phone]: {
-    gridTemplateColumns: '1fr'
+    gridTemplateColumns: '1fr',
   },
   [media.tablet]: {
-    gridTemplateColumns: 'repeat(3, 1fr)'
+    gridTemplateColumns: 'repeat(3, 1fr)',
   },
   [media.desktop]: {
-    gridTemplateColumns: 'repeat(4, 1fr)'
+    gridTemplateColumns: 'repeat(4, 1fr)',
   },
   [media.bigDesktop]: {
-    gridTemplateColumns: 'repeat(5, 1fr)'
-  }
+    gridTemplateColumns: 'repeat(4, 1fr)',
+  },
 });
 
 const HeroImage = glamorous.div({
-  borderTopRightRadius: '20px',
-  borderTopLeftRadius: '20px',
+  border: 'solid 2px #cfcfcf',
+  borderRadius: '20px',
   overflow: 'hidden',
-  [media.phone]: {
-    height: '300px'
-  },
-  [media.tablet]: {
-    height: '400px'
-  },
-  [media.desktop]: {
-    height: '600px'
-  },
-  [media.bigDesktop]: {
-    height: '600px'
-  }
+  display: 'flex',
+  flexDirection: 'column',
+  marginBottom: '40px',
 });
 
 class Page extends React.Component<Props, State> {
@@ -77,7 +68,7 @@ class Page extends React.Component<Props, State> {
     super(props);
 
     this.state = {
-      activeHero: props.projects[0]
+      activeHero: props.projects[0],
     };
   }
 
@@ -93,15 +84,12 @@ class Page extends React.Component<Props, State> {
         <Header />
         {this.props.showResume && <Intro />}
         <Section color={'#F1F1F1'} title={'Featured Projects'}>
-          <HeroImage>
-            <Swiper
-              height={'100%'}
-              items={this.props.projects}
-              activeItem={this.state.activeHero}
-              selectItem={hero => this.selectHero(hero as IProject)}
-            />
-          </HeroImage>
-          <HeroDescription hero={this.state.activeHero} />
+          {this.props.projects.map(h => (
+            <HeroImage key={h.title}>
+              <SwiperImage key={h.image} image={h.image} />
+              <HeroDescription hero={h} />
+            </HeroImage>
+          ))}
         </Section>
         {this.props.showResume && (
           <Section color={'#F1F1F1'} title={'Resume'}>
@@ -129,14 +117,14 @@ export let Home = connect(
       projects: state.pageState.projects,
       resume: state.pageState.resume,
       toys: state.pageState.toys,
-      selectedKeyword: state.pageState.selectedKeyword
+      selectedKeyword: state.pageState.selectedKeyword,
     };
   },
   (dispatch: Dispatch<PageAction>) => {
     return {
       setSelectedKeyword: (keyword: string | null) => {
         dispatch(PageActions.setSelectedKeyword(keyword));
-      }
+      },
     };
   }
 )(Page);

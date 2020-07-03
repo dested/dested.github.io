@@ -10,7 +10,7 @@
     "use strict";
     var SYNTAX,
         nodeType,
-        ESP = isNode ? require('esprima') : esprima,
+        ESP = isNode ? require('dested.com/public/projects/profiler/lib/esprima') : esprima,
         ESPGEN = isNode ? require('escodegen') : escodegen,  //TODO - package as dependency
         crypto = isNode ? require('crypto') : null,
         LEADER_WRAP = '(function () { ',
@@ -552,7 +552,7 @@ var base=(function(){
     }).toString().substr(12).slice(0,-1);
 
 var baseNode=(function(){
-   
+
     var timeHash = {};
     var hitHash = {};
     var lastTime = process.hrtime();
@@ -574,7 +574,7 @@ var baseNode=(function(){
 
     }).toString().substr(12).slice(0,-1);
 
-            return preamble + 
+            return preamble +
             'function timeMe(){'+
              (isNode?baseNode:base)+
              generated +
@@ -879,7 +879,7 @@ var baseNode=(function(){
         },
 
         branchIncrementExprAst: function (varName, branchIndex, down) {
-            
+
             var ret = astgen.postIncrement(
                 astgen.subscript(
                     astgen.subscript(
@@ -1034,4 +1034,3 @@ var baseNode=(function(){
 
 }(typeof module !== 'undefined' && typeof module.exports !== 'undefined' && typeof exports !== 'undefined'));
 
-   

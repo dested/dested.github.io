@@ -2,5 +2,6 @@
   "tabWidth":2,
   "singleQuote":true,
   "printWidth":120,
-  "bracketSpacing":false
+  "bracketSpacing":false,
+  "trailingComma": "es5"
 }
