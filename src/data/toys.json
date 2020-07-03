@@ -47,7 +47,7 @@
     "keywords": ["javascript", "typescript", "canvas", "weekend"]
   },
   {
-    "url": "https://www.youtube.com/watch?v=RF7PwocNlCw",
+    "url": "https://youtu.be/m05TRVNMkHw",
     "images": ["assets/project-images/mario.png"],
     "title": "Mario AI",
     "github": "https://github.com/dested/MarioAi",
@@ -76,14 +76,6 @@
     "title": "Server Clustering Algorithm",
     "description": "An implementation of how user clustering could work for a Massive Multiplayer game",
     "keywords": ["javascript", "performance", "canvas", "multiplayer", "weekend"]
-  },
-  {
-    "url": "projects/hex-project/index.html",
-    "images": ["assets/project-images/hex-project.png"],
-    "title": "Hex Game Project",
-    "github": "https://github.com/dested/TurnRPG",
-    "description": "A rough implementation of an interesting puzzle game concept",
-    "keywords": ["javascript", "c#", "canvas"]
   },
   {
     "url": "projects/profiler/index.html",

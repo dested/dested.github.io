@@ -71,9 +71,9 @@
   },
   {
     "url": "https://socialwargames.com",
-    "image": "assets/project-images/socialwargames.png",
+    "image": "assets/project-images/socialwargames2.png",
     "title": "Social War Games",
-    "github": "https://github.com/dested/Social-War-Games",
+    "github": "https://github.com/dested/social-war-games-sls/",
     "pitch": "An Online Social Experiment",
     "description": "Social War Games allows you to participate with and compete against other players on the internet in real time. It uses a voting mechanism to decide which series of moves should happen next, with the most popular moves for each unit during the 5-minute-long turn will be executed at the beginning of the next turn, in the vein of TwitchPlaysPokemon. It uses ReactJS for its UI and 2D Canvas for the gameplay, all using TypeScript. The backend is a horizontally scalable restful .NET Core API hosted on AWS. This allows tens of thousands of players to participate in the game at any given time.",
     "keywords": ["react", "javascript", "typescript", "multiplayer", "canvas"]

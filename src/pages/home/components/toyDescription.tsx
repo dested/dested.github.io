@@ -46,7 +46,7 @@ export let ToyDescription: React.SFC<Props> = ({toy}) => {
       <Title>{toy.title}</Title>
       <div style={{display: 'flex', justifyContent: 'space-around'}}>
         {toy.url && <Url href={toy.url}>site</Url>}
-        <Github href={toy.github}>github</Github>
+        {toy.github && <Github href={toy.github}>github</Github>}
       </div>
       <Description dangerouslySetInnerHTML={{__html: toy.description}} />
       <KeywordHolder>
