@@ -11,7 +11,7 @@ export interface IResumeItem {
 
 export interface IProject {
   url: string;
-  type?: 'video';
+  type: string;
   image: string;
   title: string;
   github?: string;

@@ -84,12 +84,24 @@ class Page extends React.Component<Props, State> {
         <Header />
         {this.props.showResume && <Intro />}
         <Section color={'#F1F1F1'} title={'Featured Projects'}>
-          {this.props.projects.map(h => (
-            <HeroImage key={h.title}>
-              <SwiperImage key={h.image} image={h.image} />
-              <HeroDescription hero={h} />
-            </HeroImage>
-          ))}
+          {this.props.projects
+            .filter(a => a.type === 'app')
+            .map(h => (
+              <HeroImage key={h.title}>
+                <SwiperImage key={h.image} image={h.image} />
+                <HeroDescription hero={h} />
+              </HeroImage>
+            ))}
+        </Section>
+        <Section color={'#F1F1F1'} title={'Featured Games'}>
+          {this.props.projects
+            .filter(a => a.type === 'game')
+            .map(h => (
+              <HeroImage key={h.title}>
+                <SwiperImage key={h.image} image={h.image} />
+                <HeroDescription hero={h} />
+              </HeroImage>
+            ))}
         </Section>
         {this.props.showResume && (
           <Section color={'#F1F1F1'} title={'Resume'}>
