@@ -16,7 +16,7 @@ const Nav = glamorous.div({
   display: 'grid',
   gridTemplateColumns: '1fr 3fr 1fr 1fr 1fr 1fr',
   gridTemplateAreas: `
-      "name name github linkedin resume contact"
+      "name name github twitter linkedin resume contact"
     `,
   alignItems: 'center',
   ...centerMargin,
@@ -63,6 +63,9 @@ export let Header: React.SFC = () => {
         <Name>Salvatore Aiello</Name>
         <Link area={'github'} href={'https://github.com/dested'}>
           Github
+        </Link>
+        <Link area={'twitter'} href={'https://twitter.com/dested'}>
+          Twitter
         </Link>
         <Link area={'linkedin'} href={'https://www.linkedin.com/in/dested'}>
           LinkedIn

@@ -39,13 +39,7 @@ export let Intro: React.SFC = () => {
       <Holder>
         <Icon />
         <Pitch>
-          I am a seasoned TypeScript and .Net Engineer with over thirteen years professional experience spanning every
-          conceivable type of project. I have seen the web transform from jQuery to React, from AJAX to Web Sockets,
-          Cordova to React Native, and from monolithic ASP.NET websites to lean SPAs. I have worked with or managed
-          teams small and large, built back office tools for operations, deployed client facing applications used by
-          thousands, and personally launched several mobile apps and games. I strive to rapid prototype business needs
-          and bringing those prototypes to production ready maintainable applications. My passions are building native
-          mobile apps, canvas-based game development, and using sockets to connect people over the web in real time.
+        Being a hands on CTO for half a decade, and an engineer for over 15 years, I have experienced every conceivable type of project. I have seen the web transform from jQuery to React, from AJAX to Web Sockets, Cordova to React Native, and from monolithic web applications to lean SPAs. I have managed teams large and small, deployed user facing web and mobile apps used by millions, and personally brought several mobile apps and games to market. I am passionate about building startups around mobile apps, rapid prototype business needs and bringing those prototypes to production ready maintainable applications, and connecting people all over the world in real time.
         </Pitch>
       </Holder>
     </MainSection>
