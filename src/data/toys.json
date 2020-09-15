@@ -63,7 +63,7 @@
     "keywords": ["javascript", "weekend", "c#", "canvas"]
   },
   {
-    "url": "https://quickga.me",
+    "url": "https://dotsgame.s3-us-west-1.amazonaws.com/index.html",
     "images": ["assets/project-images/dots.png"],
     "title": "Dots Game",
     "github": "https://github.com/dested/dots-game",
