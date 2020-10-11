@@ -1,6 +1,7 @@
 import glamorous from 'glamorous';
 import * as React from 'react';
 import {centerMargin, media} from '../../../utils/styleUtils';
+import {useRouteMatch} from 'react-router';
 
 const Holder = glamorous.div({
   backgroundColor: '#5D5D5D',
@@ -58,10 +59,11 @@ const Link = glamorous.a<{area: string}>(
 );
 
 export let Header: React.SFC = () => {
+  const {path} = useRouteMatch();
   return (
     <Holder>
       <Nav role="navigation">
-        <Name href={'https://dested.com'}>Salvatore Aiello</Name>
+        <Name href={'https://dested.com'}>{path === '/' ? 'Salvatore Aiello' : 'Portfolio'}</Name>
         <Link area={'github'} href={'https://github.com/dested'}>
           Github
         </Link>
