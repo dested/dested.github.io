@@ -1,33 +1,34 @@
 import glamorous from 'glamorous';
 import * as React from 'react';
 import {centerMargin, media} from '../utils/styleUtils';
+import {ReactNode} from 'react';
 
 const Holder = glamorous.div<Props>(
   {
     paddingTop: '40px',
-    paddingBottom: '40px'
+    paddingBottom: '40px',
   },
   ({color}) => ({
-    backgroundColor: color
+    backgroundColor: color,
   })
 );
 const Inner = glamorous.div({
   maxWidth: '100%',
   [media.phone]: {
-    width: '100vw'
+    width: '100vw',
   },
   [media.tablet]: {
     width: '960px',
-    ...centerMargin
+    ...centerMargin,
   },
   [media.desktop]: {
     width: '1140px',
-    ...centerMargin
+    ...centerMargin,
   },
   [media.bigDesktop]: {
     width: '1570px',
-    ...centerMargin
-  }
+    ...centerMargin,
+  },
 });
 
 const SectionTitle = glamorous.div<{big?: boolean}>(
@@ -37,16 +38,16 @@ const SectionTitle = glamorous.div<{big?: boolean}>(
     color: '#333',
     marginBottom: '20px',
     fontFamily: 'Roboto, sans-serif',
-    fontWeight: 500
+    fontWeight: 500,
   },
   ({big}) => ({
-    fontSize: big ? '36px' : '32px'
+    fontSize: big ? '36px' : '32px',
   })
 );
 
 interface Props {
   color: string;
-  title?: string;
+  title?: string | ReactNode;
 }
 
 export let Section: React.SFC<Props> = props => {
@@ -63,10 +64,10 @@ export let Section: React.SFC<Props> = props => {
 const MainHolder = glamorous.div<Props>(
   {
     paddingBottom: '60px',
-    paddingTop: '50px'
+    paddingTop: '50px',
   },
   ({color}) => ({
-    backgroundColor: color
+    backgroundColor: color,
   })
 );
 

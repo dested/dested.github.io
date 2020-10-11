@@ -7,14 +7,14 @@ const Holder = glamorous.div({
   position: 'fixed',
   top: 0,
   width: '100%',
-  zIndex: 100
+  zIndex: 100,
 });
 
 const Nav = glamorous.div({
   backgroundColor: '#5D5D5D',
   height: '4rem',
   display: 'grid',
-  gridTemplateColumns: '1fr 3fr 1fr 1fr 1fr 1fr',
+  gridTemplateColumns: '1fr 3fr 1fr 1fr 1fr 1fr 1fr',
   gridTemplateAreas: `
       "name name github twitter linkedin resume contact"
     `,
@@ -22,26 +22,27 @@ const Nav = glamorous.div({
   ...centerMargin,
   [media.phone]: {
     width: '100%',
-    fontSize: '1rem'
+    fontSize: '1rem',
   },
   [media.tablet]: {
     width: '960px',
-    fontSize: '1.5rem'
+    fontSize: '1.5rem',
   },
   [media.desktop]: {
     width: '1140px',
-    fontSize: '1.5rem'
+    fontSize: '1.5rem',
   },
   [media.bigDesktop]: {
     width: '1570px',
-    fontSize: '1.5rem'
-  }
+    fontSize: '1.5rem',
+  },
 });
 
-const Name = glamorous.div({
+const Name = glamorous.a({
   color: '#fff',
   gridArea: 'name',
-  marginLeft: '10px'
+  marginLeft: '10px',
+  textDecoration: 'none',
 });
 const Link = glamorous.a<{area: string}>(
   {
@@ -49,10 +50,10 @@ const Link = glamorous.a<{area: string}>(
     display: 'block',
     textDecoration: 'none',
     textAlign: 'right',
-    marginRight: '10px'
+    marginRight: '10px',
   },
   p => ({
-    gridArea: p.area
+    gridArea: p.area,
   })
 );
 
@@ -60,7 +61,7 @@ export let Header: React.SFC = () => {
   return (
     <Holder>
       <Nav role="navigation">
-        <Name>Salvatore Aiello</Name>
+        <Name href={'https://dested.com'}>Salvatore Aiello</Name>
         <Link area={'github'} href={'https://github.com/dested'}>
           Github
         </Link>

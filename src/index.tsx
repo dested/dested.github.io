@@ -6,12 +6,20 @@ import './index.css';
 import {Home} from './pages/home/home';
 import reducers, {Store} from './reducers';
 import * as serviceWorker from './serviceWorker';
+import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
+import {Love} from './pages/love/love';
 const store = createStore<Store>(reducers);
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Home />
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/love" component={Love} />
+          <Route render={() => <Redirect to={'/'} />} />
+        </Switch>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
