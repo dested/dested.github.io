@@ -2,7 +2,7 @@
   "prod": {
     "bucket": "dested.com",
     "cloudfront": "EHGS3HZV53S53",
-    "command": "yarn build",
+    "command": "yarn build-prod",
     "path": "build"
   }
 }

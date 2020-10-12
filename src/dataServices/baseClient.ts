@@ -14,9 +14,9 @@ export const ClientOptions: ControllerOptions = {
   },
   handleError: (error: string) => {
     if (error.toLowerCase().includes('fetch')) {
-      error = 'Sorry, an error has occurred with EmoteBingo.';
+      // error = 'Sorry, an error has occurred with EmoteBingo.';
     }
-    alert(error);
+    // alert(error);
   },
   handleUnauthorized: (error: string) => {},
 };
@@ -33,7 +33,7 @@ export const ClientSocketOptions: ControllerOptions = {
 
 export const handle400 = {
   400: (result: {error: string}) => {
-    alert(result.error);
+    // alert(result.error);
   },
 };
 

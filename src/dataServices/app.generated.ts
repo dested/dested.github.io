@@ -4,14 +4,45 @@ import {ClientTransformOptions, ClientOptions, ClientSocketOptions, ControllerOp
 declare type ObjectId = string;
 
 export class MainClient {
-  static async hi<TPromise = HiResponse>(
+  static async vote<TPromise = VoidResponse>(
+    model: VoteRequest,
+    handle: {200?: (result: VoidResponse) => void; 500?: (result: string) => void; 401?: (error: string) => void}
+  ): Promise<TPromise | undefined> {
+    let url = ClientOptions.baseUrl + '/main/vote?';
+
+    return makeRequest(url, model, 'POST', handle);
+  }
+
+  static async iCanHelp<TPromise = VoidResponse>(
+    model: ICanHelpRequest,
+    handle: {200?: (result: VoidResponse) => void; 500?: (result: string) => void; 401?: (error: string) => void}
+  ): Promise<TPromise | undefined> {
+    let url = ClientOptions.baseUrl + '/main/i-can-help?';
+
+    return makeRequest(url, model, 'POST', handle);
+  }
+
+  static async viewedProject<TPromise = VoidResponse>(
+    model: ViewedProjectRequest,
+    handle: {200?: (result: VoidResponse) => void; 500?: (result: string) => void; 401?: (error: string) => void}
+  ): Promise<TPromise | undefined> {
+    let url = ClientOptions.baseUrl + '/main/viewed-project?';
+
+    return makeRequest(url, model, 'POST', handle);
+  }
+
+  static async clickedProject<TPromise = VoidResponse>(
+    model: ClickedProjectRequest,
+    handle: {200?: (result: VoidResponse) => void; 500?: (result: string) => void; 401?: (error: string) => void}
+  ): Promise<TPromise | undefined> {
+    let url = ClientOptions.baseUrl + '/main/clicked-project?';
+
+    return makeRequest(url, model, 'POST', handle);
+  }
+
+  static async hi<TPromise = VoidResponse>(
     model: HiRequest,
-    handle: {
-      200?: (result: HiResponse) => void;
-      500?: (result: string) => void;
-      400: (result: {error: string}) => void;
-      401?: (error: string) => void;
-    }
+    handle: {200?: (result: VoidResponse) => void; 500?: (result: string) => void; 401?: (error: string) => void}
   ): Promise<TPromise | undefined> {
     let url = ClientOptions.baseUrl + '/main/hi?';
 
@@ -19,11 +50,34 @@ export class MainClient {
   }
 }
 
-export interface HiRequest {}
-
-export interface HiResponse {
-  hi: boolean;
+export interface VoteRequest {
+  project: string;
+  sessionId: string;
+  vote: 'good' | 'bad';
 }
+
+export interface VoidResponse {}
+
+export interface ICanHelpRequest {
+  project: string;
+  sessionId: string;
+  need: string;
+  message: string;
+  portfolio?: string;
+}
+
+export interface ViewedProjectRequest {
+  project: string;
+  sessionId: string;
+}
+
+export interface ClickedProjectRequest {
+  project: string;
+  sessionId: string;
+  which: 'github' | 'website';
+}
+
+export interface HiRequest {}
 
 async function handleResponse(responseText: string, status: number, handle: any) {
   try {

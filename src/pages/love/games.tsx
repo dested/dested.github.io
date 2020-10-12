@@ -9,15 +9,19 @@ export type Game = {
   monetization: JSX.Element;
   whyILikedWorkingOnIt: JSX.Element;
   whyIStopped: JSX.Element;
-  whatINeed: JSX.Element[];
+  whatINeed: string[];
   synopsis: JSX.Element;
   title: string | JSX.Element;
   url: string;
+  name: string;
+  teaser: string;
 };
 
 export const Games: Game[] = [
   {
+    name: 'orbital',
     title: 'OrbitalGa.me',
+    teaser: 'Multiplayer ShootEmUp',
     youtube: 'U_Qe1IrehHg',
     github: 'https://github.com/dested/orbitalga.me',
     url: 'https://orbitalga.me',
@@ -46,11 +50,13 @@ export const Games: Game[] = [
         designer to make it fun enough to keep playing (a common theme).
       </>
     ),
-    whatINeed: [<>Assets</>, <>Game Design</>],
+    whatINeed: ['Assets', 'Game Design'],
   },
 
   {
+    name: 'swg',
     title: 'SocialWarGames',
+    teaser: 'TwitchPlaysPokemon, But Tanks',
     youtube: 'uDmg2FPE_Cc',
     github: 'https://github.com/dested/social-war-games-sls',
     url: 'https://socialwargames.com',
@@ -69,8 +75,7 @@ export const Games: Game[] = [
         the votes are tallied and the winning action on each unit is enacted. This will force players (ideally hundreds
         on each side) to vote strategically together to do what is best for each unit. Your actions are kept track of
         and show up on the leaderboard appropriately, things like how many rounds you played, how many units you’ve
-        created, resources mined, damage done, etc. <br /> <br />
-        Think twitchplayspokemon, but tanks.
+        created, resources mined, damage done, etc.
       </>
     ),
     monetization: <>Video ad every couple rounds or something</>,
@@ -88,10 +93,12 @@ export const Games: Game[] = [
         The bigger reason however is that I don’t know if the game itself is fun enough to make it worth it.
       </>
     ),
-    whatINeed: [<>Game UI design</>, <>Game design in general</>],
+    whatINeed: ['Game UI design', 'Game design in general'],
   },
   {
+    name: 'runrunjump',
     title: 'RunRunJump',
+    teaser: 'MarioMaker + Programming',
     youtube: 'a7_zQRhhNdA',
     github: 'https://github.com/dested/runrunjump',
     url: 'http://runrunjump.com',
@@ -120,14 +127,16 @@ export const Games: Game[] = [
         time.
       </>
     ),
-    whatINeed: [<>Game UI design</>, <>Game character and world design</>, <>An incredibly passionate game designer</>],
+    whatINeed: ['Game UI design', 'Game character and world design', 'An incredibly passionate game designer'],
   },
   {
+    name: 'dotsgame',
     title: (
       <>
         DotsGame <br /> (not official title)
       </>
     ),
+    teaser: 'Multiplayer Auralux',
     youtube: 'kbPryQOJhWA',
     github: 'https://github.com/dested/dots-game',
     url: 'https://dotsgame.s3-us-west-1.amazonaws.com/index.html',
@@ -156,13 +165,15 @@ export const Games: Game[] = [
     ),
     whyIStopped: <>Once I solved the above problem the game was no longer fun to work on, so I moved on.</>,
     whatINeed: [
-      <>Game UI design</>,
-      <>Game design and balancing (how fast the units move, how much damage they do, upgrades?)</>,
-      <>Game assets (I like the simple look, but it’s maybe a bit too simple)</>,
+      'Game UI design',
+      'Game design and balancing (how fast the units move, how much damage they do, upgrades?)',
+      'Game assets (I like the simple look, but it’s maybe a bit too simple)',
     ],
   },
   {
+    name: 'emotebingo',
     title: 'EmoteBingo',
+    teaser: 'Twitch Plays Bingo',
     youtube: '6XWzlmCNKns',
     url: 'https://emote.bingo/',
     timeSpent: 'A couple months',
@@ -190,10 +201,12 @@ export const Games: Game[] = [
         of something fun enough to entice streamers to give me 30% of their bit revenue from the game.
       </>
     ),
-    whatINeed: [<>Game design (need a new game idea)</>],
+    whatINeed: ['Game design (need a new game idea)'],
   },
   {
+    name: 'bounceblockparty',
     title: 'BounceBlockParty',
+    teaser: 'Twitch Plays Some Kinda Jumping Game',
     youtube: 'CxYalNgP_lA',
     url: 'https://emote.bingo/',
     timeSpent: 'A month',
@@ -232,10 +245,12 @@ export const Games: Game[] = [
         assets and game design. It is not fun yet, just technically appealing.
       </>
     ),
-    whatINeed: [<>Game Assets</>, <>Game Design</>],
+    whatINeed: ['Game Assets', 'Game Design'],
   },
   {
+    name: 'oursonic',
     title: 'OurSonic.org',
+    teaser: 'Unprofitable Sonic The Hedgehog',
     youtube: 'l3Hlmu-ZLGM',
     github: 'https://github.com/OurSonic/OurSonicTyped',
     url: 'https://emote.bingo/',
@@ -266,12 +281,14 @@ export const Games: Game[] = [
       </>
     ),
     whatINeed: [
-      <>Another passionate developer who does not like making money</>,
-      <>A lawyer for when sega inevitable shuts the project down</>,
+      'Another passionate developer who does not like making money',
+      'A lawyer for when sega inevitable shuts the project down',
     ],
   },
   {
+    name: 'acg',
     title: 'AnyCardGame',
+    teaser: 'Card Game Engine',
     youtube: '',
     image: 'https://dested.com/assets/project-images/acg.png',
     github: 'https://github.com/Any-Card-Game',
@@ -306,6 +323,6 @@ export const Games: Game[] = [
         eventually.
       </>
     ),
-    whatINeed: [<>Another passionate developer</>, <>A UI designer</>, <>A divorce lawyer</>],
+    whatINeed: ['Another passionate developer', 'A UI designer', 'A divorce lawyer'],
   },
 ];
