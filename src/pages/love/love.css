@@ -1,6 +1,24 @@
+@media (max-width: 769px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+h1 {
+  font-size: 2em;
+}
+@media (max-width: 769px) {
+  h1 {
+    font-size: 1.5em;
+  }
+}
 h4 {
   margin-bottom: 0.5em;
   margin-top: 1em;
+}
+h2 {
+  margin-top: 1.4em;
+  margin-bottom: 0.2em;
 }
 
 p {
@@ -8,9 +26,14 @@ p {
   margin-top: 0.25em;
 }
 
+h4 {
+  text-decoration: underline #b0b0b0;
+}
+
 .game-title {
   grid-area: title;
-  text-align: center;
+  text-align: left;
+  text-decoration: underline #b0b0b0;
 }
 
 .game-grid {
@@ -26,16 +49,81 @@ p {
     'body body . side-panel'
     'body body . side-panel';
 }
+@media (max-width: 769px) {
+  .game-grid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: grid;
+    gap: 0 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      'title'
+      'side-panel'
+      'body';
+  }
+}
 
+.side-panel {
+  grid-area: side-panel;
+  display: flex;
+  flex-direction: column;
+}
+.game-body {
+  grid-area: body;
+  overflow-wrap: anywhere;
+}
+.side-holder {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 .game-github {
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 .game-url {
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 .game-timespent {
-  font-size: 1rem;
+  font-size: 2rem;
+  max-width: 40%;
+}
+.game-timespent span {
+  font-size: 1.5rem;
 }
 .game-percentdone {
-  font-size: 1rem;
+  font-size: 2rem;
+  max-width: 40%;
+  text-align: right;
+}
+.game-percentdone span {
+  font-size: 1.5rem;
+}
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+button {
+  cursor: pointer;
+  border: solid 2px #919191;
+  margin: 0.5rem;
+  padding: 1rem;
+  font-size: 1.3rem;
+  border-radius: 10px;
+}
+.buttons button:first-child {
+  background-color: #0a8f0a;
+  color: white;
+}
+.buttons button:last-child {
+  background-color: #a40000;
+  color: white;
+}
+
+li {
+  display: flex;
+  align-items: center;
 }

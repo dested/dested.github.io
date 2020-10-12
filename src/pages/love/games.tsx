@@ -11,7 +11,7 @@ export type Game = {
   whyIStopped: JSX.Element;
   whatINeed: JSX.Element[];
   synopsis: JSX.Element;
-  title: string;
+  title: string | JSX.Element;
   url: string;
 };
 
@@ -25,10 +25,11 @@ export const Games: Game[] = [
     percentDone: '85%',
     synopsis: (
       <>
-        A multiplayer horizontal scrolling space shootemup. You join an active server, probably capped at about 60
-        people. You shoot enemies, get powerups, shoot more enemies, and increase your score. The purpose is to climb
-        the leaderboard, per game, per day, and all time. Once you die your score is saved and all your stats/powerups
-        reset to zero.
+        A horizontal scrolling multiplayer space shootemup. You join an active server, probably capped at about 60
+        people. You shoot enemies, get powerups, shoot more enemies, and increase your score.
+        <br />
+        <br /> The purpose is to climb the leaderboard, per game, per day, and all time. Once you die your score is
+        saved and all your stats/powerups reset to zero.
       </>
     ),
     monetization: <>Probably microtransaction around ship upgrades, functional and aesthetic, as well as video ads.</>,
@@ -42,7 +43,7 @@ export const Games: Game[] = [
     whyIStopped: (
       <>
         At some point I ran out of <a href={'https://kenney.nl'}>Kenney</a> assets, and I’m not enough of a game
-        designer to make it fun enough to keep playing.
+        designer to make it fun enough to keep playing (a common theme).
       </>
     ),
     whatINeed: [<>Assets</>, <>Game Design</>],
@@ -57,15 +58,19 @@ export const Games: Game[] = [
     percentDone: '70%',
     synopsis: (
       <>
-        A day/week/month long game played out over the course of several hundred (thousand?) turns. You enter the game
-        automatically joining one of three “factions”. Your faction owns a subset of the map, and has units that can be
-        controlled. The gimmick is, you can’t control any one unit yourself. Instead you have the power to vote to make
-        a unit do a certain action: move, attack, create a new unit, mine, etc. You will have some number of votes per
-        round, probably 5 or so. At the end of the round (probably every 1 minute for fast paced games, or 5 minutes for
-        slower paced games), all the votes are tallied and the winning action on each unit is enacted. This will force
-        players (ideally hundreds on each side) to vote strategically together to do what is best for each unit. Your
-        actions are kept track of and show up on the leaderboard appropriately, things like how many rounds you played,
-        how many units you’ve created, resources mined, damage done, etc. Think twitchplayspokemon, but tanks.
+        A day/week/month long game played out over the course of several hundred or thousand of turns.
+        <br /> <br />
+        You enter the game automatically joining one of three "factions". Your faction owns a subset of the map, and has
+        units that can be controlled. <br /> <br />
+        The gimmick is, you can’t control any one unit yourself. Instead you have the power to vote to make a unit do a
+        certain action: move, attack, create a new unit, mine, etc. You will have some number of votes per round,
+        probably 5 or so. <br /> <br />
+        At the end of the round (probably every 1 minute for fast paced games, or 5 minutes for slower paced games), all
+        the votes are tallied and the winning action on each unit is enacted. This will force players (ideally hundreds
+        on each side) to vote strategically together to do what is best for each unit. Your actions are kept track of
+        and show up on the leaderboard appropriately, things like how many rounds you played, how many units you’ve
+        created, resources mined, damage done, etc. <br /> <br />
+        Think twitchplayspokemon, but tanks.
       </>
     ),
     monetization: <>Video ad every couple rounds or something</>,
@@ -79,8 +84,8 @@ export const Games: Game[] = [
       <>
         Balancing the units, and game, is something outside of my wheelhouse. I could also never quite nail down how the
         game UI should look. I’m happy enough with the game board, but the outer layout was always a challenge. I’m just
-        not good at it. The bigger reason however is that I don’t know if the game itself is fun enough to make it worth
-        it.
+        not good at it. <br /> <br />
+        The bigger reason however is that I don’t know if the game itself is fun enough to make it worth it.
       </>
     ),
     whatINeed: [<>Game UI design</>, <>Game design in general</>],
@@ -95,17 +100,18 @@ export const Games: Game[] = [
     synopsis: (
       <>
         This project is pretty old. Back when mario maker came out I got the itch to make a level editor game, but with
-        some extra programming components. Basically you will be able to not only design levels, but script objects and
-        gimmicks in levels. You would be able to share these objects for other game designers to use in their levels as
-        well. Levels would have leaderboards, recorded runs, things like that.
+        some extra programming components. <br /> <br />
+        The idea is you will be able to not only design levels, but script objects and gimmicks in levels. You would be
+        able to share these objects for other game designers to use in their levels as well. Levels would have
+        leaderboards, recorded runs, things like that.
       </>
     ),
     monetization: <>Ad supported? Upgrade storage space? Not sure</>,
     whyILikedWorkingOnIt: (
       <>
-        I got a pretty good working physics engine (based directly on mario), dropped in some mario assets, and called
-        it a day. The idea of sharing levels and objects was really intriguing. It’s fun to build tools for other people
-        to build tools.
+        I got a pretty good working physics engine (stolen directly from super mario world), dropped in some mario
+        assets, and called it a day. The idea of sharing levels and objects was really intriguing. It’s fun to build
+        tools for other people to build tools.
       </>
     ),
     whyIStopped: (
@@ -117,41 +123,43 @@ export const Games: Game[] = [
     whatINeed: [<>Game UI design</>, <>Game character and world design</>, <>An incredibly passionate game designer</>],
   },
   {
-    title: 'DotsGame (not official title)',
+    title: (
+      <>
+        DotsGame <br /> (not official title)
+      </>
+    ),
     youtube: 'kbPryQOJhWA',
     github: 'https://github.com/dested/dots-game',
-    url: 'https://orbitalga.me',
+    url: 'https://dotsgame.s3-us-west-1.amazonaws.com/index.html',
     timeSpent: 'A few weeks',
     percentDone: "90%, it's just not fun",
     synopsis: (
       <>
-        A day/week/month long game played out over the course of several hundred (thousand?) turns. You enter the game
-        automatically joining one of three “factions”. Your faction owns a subset of the map, and has units that can be
-        controlled. The gimmick is, you can’t control any one unit yourself. Instead you have the power to vote to make
-        a unit do a certain action: move, attack, create a new unit, mine, etc. You will have some number of votes per
-        round, probably 5 or so. At the end of the round (probably every 1 minute for fast paced games, or 5 minutes for
-        slower paced games), all the votes are tallied and the winning action on each unit is enacted. This will force
-        players (ideally hundreds on each side) to vote strategically together to do what is best for each unit. Your
-        actions are kept track of and show up on the leaderboard appropriately, things like how many rounds you played,
-        how many units you’ve created, resources mined, damage done, etc. Think twitchplayspokemon, but tanks.
+        A very simple IO-esque game. It’s basically a multiplayer version of the popular game{' '}
+        <a href={'https://play.google.com/store/apps/details?id=com.wardrumstudios.auralux&'}>Auralux</a>. <br />
+        <br />
+        You spawn in, owning one planet/island/molehill/whatever. Every second or so you that planet generates some
+        number of new units. You control those units by moving them to either take over other planets, or attack other
+        players.
+        <br />
+        <br />
+        The game goes on and on effectively until someone takes over the entire game. Another leaderboard based game,
+        track number of planets captured, units killed, time alive, etc.
       </>
     ),
-    monetization: <>Video ad every couple rounds or something</>,
+    monetization: <>Ad supported</>,
     whyILikedWorkingOnIt: (
       <>
-        I wanted to see if I could build a nice casual, infinitely scalable game. The architecture is 100% serverless
-        which means it can support literally any number of users without falling over.
+        Another casual game, the main technical gimmick was how can I support a hundred players that each control
+        literally thousands of units each.
       </>
     ),
-    whyIStopped: (
-      <>
-        Balancing the units, and game, is something outside of my wheelhouse. I could also never quite nail down how the
-        game UI should look. I’m happy enough with the game board, but the outer layout was always a challenge. I’m just
-        not good at it. The bigger reason however is that I don’t know if the game itself is fun enough to make it worth
-        it.
-      </>
-    ),
-    whatINeed: [<>Game UI design</>, <>Game design in general</>],
+    whyIStopped: <>Once I solved the above problem the game was no longer fun to work on, so I moved on.</>,
+    whatINeed: [
+      <>Game UI design</>,
+      <>Game design and balancing (how fast the units move, how much damage they do, upgrades?)</>,
+      <>Game assets (I like the simple look, but it’s maybe a bit too simple)</>,
+    ],
   },
   {
     title: 'EmoteBingo',
@@ -162,16 +170,18 @@ export const Games: Game[] = [
     synopsis: (
       <>
         This is a twitch extension for streamers to play a bingo game with their viewers. Streamers configure the game,
-        start it, and then play it out for their viewers in real time via an extension. This project is in a bit of a
-        different category because I did release it, however I have completely stopped working on it.
+        start it, and then play it out for their viewers in real time via an extension. <br />
+        <br />
+        This project is in a bit of a different category because I did release it, however I have completely stopped
+        working on it.
       </>
     ),
     monetization: <>Twitch bits</>,
     whyILikedWorkingOnIt: (
       <>
-        Twitch extensions are magic. They allow you to run code on viewers machines in one of the biggest networks on
-        earth. Millions of people use twitch every day and I can deploy code to all of them, if you can make something
-        interesting enough for streamers to use.
+        <b>Twitch extensions are magic.</b> They allow you to run code on viewers machines in one of the biggest
+        networks on earth. Millions of people use twitch every day and I can deploy code to all of them, if you can make
+        something interesting enough for streamers to use.
       </>
     ),
     whyIStopped: (
@@ -190,23 +200,30 @@ export const Games: Game[] = [
     percentDone: '60%',
     synopsis: (
       <>
-        This is a different approach to the twitch extension, it is actually a stand alone channel game. You visit
-        <a href={'https://twitch.tv/bounceblockparty'}>https://twitch.tv/bounceblockparty</a> and watch the latest game
-        play out live on stream. From there you spend credits (obtained through bits or winning or whatever) to
-        participate in the next game. The game is simple, bounce to climb to the top, last player gets the glory of
-        appearing on the leaderboard. Daily/weekly/all time leaderboards show players who made it the highest, played
-        the longest, things like that. Chat interacts with the game in real time, causing things like wind storms, extra
-        gravity, etc.
+        This is a different approach to the twitch extension, it is actually a stand alone channel game. You visit{' '}
+        <a href={'https://twitch.tv/bounceblockparty'}>bounceblockparty on twitch</a> and watch the latest game play out
+        live on stream.
+        <br />
+        <br />
+        While you're watching the stream you can spend credits (obtained through bits or winning or whatever) to
+        participate in the next game. <br />
+        <br />
+        The game is simple, bounce to climb to the top, last player gets the glory of appearing on the leaderboard.
+        Daily/weekly/all time leaderboards show players who made it the highest, played the longest, things like that.
+        Chat also interacts with the game in real time, causing things like wind storms, extra gravity, etc.
       </>
     ),
     monetization: <>Twitch bits to play and for skins</>,
     whyILikedWorkingOnIt: (
       <>
         As stated above: Twitch extensions are magic. Also as the channel I get 100% of the bits spent, which means I
-        can make the cost to play super trivial, 5 bits or so, and stack up major revenue. Also the technical aspect was
-        delicious. I needed to be able to stream a webpage to a twitch channel 24 hours a day via aws. The movement is
-        also done completely serverlessly which means I could literally support 100k players without a hiccup, just
-        exorbitant cost (which is mitigated by the bits). Network effect is mitigated by bots initially.
+        can make the cost to play super trivial, 5 bits or so, and stack up major revenue. <br />
+        <br />
+        Also the technical aspect was delicious. I needed to be able to stream a webpage to a twitch channel 24 hours a
+        day via aws. The jumping action is also done completely serverlessly which means I could literally support 100k
+        players without a hiccup, just exorbitant cost (which is mitigated by the bits). <br />
+        <br />
+        Network effect is mitigated by bots initially.
       </>
     ),
     whyIStopped: (
@@ -226,8 +243,8 @@ export const Games: Game[] = [
     percentDone: '75%',
     synopsis: (
       <>
-        This is one of my first “POC never see the light of day” games. I’ve been tinkering with it since 2012. Not only
-        does it have every sonic 2 and 3 level exported from the rom (using some crafty custom stuff from
+        This is one of my first <i>POC never see the light of day</i> games. I’ve been tinkering with it since 2012. Not
+        only does it have every sonic 2 and 3 level exported from the rom (using some crafty custom stuff from{' '}
         <a href={'https://sonicretro.org'}>https://sonicretro.org</a>), but it has a mostly working physics engine, and
         is actually a full blown level and object editor.
       </>
@@ -237,7 +254,9 @@ export const Games: Game[] = [
       <>
         I built the engine to render and act as the original genesis did, with regards to tile and palette rendering.
         This was a disaster for html canvas, so there was a tremendous amount of optimization that had to go into
-        drawing. Also, I love Sonic, always have.
+        drawing. <br />
+        <br />
+        Also, I love Sonic, always have.
       </>
     ),
     whyIStopped: (
@@ -263,12 +282,14 @@ export const Games: Game[] = [
       <>
         This project is so old I don’t even have a video of it, and I found the screenshot above in my storage archives
         from 2013. Nevertheless, this is one of my truly favorite projects. It’s the one I pick up every few years.{' '}
-        <i>It’s the one my wife hates the most.</i>
+        <i>It’s the one my wife hates the most.</i> <br />
         <br />
         AnyCardGame is a full blown card game engine. You design your card game using the editor above, and program the
         logic using JavaScript/TypeScript. Players join the games together and play them according to the programmed
-        rules. As a developer, when someone plays your game, you will be compensated with a percent of ad revenue
-        generated. I’ve built and rebuilt this project more times than I care to actually count.
+        rules. <br />
+        <br />
+        As a developer, when someone plays your game, you will be compensated with a percent of ad revenue generated.
+        I’ve built and rebuilt this project more times than I care to actually count.
       </>
     ),
     monetization: <>Ads, percent paid to developers</>,
@@ -278,11 +299,13 @@ export const Games: Game[] = [
     whyIStopped: (
       <>
         Mostly, it became very difficult to enable the developers to declaratively design fun and engaging animations
-        for their card games. Also, the fear is that there is only a limited amount of fun card games. The first
-        developer to build blackjack and three card poker will dwarf all other developers. I would probably have to
-        branch out to board games too eventually.
+        for their card games. <br />
+        <br />
+        Also, the fear is that there is only a limited amount of fun card games. The first developer to build blackjack
+        and three card poker will dwarf all other developers. I would probably have to branch out to board games too
+        eventually.
       </>
     ),
-    whatINeed: [<>Another passionate developer</>, <>A UI designer</>],
+    whatINeed: [<>Another passionate developer</>, <>A UI designer</>, <>A divorce lawyer</>],
   },
 ];
