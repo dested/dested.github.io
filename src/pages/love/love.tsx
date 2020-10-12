@@ -1,5 +1,5 @@
 import glamorous from 'glamorous';
-import {FC, ReactNode} from 'react';
+import {FC, ReactNode, useEffect, useRef} from 'react';
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {centerMargin, media} from '../../utils/styleUtils';
@@ -84,7 +84,15 @@ const Section = (props: {title?: string | ReactNode; children: React.ReactNode})
 };
 
 function LoveGame({g}: {g: Game}) {
-  const {ref, inView, entry} = useInView({});
+  const {ref, inView} = useInView({});
+
+  const isInView = useRef(false);
+
+  useEffect(() => {
+    if (inView && !isInView.current) {
+      isInView.current = true;
+    }
+  }, [inView]);
 
   return (
     <Section>
@@ -110,7 +118,7 @@ function LoveGame({g}: {g: Game}) {
             )}
             {g.url && (
               <a className={'game-url'} href={g.url}>
-                {g.url}
+                website
               </a>
             )}
           </div>
@@ -141,11 +149,11 @@ function LoveGame({g}: {g: Game}) {
           <p>{g.whyILikedWorkingOnIt}</p>
           <h4>Reason I stopped working on it</h4>
           <p>{g.whyIStopped}</p>
-          <h4>What I'd need to keep working on it</h4>
+          <h4>What I would need to keep working on it</h4>
           <ul>
             {g.whatINeed.map((n, i) => (
               <li key={i}>
-                {n} <button>Hmm, I think I can help with this</button>
+                <span>{n}</span> <button>Hmm, I think I can help with this</button>
               </li>
             ))}
           </ul>
