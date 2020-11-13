@@ -186,15 +186,21 @@ function LoveGame({g}: {g: Game}) {
                 {g.percentDone}
               </span>
             </div>
+            <div className={'what-i-need'}>
+              <h4>What I would need to keep working on it</h4>
+              <ul>
+                {g.whatINeed.map((n, i) => (
+                  <li key={i}>
+                    <span>{n}</span>{' '}
+                    <button onClick={() => setICanHelp({project: g.name, need: n})}>
+                      Hmm, I think I can help with this
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <div className={'game-buttons buttons'}>
-            <button className={voted ? 'disabled' : ''} disabled={voted} onClick={() => onVoteProject('good')}>
-              I think this is a good idea!
-            </button>
-            <button className={voted ? 'disabled' : ''} disabled={voted} onClick={() => onVoteProject('bad')}>
-              I think this is a boring game idea
-            </button>
-          </div>
+
           <div className={'game-body'}>
             <h4>Synopsis</h4>
             <p>{g.synopsis}</p>
@@ -204,17 +210,15 @@ function LoveGame({g}: {g: Game}) {
             <p>{g.whyILikedWorkingOnIt}</p>
             <h4>Reason I stopped working on it</h4>
             <p>{g.whyIStopped}</p>
-            <h4>What I would need to keep working on it</h4>
-            <ul>
-              {g.whatINeed.map((n, i) => (
-                <li key={i}>
-                  <span>{n}</span>{' '}
-                  <button onClick={() => setICanHelp({project: g.name, need: n})}>
-                    Hmm, I think I can help with this
-                  </button>
-                </li>
-              ))}
-            </ul>
+
+            <div className={'game-buttons buttons'}>
+              <button className={voted ? 'disabled' : ''} disabled={voted} onClick={() => onVoteProject('good')}>
+                I think this is a good idea!
+              </button>
+              <button className={voted ? 'disabled' : ''} disabled={voted} onClick={() => onVoteProject('bad')}>
+                I think this is a boring game idea
+              </button>
+            </div>
           </div>
         </div>
       </Section>
@@ -344,7 +348,7 @@ export const Love: FC<{}> = ({}) => {
               <GameList>
                 {Games.map(g => (
                   <GameListItem key={g.name}>
-                    <a  href={'#' + g.name}>
+                    <a href={'#' + g.name}>
                       <img
                         src={g.image ?? `https://img.youtube.com/vi/${g.youtube}/hqdefault.jpg`}
                         alt={g.name}
