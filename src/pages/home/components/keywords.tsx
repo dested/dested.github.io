@@ -6,11 +6,11 @@ import {PageAction, PageActions} from '../../../actions/page';
 
 const Keyword = glamorous.span({
   padding: '5px',
-  fontSize: '1.3rem',
+  fontSize: '.85rem',
   color: '#5D5D5D',
   cursor: 'pointer',
   display: 'inline-block',
-  userSelect: 'none'
+  userSelect: 'none',
 });
 
 interface Props {
@@ -34,13 +34,10 @@ const keywordsComponent: React.SFC<Props> = ({keywords, setSelectedKeyword}) => 
   );
 };
 
-export let Keywords = connect(
-  null,
-  (dispatch: Dispatch<PageAction>) => {
-    return {
-      setSelectedKeyword: (keyword: string | null) => {
-        dispatch(PageActions.setSelectedKeyword(keyword));
-      }
-    };
-  }
-)(keywordsComponent);
+export let Keywords = connect(null, (dispatch: Dispatch<PageAction>) => {
+  return {
+    setSelectedKeyword: (keyword: string | null) => {
+      dispatch(PageActions.setSelectedKeyword(keyword));
+    },
+  };
+})(keywordsComponent);

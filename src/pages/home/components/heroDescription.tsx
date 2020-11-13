@@ -5,14 +5,15 @@ import {media} from '../../../utils/styleUtils';
 import {Keywords} from './keywords';
 
 const Holder = glamorous.div({
-  backgroundColor: '#fff',
   padding: '20px',
   color: '#333',
   display: 'grid',
+  background: 'white',
+  borderRadius: 20,
   gridTemplateAreas: `
-        "title title . keywords"
-        "pitch pitch . links"
+        "title . . pitch"
         "description description description description"
+        "keywords keywords keywords links"
     `,
   gridTemplateColumns: `auto 50px 30px 1fr`,
   gridTemplateRows: `50px auto auto auto`,
@@ -21,7 +22,9 @@ const Holder = glamorous.div({
   borderBottomRightRadius: '20px',
   borderBottomLeftRadius: '20px',
   overflow: 'hidden',
+  marginLeft: '3rem',
   [media.phone]: {
+    marginLeft: '0rem',
     gridTemplateAreas: `
             "title title"
             "pitch pitch"
@@ -29,53 +32,58 @@ const Holder = glamorous.div({
             "links keywords"
         `,
     gridTemplateColumns: `1fr 1fr`,
-    gridTemplateRows: `auto`
-  }
+    gridTemplateRows: `auto`,
+  },
 });
 
 const Title = glamorous.span({
   gridArea: 'title',
   fontWeight: 'bold',
-  fontSize: '2rem'
+  fontSize: '2rem',
 });
 
 const Links = glamorous.a({
   gridArea: 'links',
   justifySelf: 'right',
   [media.phone]: {
-    justifySelf: 'left'
-  }
+    justifySelf: 'left',
+  },
 });
 const Site = glamorous.a({
   fontSize: '1rem',
   color: '#5D5D5D',
-  marginRight: '10px'
+  marginRight: '10px',
 });
 const Github = glamorous.a({
   fontSize: '1rem',
-  color: '#5D5D5D'
+  color: '#5D5D5D',
 });
 const Pitch = glamorous.span({
   gridArea: 'pitch',
   fontStyle: 'italic',
   paddingTop: '10px',
-  fontSize: '1.5em'
+  fontSize: '1.2em',
+  textAlign: 'right',
+  color: '#929292',
+  [media.phone]: {
+    textAlign: 'inherit',
+  },
 });
 const Description = glamorous.span({
   gridArea: 'description',
   paddingTop: '10px',
-  fontSize: '1.2em'
+  fontSize: '1.2em',
 });
 const KeywordHolder = glamorous.div({
   gridArea: 'keywords',
-  justifySelf: 'right'
+  justifySelf: 'right',
 });
 
 interface Props {
   hero: IProject;
 }
 
-export let HeroDescription: React.SFC<Props> = ({hero}) => {
+export let HeroDescription: React.FC<Props> = ({hero}) => {
   return (
     <Holder>
       <Title>{hero.title}</Title>
@@ -88,7 +96,7 @@ export let HeroDescription: React.SFC<Props> = ({hero}) => {
         <Keywords keywords={hero.keywords} />
       </KeywordHolder>
       <Pitch>{hero.pitch}</Pitch>
-      <Description>{hero.description}</Description>
+      <Description dangerouslySetInnerHTML={{__html: hero.description}} />
     </Holder>
   );
 };

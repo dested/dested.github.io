@@ -35,10 +35,10 @@ const SwiperOuter = glamorous.div<{height: string}>(
     width: '100%',
     overflow: 'hidden',
     position: 'relative',
-    userSelect: 'none'
+    userSelect: 'none',
   },
   p => ({
-    height: p.height
+    height: p.height,
   })
 );
 
@@ -46,35 +46,22 @@ const SwiperHolder = glamorous.div<{numberOfItems: number}>(
   {
     backgroundColor: '#555',
     height: '100%',
-    display: 'flex'
+    display: 'flex',
   },
   p => ({
-    width: `${p.numberOfItems * 100}%`
+    width: `${p.numberOfItems * 100}%`,
   })
 );
 
-export const SwiperImage = glamorous.div<{image: string}>(
-  {
+export const SwiperImage = glamorous.img({
+  width: '30%',
+  height: '100%',
+
+  [media.phone]: {
     width: '100%',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    [media.phone]: {
-      height: '200px'
-    },
-    [media.tablet]: {
-      height: '400px'
-    },
-    [media.desktop]: {
-      height: '600px'
-    },
-    [media.bigDesktop]: {
-      height: '600px'
-    }
+    marginBottom: '1rem',
   },
-  p => ({
-    backgroundImage: url(p.image)
-  })
-);
+});
 
 export class Swiper extends React.Component<Props, State> {
   private autoInterval?: number;
@@ -112,7 +99,7 @@ export class Swiper extends React.Component<Props, State> {
       dragging: false,
       didTouch: false,
       elementWidth: 0,
-      swipeable: {x: null, swiping: false, start: 0}
+      swipeable: {x: null, swiping: false, start: 0},
     };
   }
 
@@ -161,7 +148,7 @@ export class Swiper extends React.Component<Props, State> {
         didTouch: true,
         dragging: true,
         offsetX: pos.deltaX,
-        swipeable: {...this.state.swipeable, swiping: true}
+        swipeable: {...this.state.swipeable, swiping: true},
       });
     } else {
       this.setState({...this.state, didTouch: true, swipeable: {...this.state.swipeable, swiping: true}});
@@ -206,7 +193,7 @@ export class Swiper extends React.Component<Props, State> {
       offsetX: 0,
       dragging: false,
       shownIndex: newShownIndex,
-      swipeable: {x: null, swiping: false, start: 0}
+      swipeable: {x: null, swiping: false, start: 0},
     }));
     this.props.selectItem(this.props.items[newShownIndex]);
   };
@@ -257,7 +244,7 @@ export class Swiper extends React.Component<Props, State> {
         <SwiperHolder
           style={{
             transform: `translate(${-(this.state.elementWidth * this.state.shownIndex + this.state.offsetX)}px, 0)`,
-            transition: this.state.dragging ? '' : 'transform .5s'
+            transition: this.state.dragging ? '' : 'transform .5s',
           }}
           numberOfItems={this.props.items.length}
           onTouchStart={this.onTouchStart}
@@ -266,7 +253,7 @@ export class Swiper extends React.Component<Props, State> {
           onMouseDown={this.onMouseDown}
         >
           {this.props.items.map(h => (
-            <SwiperImage key={h.image} image={h.image} />
+            <SwiperImage key={h.image} src={h.image} />
           ))}
         </SwiperHolder>
         <SwiperDots

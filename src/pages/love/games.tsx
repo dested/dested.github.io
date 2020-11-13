@@ -147,13 +147,12 @@ export const Games: Game[] = [
         A very simple IO-esque game. It’s basically a multiplayer version of the popular game{' '}
         <a href={'https://play.google.com/store/apps/details?id=com.wardrumstudios.auralux&'}>Auralux</a>. <br />
         <br />
-        You spawn in, owning one planet/island/molehill/whatever. Every second or so you that planet generates some
-        number of new units. You control those units by moving them to either take over other planets, or attack other
-        players.
+        You spawn in, owning one planet/island/molehill/whatever. Every second or so you the planets you own generates
+        some number of new units. You can move these units to take over other planets, or attack other players.
         <br />
         <br />
-        The game goes on and on effectively until someone takes over the entire game. Another leaderboard based game,
-        track number of planets captured, units killed, time alive, etc.
+        The game goes on effectively until someone takes over the entire game. Another leaderboard based game, track
+        number of planets captured, units killed, time alive, etc.
       </>
     ),
     monetization: <>Ad supported</>,

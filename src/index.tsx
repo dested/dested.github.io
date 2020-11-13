@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
+import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 import {createStore} from 'redux';
 import './index.css';
 import {Home} from './pages/home/home';
+import {Love} from './pages/love/love';
 import reducers, {Store} from './reducers';
 import * as serviceWorker from './serviceWorker';
-import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
-import {Love} from './pages/love/love';
 const store = createStore<Store>(reducers);
 
 ReactDOM.render(

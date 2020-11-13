@@ -5,7 +5,6 @@ import {ReactNode} from 'react';
 
 const Holder = glamorous.div<Props>(
   {
-    paddingTop: '40px',
     paddingBottom: '40px',
   },
   ({color}) => ({
@@ -35,10 +34,15 @@ const SectionTitle = glamorous.div<{big?: boolean}>(
   {
     padding: '10px',
     textAlign: 'center',
-    color: '#333',
+    color: 'white',
     marginBottom: '20px',
+    marginTop: '20px',
     fontFamily: 'Roboto, sans-serif',
     fontWeight: 500,
+
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   ({big}) => ({
     fontSize: big ? '36px' : '32px',
@@ -54,7 +58,19 @@ export let Section: React.SFC<Props> = props => {
   return (
     <Holder color={props.color}>
       <Inner>
-        {props.title && <SectionTitle>{props.title}</SectionTitle>}
+        {props.title && (
+          <SectionTitle>
+            <span
+              style={{
+                padding: '.5rem 1rem',
+                background: '#5D5D5D',
+                borderRadius: 100,
+              }}
+            >
+              {props.title}
+            </span>
+          </SectionTitle>
+        )}
         {props.children}
       </Inner>
     </Holder>
@@ -75,7 +91,19 @@ export let MainSection: React.SFC<Props> = props => {
   return (
     <MainHolder color={props.color}>
       <Inner>
-        {props.title && <SectionTitle big={true}>{props.title}</SectionTitle>}
+        {props.title && (
+          <SectionTitle big={true}>
+            <span
+              style={{
+                padding: '.5rem 1rem',
+                background: '#5D5D5D',
+                borderRadius: 100,
+              }}
+            >
+              {props.title}
+            </span>
+          </SectionTitle>
+        )}
         {props.children}
       </Inner>
     </MainHolder>

@@ -47,6 +47,26 @@ const Inner = glamorous.div({
     ...centerMargin,
   },
 });
+
+const GameList = glamorous.div({
+  marginTop: '2rem',
+  display: 'flex',
+  flexWrap: 'wrap',
+  flexDirection: 'row',
+  [media.phone]: {
+    flexWrap: 'nowrap',
+    flexDirection: 'column',
+  },
+});
+const GameListItem = glamorous.div({
+  display: 'flex',
+  marginBottom: '.5rem',
+  width: '50%',
+  [media.phone]: {
+    width: '100%',
+  },
+});
+
 const Blog = glamorous.div({
   color: '#555',
   fontSize: '1.5rem',
@@ -83,9 +103,9 @@ const SectionTitle = glamorous.h1({
   fontWeight: 600,
 });
 
-const Section = (props: {title?: string | ReactNode; children: React.ReactNode}) => {
+const Section = (props: {id?: string; title?: string | ReactNode; children: React.ReactNode}) => {
   return (
-    <Holder color={'#F1F1F1'}>
+    <Holder color={'#F1F1F1'} id={props.id}>
       <Inner>
         {props.title && <SectionTitle>{props.title}</SectionTitle>}
         {props.children}
@@ -119,78 +139,86 @@ function LoveGame({g}: {g: Game}) {
   );
 
   return (
-    <Section>
-      <div className={'game-grid'} ref={ref}>
-        <h1 className={'game-title'}>{g.title}</h1>
-        <h2 className={'game-teaser'}>{g.teaser}</h2>
-        <div className={'side-panel'}>
-          {g.youtube && (
-            <iframe
-              width="100%"
-              height="500"
-              src={`https://www.youtube.com/embed/${g.youtube}`} /*?autoplay=${inView ? 1 : 0}*/
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          )}
-          {g.image && <img src={g.image} width="100%" height="500" alt={'teaser'} />}
-          <div className={'side-holder'}>
-            {g.github && (
-              <a target={'_blank'} className={'game-github'} href={g.github} onClick={() => onClickedProject('github')}>
-                github
-              </a>
+    <>
+      <div id={g.name} style={{height: '2rem'}} />
+      <Section>
+        <div className={'game-grid'} ref={ref}>
+          <h1 className={'game-title'}>{g.title}</h1>
+          <h2 className={'game-teaser'}>{g.teaser}</h2>
+          <div className={'side-panel'}>
+            {g.youtube && (
+              <iframe
+                width="100%"
+                height="500"
+                src={`https://www.youtube.com/embed/${g.youtube}`} /*?autoplay=${inView ? 1 : 0}*/
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
             )}
-            {g.url && (
-              <a target={'_blank'} className={'game-url'} href={g.url} onClick={() => onClickedProject('website')}>
-                website
-              </a>
-            )}
+            {g.image && <img src={g.image} width="100%" height="500" alt={'teaser'} />}
+            <div className={'side-holder'}>
+              {g.github && (
+                <a
+                  target={'_blank'}
+                  className={'game-github'}
+                  href={g.github}
+                  onClick={() => onClickedProject('github')}
+                >
+                  github
+                </a>
+              )}
+              {g.url && (
+                <a target={'_blank'} className={'game-url'} href={g.url} onClick={() => onClickedProject('website')}>
+                  website
+                </a>
+              )}
+            </div>
+            <div className={'side-holder'}>
+              <span className={'game-timespent'}>
+                <span>Time Spent:</span>
+                <br />
+                {g.timeSpent}
+              </span>
+              <span className={'game-percentdone'}>
+                <span>Percent Done:</span>
+                <br />
+                {g.percentDone}
+              </span>
+            </div>
           </div>
-          <div className={'side-holder'}>
-            <span className={'game-timespent'}>
-              <span>Time Spent:</span>
-              <br />
-              {g.timeSpent}
-            </span>
-            <span className={'game-percentdone'}>
-              <span>Percent Done:</span>
-              <br />
-              {g.percentDone}
-            </span>
+          <div className={'game-buttons buttons'}>
+            <button className={voted ? 'disabled' : ''} disabled={voted} onClick={() => onVoteProject('good')}>
+              I think this is a good idea!
+            </button>
+            <button className={voted ? 'disabled' : ''} disabled={voted} onClick={() => onVoteProject('bad')}>
+              I think this is a boring game idea
+            </button>
+          </div>
+          <div className={'game-body'}>
+            <h4>Synopsis</h4>
+            <p>{g.synopsis}</p>
+            <h4>Monetization</h4>
+            <p>{g.monetization}</p>
+            <h4>Why I liked working on it</h4>
+            <p>{g.whyILikedWorkingOnIt}</p>
+            <h4>Reason I stopped working on it</h4>
+            <p>{g.whyIStopped}</p>
+            <h4>What I would need to keep working on it</h4>
+            <ul>
+              {g.whatINeed.map((n, i) => (
+                <li key={i}>
+                  <span>{n}</span>{' '}
+                  <button onClick={() => setICanHelp({project: g.name, need: n})}>
+                    Hmm, I think I can help with this
+                  </button>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-        <div className={'game-buttons buttons'}>
-          <button className={voted ? 'disabled' : ''} disabled={voted} onClick={() => onVoteProject('good')}>
-            I think this is a good idea!
-          </button>
-          <button className={voted ? 'disabled' : ''} disabled={voted} onClick={() => onVoteProject('bad')}>
-            I think this is a boring game idea
-          </button>
-        </div>
-        <div className={'game-body'}>
-          <h4>Synopsis</h4>
-          <p>{g.synopsis}</p>
-          <h4>Monetization</h4>
-          <p>{g.monetization}</p>
-          <h4>Why I liked working on it</h4>
-          <p>{g.whyILikedWorkingOnIt}</p>
-          <h4>Reason I stopped working on it</h4>
-          <p>{g.whyIStopped}</p>
-          <h4>What I would need to keep working on it</h4>
-          <ul>
-            {g.whatINeed.map((n, i) => (
-              <li key={i}>
-                <span>{n}</span>{' '}
-                <button onClick={() => setICanHelp({project: g.name, need: n})}>
-                  Hmm, I think I can help with this
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </Section>
+      </Section>
+    </>
   );
 }
 
@@ -313,6 +341,25 @@ export const Love: FC<{}> = ({}) => {
                 Below are the games. I thought about randomizing the order of them just to not play favorites. They are
                 each my babies, and I love them all equally. Please keep an open mind when reading about them.
               </p>
+              <GameList>
+                {Games.map(g => (
+                  <GameListItem key={g.name}>
+                    <a  href={'#' + g.name}>
+                      <img
+                        src={g.image ?? `https://img.youtube.com/vi/${g.youtube}/hqdefault.jpg`}
+                        alt={g.name}
+                        style={{width: '10rem', height: '10rem', display: 'block'}}
+                      />
+                    </a>
+                    <div style={{marginLeft: '2rem'}}>
+                      <a style={{display: 'block'}} href={'#' + g.name}>
+                        {g.title}
+                      </a>
+                      {g.teaser}
+                    </div>
+                  </GameListItem>
+                ))}
+              </GameList>
             </Blog>
           </Section>
           {Games.map(g => (

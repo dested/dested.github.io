@@ -55,12 +55,17 @@ const ToyHolder = glamorous.div({
 });
 
 const HeroImage = glamorous.div({
-  border: 'solid 2px #cfcfcf',
-  borderRadius: '20px',
   overflow: 'hidden',
   display: 'flex',
-  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flexDirection: 'row',
   marginBottom: '40px',
+  [media.phone]: {
+    flexDirection: 'column',
+    marginLeft: '1rem',
+    marginRight: '1rem',
+  },
 });
 
 class Page extends React.Component<Props, State> {
@@ -83,12 +88,12 @@ class Page extends React.Component<Props, State> {
       <Holder onMouseDown={() => this.props.selectedKeyword != null && this.props.setSelectedKeyword(null)}>
         <Header />
         {this.props.showResume && <Intro />}
-        <Section color={'#F1F1F1'} title={'Featured Projects'}>
+        <Section color={'#F1F1F1'} title={'Featured Apps'}>
           {this.props.projects
             .filter(a => a.type === 'app')
             .map(h => (
               <HeroImage key={h.title}>
-                <SwiperImage key={h.image} image={h.image} />
+                <SwiperImage key={h.image} src={h.image} />
                 <HeroDescription hero={h} />
               </HeroImage>
             ))}
@@ -98,7 +103,7 @@ class Page extends React.Component<Props, State> {
             .filter(a => a.type === 'game')
             .map(h => (
               <HeroImage key={h.title}>
-                <SwiperImage key={h.image} image={h.image} />
+                <SwiperImage key={h.image} src={h.image} />
                 <HeroDescription hero={h} />
               </HeroImage>
             ))}

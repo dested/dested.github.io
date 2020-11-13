@@ -9,8 +9,8 @@ const Holder = glamorous.div({
   fontSize: '1.2rem',
   ...centerMargin,
   [media.phone]: {
-    flexDirection: 'column'
-  }
+    flexDirection: 'column',
+  },
 });
 
 const Icon = glamorous.div({
@@ -19,7 +19,7 @@ const Icon = glamorous.div({
   alignSelf: 'center',
   borderRadius: '50px',
   backgroundSize: 'cover',
-  backgroundImage: url('assets/sal.jpg')
+  backgroundImage: url('assets/sal.jpg'),
 });
 
 const Pitch = glamorous.span({
@@ -29,8 +29,8 @@ const Pitch = glamorous.span({
   flex: 1,
   [media.phone]: {
     paddingTop: '40px',
-    fontSize: '1.3em'
-  }
+    fontSize: '1.3em',
+  },
 });
 
 export let Intro: React.SFC = () => {
@@ -39,7 +39,13 @@ export let Intro: React.SFC = () => {
       <Holder>
         <Icon />
         <Pitch>
-        Being a hands on CTO for half a decade, and an engineer for over 15 years, I have experienced every conceivable type of project. I have seen the web transform from jQuery to React, from AJAX to Web Sockets, Cordova to React Native, and from monolithic web applications to lean SPAs. I have managed teams large and small, deployed user facing web and mobile apps used by millions, and personally brought several mobile apps and games to market. I am passionate about building startups around mobile apps, rapid prototype business needs and bringing those prototypes to production ready maintainable applications, and connecting people all over the world in real time.
+          Being a hands on CTO for half a decade, and an engineer for over 15 years, I have experienced every
+          conceivable type of project. I have seen the web transform from jQuery to React, from AJAX to Web Sockets,
+          Cordova to React Native, and from monolithic web applications to lean SPAs. I have managed teams large and
+          small, deployed user facing web and mobile apps used by millions, and personally brought several mobile apps
+          and games to market. I am passionate about building startups around mobile apps, rapid prototype business
+          needs and bringing those prototypes to production ready maintainable applications, and connecting people all
+          over the world in real time.
         </Pitch>
       </Holder>
     </MainSection>

@@ -15,8 +15,8 @@ const initialState: PageStore = {
   projects,
   toys,
   resume,
-  showResume: window.location.host.includes('resume'),
-  selectedKeyword: null
+  showResume:  window.location.host.includes('resume'),
+  selectedKeyword: null,
 };
 
 export interface PageStore {
@@ -32,7 +32,7 @@ export default function pageReducer(state: PageStore = initialState, action: Pag
     case PageActionOptions.SetSelectedKeyword: {
       return {
         ...state,
-        selectedKeyword: action.keyword
+        selectedKeyword: action.keyword,
       };
     }
   }
