@@ -11,6 +11,15 @@
   },
   {
     "url": "https://cleverrx.com",
+    "image": "assets/project-images/clever-v2.png",
+    "type": "app",
+    "title": "Clever RX V2",
+    "pitch": "Find the cheapest drugs for all the pharmacies around you; easy, fast and free!",
+    "description": "A FullStack TypeScript/React Native/NodeJS, Android and iOS app for quickly getting the best price for your prescriptions. ",
+    "keywords": ["react native", "serverless", "nodejs", "typescript"]
+  },
+  {
+    "url": "https://cleverrx.com",
     "image": "assets/project-images/clever.png",
     "type": "app",
     "title": "Clever RX",

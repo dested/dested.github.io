@@ -191,7 +191,7 @@ function LoveGame({g}: {g: Game}) {
               <ul>
                 {g.whatINeed.map((n, i) => (
                   <li key={i}>
-                    <span>{n}</span>{' '}
+                    <span>{n}</span>
                     <button onClick={() => setICanHelp({project: g.name, need: n})}>
                       Hmm, I think I can help with this
                     </button>
@@ -210,15 +210,14 @@ function LoveGame({g}: {g: Game}) {
             <p>{g.whyILikedWorkingOnIt}</p>
             <h4>Reason I stopped working on it</h4>
             <p>{g.whyIStopped}</p>
-
-            <div className={'game-buttons buttons'}>
-              <button className={voted ? 'disabled' : ''} disabled={voted} onClick={() => onVoteProject('good')}>
-                I think this is a good idea!
-              </button>
-              <button className={voted ? 'disabled' : ''} disabled={voted} onClick={() => onVoteProject('bad')}>
-                I think this is a boring game idea
-              </button>
-            </div>
+          </div>
+          <div className={'game-buttons buttons'}>
+            <button className={voted ? 'disabled' : ''} disabled={voted} onClick={() => onVoteProject('good')}>
+              I think this is a good idea!
+            </button>
+            <button className={voted ? 'disabled' : ''} disabled={voted} onClick={() => onVoteProject('bad')}>
+              I think this is a boring game idea
+            </button>
           </div>
         </div>
       </Section>
@@ -342,8 +341,8 @@ export const Love: FC<{}> = ({}) => {
               </p>
               <h2 style={{color: 'black'}}>The Games</h2>
               <p>
-                Below are the games. I thought about randomizing the order of them just to not play favorites. They are
-                each my babies, and I love them all equally. Please keep an open mind when reading about them.
+                Below are the games. I have randomized the order they're shown to not play favorites. They are each my
+                babies, and I love them all equally. Please keep an open mind when reading about them.
               </p>
               <GameList>
                 {Games.map(g => (
@@ -352,7 +351,7 @@ export const Love: FC<{}> = ({}) => {
                       <img
                         src={g.image ?? `https://img.youtube.com/vi/${g.youtube}/hqdefault.jpg`}
                         alt={g.name}
-                        style={{width: '10rem', height: '10rem', display: 'block'}}
+                        style={{width: '10rem', height: '10rem', display: 'block', borderRadius: 20}}
                       />
                     </a>
                     <div style={{marginLeft: '2rem'}}>

@@ -6,6 +6,7 @@ import {Keywords} from './keywords';
 
 const Holder = glamorous.div({
   padding: '20px',
+  width: '100%',
   color: '#333',
   display: 'grid',
   background: 'white',
@@ -16,13 +17,13 @@ const Holder = glamorous.div({
         "keywords keywords keywords links"
     `,
   gridTemplateColumns: `auto 50px 30px 1fr`,
-  gridTemplateRows: `50px auto auto auto`,
+  gridTemplateRows: `50px 1fr auto `,
   alignItems: 'center',
 
   borderBottomRightRadius: '20px',
   borderBottomLeftRadius: '20px',
   overflow: 'hidden',
-  marginLeft: '3rem',
+  marginLeft: '.5rem',
   [media.phone]: {
     marginLeft: '0rem',
     gridTemplateAreas: `

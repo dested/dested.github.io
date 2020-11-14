@@ -29,8 +29,8 @@ export const Games: Game[] = [
     percentDone: '85%',
     synopsis: (
       <>
-        A horizontal scrolling multiplayer space shootemup. You join an active server, probably capped at about 60
-        people. You shoot enemies, get powerups, shoot more enemies, and increase your score.
+        A vertical scrolling multiplayer space shootemup. You join an active server, capped at about 60 players. You
+        shoot enemies, get powerups, shoot more enemies, and increase your score.
         <br />
         <br /> The purpose is to climb the leaderboard, per game, per day, and all time. Once you die your score is
         saved and all your stats/powerups reset to zero.
@@ -131,11 +131,7 @@ export const Games: Game[] = [
   },
   {
     name: 'dotsgame',
-    title: (
-      <>
-        DotsGame <br /> (not official title)
-      </>
-    ),
+    title: <>DotsGame</>,
     teaser: 'Multiplayer Auralux',
     youtube: 'kbPryQOJhWA',
     github: 'https://github.com/dested/dots-game',
@@ -205,7 +201,7 @@ export const Games: Game[] = [
   {
     name: 'bounceblockparty',
     title: 'BounceBlockParty',
-    teaser: 'Twitch Plays Some Kinda Jumping Game',
+    teaser: 'Twitch Plays Some Kinda Multiplayer Jumping Game',
     youtube: 'CxYalNgP_lA',
     url: 'https://emote.bingo/',
     timeSpent: 'A month',
@@ -275,8 +271,8 @@ export const Games: Game[] = [
     ),
     whyIStopped: (
       <>
-        I don’t own any of the assets, and if I wanted to build a custom level editor type game (see runrunjump above),
-        I would not use any of the rendering techniques that made this project so damn complicated.
+        I don’t own any of the assets, and if I wanted to build a custom level editor type game (see runrunjump), I
+        would not use any of the rendering techniques that made this project so damn complicated.
       </>
     ),
     whatINeed: [
@@ -296,11 +292,11 @@ export const Games: Game[] = [
     percentDone: '10%',
     synopsis: (
       <>
-        This project is so old I don’t even have a video of it, and I found the screenshot above in my storage archives
-        from 2013. Nevertheless, this is one of my truly favorite projects. It’s the one I pick up every few years.{' '}
+        This project is so old I don’t even have a video of it, and I found the screenshot in my storage archives from
+        2013. Nevertheless, this is one of my truly favorite projects. It’s the one I pick up every few years.{' '}
         <i>It’s the one my wife hates the most.</i> <br />
         <br />
-        AnyCardGame is a full blown card game engine. You design your card game using the editor above, and program the
+        AnyCardGame is a full blown card game engine. You design your card game using the editor shown, and program the
         logic using JavaScript/TypeScript. Players join the games together and play them according to the programmed
         rules. <br />
         <br />
@@ -324,4 +320,33 @@ export const Games: Game[] = [
     ),
     whatINeed: ['Another passionate developer', 'A UI designer', 'A divorce lawyer'],
   },
-];
+  {
+    name: 'quickgame',
+    title: 'QuickGa.me',
+    teaser: 'A Developer Oriented Multiplayer Hosting Platform',
+    youtube: '',
+    image: 'https://dested.com/assets/project-images/quickgame.png',
+    github: 'https://github.com/Quickga-me',
+    url: 'https://quickga.me',
+    timeSpent: 'A Few Months',
+    percentDone: '30%',
+    synopsis: (
+      <>
+        This is one of my latest projects. It's a multiplayer engine and hosting platform. Developers build their games
+        in whatever framework they'd like (so long as its deployable to the web), build their multiplayer server using
+        our framework or not, and deploy it to us. We handle all hosting and <b>scaling</b>. If the game goes viral you
+        don't have to worry about a 3am phone call or $200,000 AWS bill.
+        <br />
+        <br />
+        Developers are compensated by a lion's share cut of ad and micro-transaction revenue generated while people are
+        playing their game. <br />
+        <br />I submitted this game to YC W20 and even made it to the interview stage, but that's a story for another
+        day.
+      </>
+    ),
+    monetization: <>Ads & Micro Transactions, percent paid to developers</>,
+    whyILikedWorkingOnIt: <>I'm not a game developer, I'm a game engine developer (at best)</>,
+    whyIStopped: <>I haven't quite stopped yet, just not my main focus.</>,
+    whatINeed: ['Another passionate developer', 'A UI/UX Engineer'],
+  },
+].sort(() => Math.random() - 0.5);

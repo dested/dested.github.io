@@ -6,7 +6,6 @@ import {connect, DispatchProp} from 'react-redux';
 import {Dispatch} from 'redux';
 import {PageAction, PageActions} from '../../actions/page';
 import {Section} from '../../components/section';
-import {Swiper, SwiperImage} from '../../components/swiper';
 import {IProject, IResumeItem, IToy} from '../../models';
 import {Store} from '../../reducers';
 import {media} from '../../utils/styleUtils';
@@ -57,8 +56,6 @@ const ToyHolder = glamorous.div({
 const HeroImage = glamorous.div({
   overflow: 'hidden',
   display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
   flexDirection: 'row',
   marginBottom: '40px',
   [media.phone]: {
@@ -93,7 +90,9 @@ class Page extends React.Component<Props, State> {
             .filter(a => a.type === 'app')
             .map(h => (
               <HeroImage key={h.title}>
-                <SwiperImage key={h.image} src={h.image} />
+                <SwiperImageDiv>
+                  <SwiperImage key={h.image} src={h.image} />
+                </SwiperImageDiv>
                 <HeroDescription hero={h} />
               </HeroImage>
             ))}
@@ -103,7 +102,9 @@ class Page extends React.Component<Props, State> {
             .filter(a => a.type === 'game')
             .map(h => (
               <HeroImage key={h.title}>
-                <SwiperImage key={h.image} src={h.image} />
+                <SwiperImageDiv>
+                  <SwiperImage key={h.image} src={h.image} />
+                </SwiperImageDiv>
                 <HeroDescription hero={h} />
               </HeroImage>
             ))}
@@ -145,3 +146,36 @@ export let Home = connect(
     };
   }
 )(Page);
+
+export const SwiperImageDiv = glamorous.div({
+  display: 'flex',
+  width: 400,
+  height: 300,
+  borderRadius: 20,
+  backgroundColor: 'white',
+  justifyContent: 'center',
+  alignItems: 'center',
+
+  [media.phone]: {
+    width: '100%',
+    marginBottom: '.5rem',
+    height: 'auto',
+  },
+});
+export const SwiperImage = glamorous.img({
+  display: 'block',
+  maxWidth: 400,
+  maxHeight: 300,
+  width: 'auto',
+  height: 'auto',
+  borderRadius: 20,
+  backgroundColor: 'white',
+  padding: '1rem',
+
+  [media.phone]: {
+    width: '100%',
+    marginBottom: '1rem',
+    maxWidth: 'auto',
+    maxHeight: 'auto',
+  },
+});
