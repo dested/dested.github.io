@@ -2,6 +2,7 @@ import glamorous from 'glamorous';
 import React, {useContext, useState} from 'react';
 import {FC, ReactNode, useCallback, useEffect, useRef} from 'react';
 import {useInView} from 'react-intersection-observer';
+import MetaTags from 'react-meta-tags';
 import {Link} from 'react-router-dom';
 import {ClickedProjectRequest, MainClient} from '../../dataServices/app.generated';
 import {centerMargin, media} from '../../utils/styleUtils';
@@ -277,6 +278,19 @@ export const Love: FC<{}> = ({}) => {
   return (
     <>
       <Context.Provider value={{iCanHelp, setICanHelp}}>
+        <MetaTags>
+          <title>Projects I Love But Stopped Working On</title>
+          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:site" content="@dested" />
+          <meta name="twitter:creator" content="@dested" />
+          <meta property="og:url" content="https://dested.com/love" />
+          <meta property="og:title" content="Projects I Love But Stopped Working On" />
+          <meta
+            property="og:description"
+            content="Like most passionate (bored) developers, I’ve worked on a lot of projects. Most of them games, none of them seeing the light of day. I’ve decided to chronicle them here in an attempt to kick other gamedevs to finish their own games, and maybe even entice some people to help me finish these."
+          />
+          <meta property="og:image" content="https://dested.com/assets/sal.jpg" />
+        </MetaTags>
         <Holder>
           <Header />
           <div style={{height: '6rem'}} />
